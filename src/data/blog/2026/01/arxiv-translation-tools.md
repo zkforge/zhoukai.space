@@ -4,6 +4,7 @@ author: Kai Zhou
 pubDatetime: 2026-01-31T10:00:00+08:00
 featured: true
 draft: false
+ogImage: ../../../../assets/images/og/2026/hjfy.png
 tags:
   - 论文翻译
   - arXiv
@@ -13,7 +14,13 @@ tags:
 description: "推荐两款基于 LaTeX 源码的 arXiv 论文翻译工具：幻觉翻译网站和 AI Agent 翻译方法"
 ---
 
-> 本文纯纯 ai 生成
+![hjfy.top](@/assets/images/og/2026/hjfy.png)
+
+> 除此之外还推荐两个工具：
+>
+> PDF: [PDFMathTranslate](https://github.com/PDFMathTranslate/PDFMathTranslate)
+>
+> LaTex: [gpt_academic](https://github.com/binary-husky/gpt_academic/tree/master)
 
 ## 目录
 
@@ -124,7 +131,7 @@ AI Agent 方法的技术优势在于：
 
 ##### 前置条件
 
-1. 本地安装 [kimi-cli](https://github.com/MoonshotHQ/kimi-cli) 并配置 kimi-k2.5
+1. 本地安装 [kimi-cli](https://github.com/MoonshotAI/kimi-cli) 并配置 kimi-k2.5
 2. 安装 LaTeX 编译环境（MacTeX、TeX Live 等）
 
 ##### 翻译命令示例
@@ -153,5 +160,5 @@ kimi --print --prompt "从arXiv上下载id为2502.16982的论文源码，然后�
 
 - [幻觉翻译网站](https://hjfy.top/)
 - [苏剑林：一行代码将arXiv论文翻译成中文版](https://spaces.ac.cn/archives/11578)
-- [知乎：消耗 3 亿 token，我用大模型翻译了 1 万篇 arXiv 论文](https://zhuanlan.zhihu.com/p/...)
-- [kimi-cli GitHub](https://github.com/MoonshotHQ/kimi-cli)
+- [知乎：消耗 3 亿 token，我用大模型翻译了 1 万篇 arXiv 论文](https://zhuanlan.zhihu.com/p/1905569596599169419)
+- [kimi-cli GitHub](https://github.com/MoonshotAI/kimi-cli)
