@@ -6,6 +6,7 @@ import Footer from "@/components/Footer.astro";
 import Socials from "@/components/Socials.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import Card from "@/components/Card.astro";
+import News from "@/components/News.astro";
 import Hr from "@/components/Hr.astro";
 import getSortedPosts from "@/utils/getSortedPosts";
 import IconRss from "@/assets/icons/IconRss.svg";
@@ -24,17 +25,19 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
   <Header />
   <main id="main-content" data-layout="index">
     <section id="hero" class="pt-6 pb-4">
-      <div class="flex flex-col sm:flex-row items-start gap-4">
-        <a href="/resume" class="block mx-auto sm:mx-0 group">
-          <img 
-            src="/avatar.jpg" 
-            alt="Kai Zhou" 
-            class="w-40 h-40 rounded-full object-cover flex-shrink-0 transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl"
+      <div class="flex flex-col items-start gap-4 sm:flex-row">
+        <a href="/resume" class="group mx-auto block sm:mx-0">
+          <img
+            src="/avatar.jpg"
+            alt="Kai Zhou"
+            class="h-40 w-40 flex-shrink-0 rounded-full object-cover transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl"
           />
         </a>
         <div class="flex-1 text-center sm:text-left">
-          <div class="flex items-center gap-2 justify-center sm:justify-start">
-            <h1 class="my-2 inline-block text-2xl font-bold sm:my-4 sm:text-3xl">
+          <div class="flex items-center justify-center gap-2 sm:justify-start">
+            <h1
+              class="my-2 inline-block text-2xl font-bold sm:my-4 sm:text-3xl"
+            >
               Kai Zhou
             </h1>
             <a
@@ -52,9 +55,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
               <span class="sr-only">RSS Feed</span>
             </a>
           </div>
-          <p>
-            Here is my blog. 
-          </p>
+          <p>Here is my blog.</p>
           <p class="mt-2">
             Read the blog posts or check
             <LinkButton
@@ -75,6 +76,9 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
         </div>
       </div>
     </section>
+
+    {/* 最新动态 */}
+    <News />
 
     <Hr />
 

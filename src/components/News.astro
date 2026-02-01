@@ -1,0 +1,33 @@
+---
+import { SITE } from "@/config";
+
+export interface Props {
+  title?: string;
+  content?: string;
+  enabled?: boolean;
+}
+
+const {
+  title = SITE.news.title,
+  content = SITE.news.content,
+  enabled = SITE.news.enabled,
+} = Astro.props;
+---
+
+{enabled && (
+  <div class="mx-auto max-w-app px-4">
+    <div class="my-8 rounded border-l-4 border-accent/50 bg-muted/20 py-4 pl-6 pr-4 opacity-80">
+      {/* 标题 */}
+      <div class="mb-2">
+        <span class="text-xs font-semibold uppercase tracking-wider text-accent">
+          {title}
+        </span>
+      </div>
+
+      {/* 内容 */}
+      <p class="text-foreground/90 leading-relaxed">
+        {content}
+      </p>
+    </div>
+  </div>
+)}
