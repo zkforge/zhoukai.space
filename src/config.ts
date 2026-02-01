@@ -22,7 +22,7 @@ export const SITE = {
   timezone: "Asia/Shanghai", // Default global timezone (IANA format) https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   news: {
     title: "News",
-    content: "终于能无延迟连上小组服务器了😭。冲冲冲！",
+    content: "斩味上升🗡️",
     enabled: true,
   } as const,
 } as const;
