@@ -236,6 +236,22 @@ Control UI: http://127.0.0.1:18789%token=巴拉巴拉一大串
 
 ---
 
+## 更新（2026-03-08）
+
+当前 OpenClaw 的默认设置里，Web 功能等工具能力默认是关闭状态，需要手动修改 `openclaw.json`。
+
+将其中的 `tools` 配置改为 `full`：
+
+```json
+{
+  "tools": {
+    "profile": "full"
+  }
+}
+```
+
+---
+
 ## 参考链接
 
 - [OpenClaw 官网](https://openclaw.ai/)
