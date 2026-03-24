@@ -5,39 +5,81 @@ import Footer from "@/components/Footer.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import { SITE } from "@/config";
 
-// --- 真实论文数据 ---
-const publications = [
+interface PublicationLink {
+  name: string;
+  url: string;
+}
+
+interface PublicationItem {
+  title: string;
+  image?: string;
+  authors?: string;
+  venue: string;
+  badge?: string;
+  links: PublicationLink[];
+}
+
+interface PublicationGroup {
+  year: string;
+  items: PublicationItem[];
+}
+
+interface PublicationSection {
+  id: string;
+  title: string;
+  description?: string;
+  groups: PublicationGroup[];
+}
+
+const publicationSections: PublicationSection[] = [
   {
-    year: "2025",
-    list: [
+    id: "projects",
+    title: "Projects",
+    description: "开源项目",
+    groups: [
       {
-        title: "A paper that does not exist yet but will in the future",
-        image: "/assets/img/papers_preview/plip.png", 
-        authors: "Kai Zhou",
-        conference: "CVPR 2025", 
-        links: [
-          { name: "arXiv", url: "http://arxiv.org" },
-          { name: "Code", url: "https://github.com" },
-        ]
+        year: "2026",
+        items: [
+          {
+            title: "Native macOS menu bar app for CCF deadlines",
+            image: "/assets/img/ccfddlmenubar.png",
+            authors: "Kai Zhou",
+            venue: "Open Source",
+            badge: "ConfBar",
+            links: [
+              {
+                name: "Github",
+                url: "https://github.com/zkforge/CCFDDLMenuBar",
+              },
+            ],
+          },
+        ],
       },
-    ]
+    ],
   },
   {
-    year: "2024",
-    list: [
+    id: "papers",
+    title: "Papers",
+    description: "论文",
+    groups: [
       {
-        title: "A paper that does not exist yet but will in the future",
-        image: "/assets/img/papers_preview/bisenetv2.png",
-        authors: "Kai Zhou",
-        conference: "IJCV 2024", 
-        links: [
-          { name: "arXiv", url: "http://arxiv.org" },
-          { name: "Code", url: "https://github.com" },
-          { name: "Springer", url: "https://link.springer.com/article" },
-        ]
-      }
-    ]
-  }
+        year: "2025",
+        items: [
+          {
+            title: "Example",
+            image: "/assets/img/papers_preview/bisenetv2.png",
+            authors: "Kai Zhou",
+            venue: "CVPR 2025",
+            links: [
+              { name: "arXiv", url: "http://arxiv.org" },
+              { name: "Code", url: "https://github.com" },
+              { name: "Springer", url: "https://link.springer.com/article" },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ];
 ---
 
@@ -45,69 +87,91 @@ const publications = [
   <Header />
 
   <main id="main-content" class="mx-auto w-full max-w-app flex-1 px-4 py-8">
-    <div class="flex flex-col space-y-12">
-      {publications.map((group) => (
-        <section>
-          <div class="sticky top-0 z-10 bg-skin-fill/90 backdrop-blur-sm py-2 mb-6 border-b border-dashed border-skin-line">
-             <h2 class="text-2xl font-bold text-accent">
-              {group.year}
-            </h2>
-          </div>
-         
-          <ul class="space-y-10">
-            {group.list.map((paper) => (
-              <li class="group flex flex-col gap-6 sm:flex-row items-start">
-                
-                {paper.image && (
-                  <div class="relative shrink-0 w-full sm:w-56 md:w-64 overflow-hidden rounded-lg shadow-sm border border-skin-line/50">
-                    
-                    <span class="absolute top-0 left-0 bg-accent text-white px-2 py-1 text-xs font-bold rounded-tl-lg rounded-br-lg z-10 tracking-wider">
-                      {/* 提取会议名称的第一个单词，作为标签内容 */}
-                      {paper.conference.split(' ')[0]}
-                    </span>
+    <div class="space-y-16">
+      {
+        publicationSections.map(section => (
+          <section
+            id={section.id}
+            class="mx-0 max-w-none space-y-8 px-0"
+            aria-labelledby={`${section.id}-title`}
+          >
+            <div class="border-skin-line/70 border-b pb-4">
+              <h2
+                id={`${section.id}-title`}
+                class="text-2xl font-bold text-accent sm:text-3xl"
+              >
+                {section.title}
+              </h2>
+              {section.description && (
+                <p class="text-skin-base mt-2 text-sm leading-6 opacity-80 sm:text-base">
+                  {section.description}
+                </p>
+              )}
+            </div>
 
-                    <img 
-                      src={paper.image} 
-                      alt={paper.title} 
-                      class="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
+            <div class="space-y-12">
+              {section.groups.map(group => (
+                <div class="space-y-6">
+                  <div class="bg-skin-fill/90 border-skin-line sticky top-0 z-10 border-b border-dashed py-2 backdrop-blur-sm">
+                    <h3 class="text-xl font-bold text-accent">{group.year}</h3>
                   </div>
-                )}
 
-                {/* --- 内容区域 ... 省略其余内容 --- */}
-                <div class="flex-1 flex flex-col space-y-3">
-                  <h3 class="text-lg font-bold text-skin-base sm:text-xl leading-snug group-hover:text-accent transition-colors">
-                    {paper.title}
-                  </h3>
-                  
-                  <p class="text-sm text-skin-base opacity-90 leading-relaxed">
-                    {paper.authors}
-                  </p>
+                  <ul class="space-y-10 pl-0">
+                    {group.items.map(item => (
+                      <li class="group flex flex-col items-start gap-6 sm:flex-row">
+                        {item.image && (
+                          <div class="border-skin-line/50 relative w-full shrink-0 overflow-hidden rounded-lg border shadow-sm sm:w-56 md:w-64">
+                            <span class="absolute top-0 left-0 z-10 rounded-tl-lg rounded-br-lg bg-accent px-2 py-1 text-xs font-bold tracking-wider text-white">
+                              {item.badge ?? item.venue.split(" ")[0]}
+                            </span>
 
-                  <div class="flex flex-wrap items-center gap-y-2 gap-x-4 text-sm mt-1">
-                    <span class="font-semibold italic text-skin-accent px-2 py-0.5 bg-skin-accent/10 rounded">
-                      {paper.conference}
-                    </span>
-                    
-                    <div class="flex gap-3">
-                      {paper.links.map((link) => (
-                        <LinkButton
-                          href={link.url}
-                          class="flex items-center gap-1 text-skin-base opacity-70 hover:opacity-100 hover:text-accent transition-all underline decoration-dashed underline-offset-4"
-                          title={link.name}
-                        >
-                          <span>[{link.name}]</span>
-                        </LinkButton>
-                      ))}
-                    </div>
-                  </div>
+                            <img
+                              src={item.image}
+                              alt={item.title}
+                              class="h-auto w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                              loading="lazy"
+                            />
+                          </div>
+                        )}
+
+                        <div class="flex flex-1 flex-col space-y-3 text-left">
+                          <h4 class="text-skin-base text-left text-lg leading-snug font-bold transition-colors group-hover:text-accent sm:text-xl">
+                            {item.title}
+                          </h4>
+
+                          {item.authors && (
+                            <p class="text-skin-base text-sm leading-relaxed opacity-90">
+                              {item.authors}
+                            </p>
+                          )}
+
+                          <div class="mt-1 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+                            <span class="text-skin-accent bg-skin-accent/10 rounded px-2 py-0.5 font-semibold italic">
+                              {item.venue}
+                            </span>
+
+                            <div class="flex gap-3">
+                              {item.links.map(link => (
+                                <LinkButton
+                                  href={link.url}
+                                  class="text-skin-base flex items-center gap-1 underline decoration-dashed underline-offset-4 opacity-70 transition-all hover:text-accent hover:opacity-100"
+                                  title={link.name}
+                                >
+                                  <span>[{link.name}]</span>
+                                </LinkButton>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ))}
+              ))}
+            </div>
+          </section>
+        ))
+      }
     </div>
   </main>
 
