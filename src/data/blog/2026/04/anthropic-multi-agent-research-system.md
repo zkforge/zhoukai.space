@@ -161,8 +161,6 @@ agent 系统通常是一张高度有状态的网络，由 prompt、工具和执�
 
 对于某些类型的结果，如果允许子代理直接输出，而不是所有内容都必须经过主协调者转述，往往能同时提升保真度和性能。与其让子代理把所有东西都通过主代理层层传达，不如设计一套 artifact 系统，让专用 agent 直接生成可以独立持久化的结果。子代理可以调用工具，把自己的工作结果写入外部系统，然后只把轻量级引用返回给协调者。这样可以减少多阶段处理中信息损失，也能避免为了在对话历史中传递大段输出而付出的额外 token 成本。这个模式尤其适用于代码、报告、数据可视化这类结构化输出，因为在这些场景中，子代理依靠其专用 prompt 产出的结果，往往比经过通用协调者二次过滤后的结果更好。
 
-[![Interlocking puzzle piece with complex geometric shape and detailed surface texture](https://www-cdn.anthropic.com/images/4zrzovbb/website/43abe7e54b56a891e74a8542944dfbd33f07f49c-1000x1000.svg)](https://anthropic.skilljar.com/)
-
 ## TODO
 
 - [ ] 补充我的阅后笔记
