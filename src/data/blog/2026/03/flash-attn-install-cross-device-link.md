@@ -1,7 +1,7 @@
 ---
 title: "flash-attn 安装报错分析与解决"
 author: Kai Zhou
-pubDatetime: 2026-03-31T22:00:00+08:00
+pubDatetime: 2026-03-31T10:00:00+08:00
 featured: false
 draft: false
 tags:
