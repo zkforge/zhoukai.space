@@ -2,7 +2,7 @@
 title: "arXiv 论文翻译工具推荐：从 LaTeX 源码出发的智能翻译"
 author: Kai Zhou
 pubDatetime: 2026-01-31T10:00:00+08:00
-featured: true
+featured: false
 draft: false
 ogImage: ../../../../assets/images/og/2026/hjfy.png
 tags:

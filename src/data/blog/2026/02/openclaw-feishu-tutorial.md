@@ -2,7 +2,7 @@
 title: "安装 OpenClaw 并接入飞书全流程记录"
 author: Kai Zhou
 pubDatetime: 2026-02-16T10:00:00+08:00
-featured: true
+featured: false
 draft: false
 tags:
   - OpenClaw

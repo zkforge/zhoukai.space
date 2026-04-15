@@ -2,7 +2,7 @@
 title: "国内连接校内Ubuntu服务器：花生壳内网穿透完整实操教程"
 author: Kai Zhou
 pubDatetime: 2026-01-28T10:00:00+08:00
-featured: true
+featured: false
 draft: false
 tags:
   - Linux
