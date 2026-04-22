@@ -2,7 +2,7 @@
 title: "Anthropic：我们如何构建多代理 Research 系统"
 author: Kai Zhou
 pubDatetime: 2026-04-03T12:10:00+08:00
-featured: true
+featured: false
 draft: false
 tags:
   - Anthropic
