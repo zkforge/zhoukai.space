@@ -14,6 +14,7 @@ interface PublicationItem {
   title: string;
   image?: string;
   authors?: string;
+  description?: string;
   venue: string;
   badge?: string;
   links: PublicationLink[];
@@ -39,6 +40,25 @@ const publicationSections: PublicationSection[] = [
       {
         year: "2026",
         items: [
+          {
+            title: "PaperDue",
+            image: "/assets/img/paperdue.png",
+            authors: "Kai Zhou",
+            description:
+              "PaperDue keeps research conference dates, submission milestones, followed venues, and local reminders in one small, calm app.",
+            venue: "Web App",
+            badge: "PaperDue",
+            links: [
+              {
+                name: "Website",
+                url: "https://paperdue.vercel.app",
+              },
+              {
+                name: "Github",
+                url: "https://github.com/zkforge/PaperDue",
+              },
+            ],
+          },
           {
             title: "Native macOS menu bar app for CCF deadlines",
             image: "/assets/img/ccfddlmenubar.png",
@@ -140,6 +160,12 @@ const publicationSections: PublicationSection[] = [
                           {item.authors && (
                             <p class="text-skin-base text-sm leading-relaxed opacity-90">
                               {item.authors}
+                            </p>
+                          )}
+
+                          {item.description && (
+                            <p class="text-skin-base text-sm leading-relaxed opacity-80">
+                              {item.description}
                             </p>
                           )}
 
