@@ -3,6 +3,7 @@ import IconMail from "@/assets/icons/IconMail.svg";
 import IconGitHub from "@/assets/icons/IconGitHub.svg";
 import IconBrandX from "@/assets/icons/IconBrandX.svg";
 import IconLinkedin from "@/assets/icons/IconLinkedin.svg";
+import IconWechat from "@/assets/icons/IconWechat.svg";
 import IconWhatsapp from "@/assets/icons/IconWhatsapp.svg";
 import IconFacebook from "@/assets/icons/IconFacebook.svg";
 import IconTelegram from "@/assets/icons/IconTelegram.svg";
@@ -34,6 +35,12 @@ export const SOCIALS: Social[] = [
     href: "https://www.linkedin.com/in/kaizhou0305/",
     linkTitle: `${SITE.title} on LinkedIn`,
     icon: IconLinkedin,
+  },
+  {
+    name: "WeChat",
+    href: "/contact/#wechat",
+    linkTitle: `Add ${SITE.author} on WeChat`,
+    icon: IconWechat,
   },
   {
     name: "Mail",
