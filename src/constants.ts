@@ -38,7 +38,7 @@ export const SOCIALS: Social[] = [
   },
   {
     name: "WeChat",
-    href: "/contact/#wechat",
+    href: "/wechat/",
     linkTitle: `Add ${SITE.author} on WeChat`,
     icon: IconWechat,
   },

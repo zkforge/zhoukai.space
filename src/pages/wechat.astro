@@ -1,0 +1,44 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import Breadcrumb from "@/components/Breadcrumb.astro";
+import { SITE } from "@/config";
+
+const title = `WeChat | ${SITE.title}`;
+const description = `Connect with ${SITE.author} via WeChat.`;
+---
+
+<Layout title={title} description={description}>
+  <Header />
+  <Breadcrumb />
+
+  <main id="main-content">
+    <section id="wechat" class="prose mb-28 max-w-app prose-img:border-0">
+      <div class="mb-8">
+        <h1 class="m-0 min-w-0 text-2xl tracking-wider sm:text-3xl">WeChat</h1>
+        <p>如果你想交流博客文章、研究项目或开源协作，欢迎通过微信联系我。</p>
+      </div>
+
+      <section aria-labelledby="wechat-title">
+        <h2 id="wechat-title">微信联系</h2>
+        <p>扫描下方二维码添加微信。</p>
+        <p>
+          <strong>微信号：</strong>zk471104594
+        </p>
+        <div class="not-prose mt-4 flex justify-start">
+          <img
+            src="/wechat-qr.png"
+            alt={`Add ${SITE.author} on WeChat QR code`}
+            class="aspect-square w-full max-w-64 rounded-lg border border-border bg-background object-contain p-3"
+            width="512"
+            height="512"
+            loading="eager"
+          />
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
