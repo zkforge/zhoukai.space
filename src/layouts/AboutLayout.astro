@@ -2,17 +2,20 @@
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
+import IconLanguageZh from "@/assets/icons/IconLanguageZh.svg";
 import Layout from "./Layout.astro";
 import { SITE } from "@/config";
 
 export interface Props {
   frontmatter: {
     title: string;
+    titleZh?: string;
     description?: string;
   };
 }
 
 const { frontmatter } = Astro.props;
+const displayTitle = frontmatter.titleZh ?? frontmatter.title;
 ---
 
 <Layout title={`${frontmatter.title} | ${SITE.title}`}>
@@ -20,9 +23,92 @@ const { frontmatter } = Astro.props;
   <Breadcrumb />
   <main id="main-content">
     <section id="about" class="prose mb-28 max-w-app prose-img:border-0">
-      <h1 class="text-2xl tracking-wider sm:text-3xl">{frontmatter.title}</h1>
+      <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <h1 class="m-0 text-2xl tracking-wider sm:text-3xl">
+          <span data-about-title="zh">{displayTitle}</span>
+          <span data-about-title="en" hidden>{frontmatter.title}</span>
+        </h1>
+        <button
+          type="button"
+          id="about-lang-toggle"
+          class="not-prose group w-fit rounded p-2 text-foreground opacity-80 transition hover:rotate-6 hover:text-accent hover:opacity-100 sm:p-1"
+          aria-label="Switch to English"
+          title="Switch to English"
+        >
+          <IconLanguageZh class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110" />
+          <span class="sr-only" data-about-lang-toggle-label>Switch to English</span>
+        </button>
+      </div>
       <slot />
     </section>
   </main>
   <Footer />
 </Layout>
+
+<script>
+  const ABOUT_LANG_STORAGE_KEY = "about-page-language";
+  const DEFAULT_ABOUT_LANG = "zh";
+
+  /**
+   * 根据当前语言同步标题、正文和按钮状态。
+   * @param selectedLang - 需要展示的 about 页面语言。
+   */
+  function setAboutLanguage(selectedLang: "zh" | "en") {
+    const normalizedLang = selectedLang === "en" ? "en" : "zh";
+    const langCode = normalizedLang === "zh" ? "zh-CN" : "en";
+
+    document.documentElement.lang = langCode;
+
+    document.querySelectorAll("[data-about-lang]").forEach(section => {
+      const sectionLang = section.getAttribute("data-about-lang");
+      section.toggleAttribute("hidden", sectionLang !== normalizedLang);
+    });
+
+    document.querySelectorAll("[data-about-title]").forEach(title => {
+      const titleLang = title.getAttribute("data-about-title");
+      title.toggleAttribute("hidden", titleLang !== normalizedLang);
+    });
+
+    const toggleButton = document.querySelector("#about-lang-toggle");
+    const toggleLabel = document.querySelector("[data-about-lang-toggle-label]");
+    const nextLabel = normalizedLang === "zh" ? "Switch to English" : "切换到中文";
+
+    toggleButton?.setAttribute("aria-label", nextLabel);
+    toggleButton?.setAttribute("title", nextLabel);
+    toggleButton?.setAttribute("data-current-lang", normalizedLang);
+    if (toggleLabel) toggleLabel.textContent = nextLabel;
+
+    document.querySelectorAll<SVGPathElement>("[data-about-lang-part]").forEach(path => {
+      const pathLang = path.getAttribute("data-about-lang-part");
+      const shouldHighlight = pathLang === normalizedLang;
+
+      path.style.stroke = shouldHighlight ? "var(--accent)" : "";
+      path.style.opacity = shouldHighlight ? "1" : "";
+    });
+
+    localStorage.setItem(ABOUT_LANG_STORAGE_KEY, normalizedLang);
+  }
+
+  /**
+   * 初始化 about 页面语言切换按钮。
+   */
+  function initAboutLanguageToggle() {
+    const savedLang = localStorage.getItem(ABOUT_LANG_STORAGE_KEY);
+    setAboutLanguage(savedLang === "en" ? "en" : DEFAULT_ABOUT_LANG);
+
+    const toggleButton = document.querySelector("#about-lang-toggle");
+
+    if (!toggleButton || toggleButton.hasAttribute("data-about-lang-ready")) {
+      return;
+    }
+
+    toggleButton.setAttribute("data-about-lang-ready", "true");
+    toggleButton.addEventListener("click", () => {
+      const currentLang = localStorage.getItem(ABOUT_LANG_STORAGE_KEY);
+      setAboutLanguage(currentLang === "en" ? "zh" : "en");
+    });
+  }
+
+  initAboutLanguageToggle();
+  document.addEventListener("astro:after-swap", initAboutLanguageToggle);
+</script>

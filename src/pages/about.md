@@ -1,36 +1,63 @@
 ---
 layout: ../layouts/AboutLayout.astro
 title: "About"
+titleZh: "关于我"
 ---
 
-AstroPaper is a minimal, responsive and SEO-friendly Astro blog theme. I designed and crafted this based on [my personal blog](https://satnaing.dev/blog).
+<div data-about-lang="zh" lang="zh-CN">
+  <p>
+    你好，我是 Kai Zhou。这里是我的个人博客，用来记录研究、工程实践、阅读笔记，以及一些和生活相关的观察。
+  </p>
 
-This theme is aimed to be accessible out of the box. Light and dark mode are supported by
-default and additional color schemes can also be configured.
+  <p>
+    我关注人工智能、软件工程、科研写作与个人知识管理。写作对我来说不是单纯的输出，而是整理问题、校准判断、复盘经验的过程。
+  </p>
 
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. So, see the documentation for more info.
+  <div>
+    <img src="/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
+  </div>
 
-<div>
-  <img src="/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
+  <h2>关注方向</h2>
+
+  <ul>
+    <li>机器学习与深度学习系统</li>
+    <li>科研工作流与论文写作</li>
+    <li>Web 开发与工程效率</li>
+    <li>长期主义的个人知识库建设</li>
+  </ul>
+
+  <h2>关于这个网站</h2>
+
+  <p>
+    这个博客基于 Astro 和 AstroPaper 主题构建，支持静态生成、标签归档、搜索、RSS、明暗主题切换和动态 OG 图片。
+  </p>
 </div>
 
-## Tech Stack
+<div data-about-lang="en" lang="en" hidden>
+  <p>
+    Hi, I am Kai Zhou. This is my personal blog for research notes, engineering practice, reading notes, and occasional observations about life.
+  </p>
 
-This theme is written in vanilla JavaScript (+ TypeScript for type checking) and a little bit of ReactJS for some interactions. TailwindCSS is used for styling; and Markdown is used for blog contents.
+  <p>
+    I care about artificial intelligence, software engineering, academic writing, and personal knowledge management. Writing is how I organize problems, calibrate judgment, and review experience.
+  </p>
 
-## Features
+  <div>
+    <img src="/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
+  </div>
 
-Here are certain features of this site.
+  <h2>Interests</h2>
 
-- fully responsive and accessible
-- SEO-friendly
-- light & dark mode
-- fuzzy search
-- super fast performance
-- draft posts
-- pagination
-- sitemap & rss feed
-- highly customizable
+  <ul>
+    <li>Machine learning and deep learning systems</li>
+    <li>Research workflows and paper writing</li>
+    <li>Web development and engineering productivity</li>
+    <li>Long-term personal knowledge management</li>
+  </ul>
 
-If you like this theme, you can star/contribute to the [repo](https://github.com/satnaing/astro-paper).  
-Or you can even give any feedback via my [email](mailto:contact@satnaing.dev).
+  <h2>About this site</h2>
+
+  <p>
+    This blog is built with Astro and the AstroPaper theme. It supports static generation, tag archives, search, RSS, light and dark modes, and dynamic OG images.
+  </p>
+</div>
