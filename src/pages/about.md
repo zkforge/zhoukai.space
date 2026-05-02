@@ -2,62 +2,63 @@
 layout: ../layouts/AboutLayout.astro
 title: "About"
 titleZh: "关于我"
+modDatetime: 2026-05-02T10:40:00+08:00
 ---
 
 <div data-about-lang="zh" lang="zh-CN">
   <p>
-    你好，我是 Kai Zhou。这里是我的个人博客，用来记录研究、工程实践、阅读笔记，以及一些和生活相关的观察。
+    我是周凯，吉林大学智能内容学习（ICL）研究组的硕士一年级研究生，导师为马锐。
   </p>
 
   <p>
-    我关注人工智能、软件工程、科研写作与个人知识管理。写作对我来说不是单纯的输出，而是整理问题、校准判断、复盘经验的过程。
+    我的研究方向是 Agent，关注智能体系统、工具使用、任务规划，以及大语言模型在复杂任务中的推理与协作能力。
   </p>
 
   <div>
     <img src="/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
   </div>
 
-  <h2>关注方向</h2>
+  <h2>研究兴趣</h2>
 
   <ul>
-    <li>机器学习与深度学习系统</li>
-    <li>科研工作流与论文写作</li>
-    <li>Web 开发与工程效率</li>
-    <li>长期主义的个人知识库建设</li>
+    <li>大语言模型智能体（LLM Agents）</li>
+    <li>智能体任务规划与工具调用</li>
+    <li>多智能体协作与评测</li>
+    <li>面向科研与工程场景的 Agent 应用</li>
   </ul>
 
   <h2>关于这个网站</h2>
 
   <p>
-    这个博客基于 Astro 和 AstroPaper 主题构建，支持静态生成、标签归档、搜索、RSS、明暗主题切换和动态 OG 图片。
+    这个博客用于记录我的研究进展、工程实践、论文阅读笔记，以及对 AI 工具和开发工作流的探索。
   </p>
 </div>
 
 <div data-about-lang="en" lang="en" hidden>
   <p>
-    Hi, I am Kai Zhou. This is my personal blog for research notes, engineering practice, reading notes, and occasional observations about life.
+    I am Kai Zhou, a first-year Master's student in the Intelligent Content Learning (ICL) Group at Jilin University, advised by Ma Rui.
   </p>
 
   <p>
-    I care about artificial intelligence, software engineering, academic writing, and personal knowledge management. Writing is how I organize problems, calibrate judgment, and review experience.
+    My research focuses on agents, including agentic systems, tool use, task planning, and the reasoning and collaboration abilities of large language models in complex tasks.
   </p>
 
   <div>
     <img src="/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
   </div>
 
-  <h2>Interests</h2>
+  <h2>Research Interests</h2>
 
   <ul>
-    <li>Machine learning and deep learning systems</li>
-    <li>Research workflows and paper writing</li>
-    <li>Web development and engineering productivity</li>
-    <li>Long-term personal knowledge management</li>
+    <li>Large language model agents</li>
+    <li>Agent planning and tool use</li>
+    <li>Multi-agent collaboration and evaluation</li>
+    <li>Agent applications for research and engineering workflows</li>
   </ul>
 
   <h2>About this site</h2>
 
   <p>
-    This blog is built with Astro and the AstroPaper theme. It supports static generation, tag archives, search, RSS, light and dark modes, and dynamic OG images.
+    This blog documents my research progress, engineering practice, paper reading notes, and explorations of AI tools and development workflows.
   </p>
 </div>

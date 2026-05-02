@@ -10,6 +10,7 @@ dayjs.extend(timezone);
 
 export interface Props {
   class?: string;
+  label?: string;
   size?: "sm" | "lg";
   timezone: string | undefined;
   pubDatetime: string | Date;
@@ -19,6 +20,7 @@ export interface Props {
 const {
   pubDatetime,
   modDatetime,
+  label,
   size = "sm",
   class: className = "",
   timezone: postTimezone,
@@ -41,7 +43,11 @@ const time = datetime.format("hh:mm A"); // e.g., '08:30 PM'
     ]}
   />
   {
-    modDatetime && modDatetime > pubDatetime ? (
+    label ? (
+      <span class:list={["text-sm italic", { "sm:text-base": size === "lg" }]}>
+        {label}
+      </span>
+    ) : modDatetime && modDatetime > pubDatetime ? (
       <span class:list={["text-sm italic", { "sm:text-base": size === "lg" }]}>
         Updated:
       </span>

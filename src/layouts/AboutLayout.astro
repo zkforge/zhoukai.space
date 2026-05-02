@@ -2,6 +2,7 @@
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
+import Datetime from "@/components/Datetime.astro";
 import IconLanguageZh from "@/assets/icons/IconLanguageZh.svg";
 import Layout from "./Layout.astro";
 import { SITE } from "@/config";
@@ -11,11 +12,14 @@ export interface Props {
     title: string;
     titleZh?: string;
     description?: string;
+    modDatetime?: string | Date;
+    timezone?: string;
   };
 }
 
 const { frontmatter } = Astro.props;
 const displayTitle = frontmatter.titleZh ?? frontmatter.title;
+const modDatetime = frontmatter.modDatetime;
 ---
 
 <Layout title={`${frontmatter.title} | ${SITE.title}`}>
@@ -23,21 +27,35 @@ const displayTitle = frontmatter.titleZh ?? frontmatter.title;
   <Breadcrumb />
   <main id="main-content">
     <section id="about" class="prose mb-28 max-w-app prose-img:border-0">
-      <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h1 class="m-0 text-2xl tracking-wider sm:text-3xl">
-          <span data-about-title="zh">{displayTitle}</span>
-          <span data-about-title="en" hidden>{frontmatter.title}</span>
-        </h1>
-        <button
-          type="button"
-          id="about-lang-toggle"
-          class="not-prose group w-fit rounded p-2 text-foreground opacity-80 transition hover:rotate-6 hover:text-accent hover:opacity-100 sm:p-1"
-          aria-label="Switch to English"
-          title="Switch to English"
-        >
-          <IconLanguageZh class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110" />
-          <span class="sr-only" data-about-lang-toggle-label>Switch to English</span>
-        </button>
+      <div class="mb-8">
+        <div class="flex items-center justify-between gap-4">
+          <h1 class="m-0 min-w-0 text-2xl tracking-wider sm:text-3xl">
+            <span data-about-title="zh">{displayTitle}</span>
+            <span data-about-title="en" hidden>{frontmatter.title}</span>
+          </h1>
+          <button
+            type="button"
+            id="about-lang-toggle"
+            class="not-prose group w-fit shrink-0 rounded p-2 text-foreground opacity-80 transition hover:rotate-6 hover:text-accent hover:opacity-100 sm:p-1"
+            aria-label="Switch to English"
+            title="Switch to English"
+          >
+            <IconLanguageZh class="inline-block size-6 scale-125 fill-transparent stroke-current stroke-2 opacity-90 group-hover:fill-transparent sm:scale-110" />
+            <span class="sr-only" data-about-lang-toggle-label>Switch to English</span>
+          </button>
+        </div>
+        {
+          modDatetime && (
+            <Datetime
+              pubDatetime={modDatetime}
+              {modDatetime}
+              timezone={frontmatter.timezone}
+              label="Updated:"
+              size="lg"
+              class="mt-2"
+            />
+          )
+        }
       </div>
       <slot />
     </section>
