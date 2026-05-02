@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import Main from "@/layouts/Main.astro";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import LinkButton from "@/components/LinkButton.astro";
@@ -104,19 +105,22 @@ const publicationSections: PublicationSection[] = [
 <Layout title={`Publications | ${SITE.title}`}>
   <Header />
 
-  <main id="main-content" class="mx-auto w-full max-w-app flex-1 px-4 py-8">
-    <div class="space-y-16">
+  <Main
+    pageTitle="Publications"
+    pageDesc="Selected projects and papers."
+  >
+    <div class="space-y-12">
       {
         publicationSections.map(section => (
           <section
             id={section.id}
-            class="mx-0 max-w-none space-y-8 px-0"
+            class="space-y-6"
             aria-labelledby={`${section.id}-title`}
           >
-            <div class="border-skin-line/70 border-b pb-4">
+            <div>
               <h2
                 id={`${section.id}-title`}
-                class="text-2xl font-bold text-accent sm:text-3xl"
+                class="text-xl font-bold text-accent sm:text-2xl"
               >
                 {section.title}
               </h2>
@@ -130,7 +134,7 @@ const publicationSections: PublicationSection[] = [
             <div class="space-y-12">
               {section.groups.map(group => (
                 <div class="space-y-6">
-                  <div class="bg-skin-fill/90 border-skin-line sticky top-0 z-10 border-b border-dashed py-2 backdrop-blur-sm">
+                  <div>
                     <h3 class="text-xl font-bold text-accent">{group.year}</h3>
                   </div>
 
@@ -197,7 +201,7 @@ const publicationSections: PublicationSection[] = [
         ))
       }
     </div>
-  </main>
+  </Main>
 
   <Footer />
 </Layout>

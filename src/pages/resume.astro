@@ -2,7 +2,9 @@
 // Note: This file is excluded from TypeScript checking in tsconfig.json
 // due to Astro template parsing limitations. Be careful when modifying!
 import Layout from "@/layouts/Layout.astro";
-import BackButton from "@/components/BackButton.astro";
+import Main from "@/layouts/Main.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
 import { SITE } from "@/config";
 
 // SEO 配置
@@ -11,11 +13,10 @@ const description = "Kai Zhou's Resume - 个人简历";
 ---
 
 <Layout title={title} description={description}>
-  <div class="resume-container">
-    <BackButton />
-
+  <Header />
+  <Main pageTitle="Resume" pageDesc="A PDF preview of my resume.">
     <!-- PDF 容器 -->
-    <div class="pdf-wrapper">
+    <div class="resume-preview pdf-wrapper">
       <!-- 加载动画 -->
       <div class="loading-spinner" id="loading-spinner">
         <div class="spinner"></div>
@@ -48,22 +49,11 @@ const description = "Kai Zhou's Resume - 个人简历";
         </iframe>
       </div>
     </div>
-  </div>
+  </Main>
+  <Footer />
 </Layout>
 
 <style>
-  /* 容器样式 */
-  .resume-container {
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    max-width: 56rem; /* max-w-4xl */
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-
   /* PDF 包装器 */
   .pdf-wrapper {
     position: relative;
@@ -179,16 +169,15 @@ const description = "Kai Zhou's Resume - 个人简历";
       height: 90dvh;  /* 明确设置高度，覆盖 height: auto */
       max-height: 95dvh;
     }
-
-    .resume-container {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-    }
   }
 
   /* 打印样式 */
   @media print {
-    :global(.back-button-container) {
+    :global(header),
+    :global(footer),
+    :global(nav[aria-label="breadcrumb"]),
+    :global(#main-content > h1),
+    :global(#main-content > p) {
       display: none !important;
     }
 
