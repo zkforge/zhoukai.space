@@ -22,11 +22,11 @@ html[data-theme="light"] {
 } */
 
 html[data-theme="dark"] {
-  --background: #2f3741;
-  --foreground: #e6e6e6;
-  --accent: #1ad9d9;
-  --muted: #596b81;
-  --border: #3b4655;
+  --background: #141413;
+  --foreground: #b0aea5;
+  --accent: #d97757;
+  --muted: #5e5d59;
+  --border: #30302e;
 }
 
 /* html[data-theme="dark"] {
