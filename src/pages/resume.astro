@@ -26,27 +26,19 @@ const description = "Kai Zhou's Resume - 个人简历";
       <!-- 桌面端：iframe 嵌入 -->
       <div class="pdf-viewer-desktop">
         <iframe
-          src="/resume.pdf#view=fitH"
+          id="pdf-iframe"
+          data-pdf-src="/resume.pdf#view=fitH"
           class="pdf-iframe"
           title="Kai Zhou's Resume"
-          onload="this.parentElement.previousElementSibling.style.display='none'"
-        >
-          <!-- 降级方案 -->
-          <object
-            data="/resume.pdf"
-            type="application/pdf"
-            class="pdf-object"
-          >
-            <div class="pdf-fallback">
-              <p class="fallback-text">
-                您的浏览器不支持 PDF 内嵌查看
-              </p>
-              <a href="/resume.pdf" download class="download-button">
-                下载 PDF 简历
-              </a>
-            </div>
-          </object>
-        </iframe>
+        />
+        <div class="pdf-fallback" id="pdf-fallback" hidden>
+          <p class="fallback-text" id="pdf-fallback-text">
+            无法预览 PDF 简历
+          </p>
+          <a id="pdf-download-button" href="/resume.pdf" download class="download-button">
+            下载 PDF 简历
+          </a>
+        </div>
       </div>
     </div>
   </Main>
@@ -109,12 +101,6 @@ const description = "Kai Zhou's Resume - 个人简历";
   }
 
   .pdf-iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
-
-  .pdf-object {
     width: 100%;
     height: 100%;
     border: 0;
@@ -199,11 +185,73 @@ const description = "Kai Zhou's Resume - 个人简历";
 </style>
 
 <script>
-  // 设置超时移除加载动画，避免一直显示
-  setTimeout(() => {
-    const spinner = document.getElementById("loading-spinner");
-    if (spinner) {
-      spinner.style.display = "none";
+  const spinner = document.getElementById("loading-spinner");
+  const iframe = document.getElementById("pdf-iframe");
+  const fallback = document.getElementById("pdf-fallback");
+  const fallbackText = document.getElementById("pdf-fallback-text");
+  const downloadButton = document.getElementById("pdf-download-button");
+  const preview = document.querySelector(".resume-preview");
+
+  const hideSpinner = () => {
+    if (spinner) spinner.style.display = "none";
+  };
+
+  const showFallback = (reason = "unsupported") => {
+    if (fallbackText) {
+      fallbackText.textContent =
+        reason === "missing"
+          ? "未找到简历文件，暂时无法提供预览或下载。"
+          : "您的浏览器不支持 PDF 内嵌查看";
     }
-  }, 3000);
+    if (downloadButton) {
+      downloadButton.hidden = reason === "missing";
+    }
+    if (fallback) fallback.hidden = false;
+    if (iframe) iframe.hidden = true;
+    preview?.setAttribute("data-pdf-loaded", "false");
+    hideSpinner();
+  };
+
+  const verifyPdfResource = async () => {
+    try {
+      const response = await fetch("/resume.pdf", {
+        method: "HEAD",
+        cache: "no-store",
+      });
+      const contentType = response.headers.get("content-type")?.toLowerCase() ?? "";
+      if (response.status === 404) return "missing";
+      if (!response.ok) return "unavailable";
+      return contentType.includes("pdf") ? "ok" : "unavailable";
+    } catch {
+      return "unavailable";
+    }
+  };
+
+  const initResumePreview = async () => {
+    if (!(iframe instanceof HTMLIFrameElement)) {
+      showFallback();
+      return;
+    }
+
+    const pdfState = await verifyPdfResource();
+    if (pdfState !== "ok") {
+      showFallback(pdfState);
+      return;
+    }
+
+    iframe.addEventListener("load", () => {
+      preview?.setAttribute("data-pdf-loaded", "true");
+      hideSpinner();
+    });
+    iframe.addEventListener("error", () => showFallback("unsupported"));
+
+    iframe.src = iframe.dataset.pdfSrc ?? "/resume.pdf#view=fitH";
+
+    setTimeout(() => {
+      const hasLoaded = preview?.getAttribute("data-pdf-loaded") === "true";
+      if (!hasLoaded) showFallback("unsupported");
+    }, 3000);
+  };
+
+  initResumePreview();
 </script>
