@@ -2,7 +2,7 @@
 title: "在远程服务器上使用 Codex：通过本地代理解决网络问题"
 author: Kai Zhou
 pubDatetime: 2026-01-18T23:00:00+08:00
-featured: false
+featured: true
 draft: false
 ogImage: ../../../../assets/images/og/2026/codex.png
 tags:
