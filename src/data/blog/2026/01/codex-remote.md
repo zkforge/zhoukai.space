@@ -70,7 +70,7 @@ Host 服务器
 
 - `RemoteForward xxx 127.0.0.1:yyy`：将远程服务器的 xxx 端口转发到本地的 yyy 端口
 - 本地 yyy 端口运行的是你的代理服务（如 Clash、V2Ray 等）
-- 这样远程服务器就可以通过 `127.0.0.1:yyy` 访问你的本地代理
+- 这样远程服务器就可以通过 `127.0.0.1:xxx` 访问代理通道；该端口会被 SSH 转发到本地的 `127.0.0.1:yyy`。
 
 ### 3.2 配置远程 VS Code 代理设置
 
@@ -85,7 +85,7 @@ vi ~/.vscode-server/data/Machine/settings.json
 
 ```json
 {
-  "http.proxy": "http://127.0.0.1:yyy",
+  "http.proxy": "http://127.0.0.1:xxx",
   "http.proxySupport": "override",
   "http.proxyStrictSSL": false
 }
@@ -93,7 +93,7 @@ vi ~/.vscode-server/data/Machine/settings.json
 
 **配置说明**：
 
-- `"http.proxy"`：代理服务器地址，指向 SSH 转发的本地端口
+- `"http.proxy"`：代理服务器地址，指向远程服务器上的 SSH 转发端口（xxx）
 - `"http.proxySupport": "override"`：覆盖系统代理设置，强制使用此代理
 - `"http.proxyStrictSSL": false`：关闭严格的 SSL 验证（根据需要设置）
 
@@ -114,20 +114,20 @@ vi ~/.vscode-server/data/Machine/settings.json
 在远程服务器上，检查端口转发是否生效：
 
 ```bash
-# 检查 1082 端口是否在监听
-netstat -tuln | grep 1082
+# 检查 xxx 端口是否在监听
+netstat -tuln | grep xxx
 # 或
-ss -tuln | grep 1082
+ss -tuln | grep xxx
 ```
 
-应该看到类似 `127.0.0.1:1082` 的监听记录。
+应该看到类似 `127.0.0.1:xxx` 的监听记录。
 
 ### 4.2 测试代理连接
 
 在远程服务器上测试代理是否可用：
 
 ```bash
-curl -x http://127.0.0.1:1082 https://www.google.com
+curl -x http://127.0.0.1:xxx https://www.google.com
 ```
 
 如果能正常返回内容，说明代理通道工作正常。
