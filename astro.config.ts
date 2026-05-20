@@ -11,6 +11,8 @@ import {
 import { transformerFileName } from "./src/utils/transformers/fileName";
 import { SITE } from "./src/config";
 
+import react from "@astrojs/react";
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
@@ -18,11 +20,9 @@ export default defineConfig({
     host: true, // 允许从局域网访问
     port: 4321,
   },
-  integrations: [
-    sitemap({
-      filter: page => SITE.showArchives || !page.endsWith("/archives"),
-    }),
-  ],
+  integrations: [sitemap({
+    filter: page => SITE.showArchives || !page.endsWith("/archives"),
+  }), react()],
   markdown: {
     // remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
     remarkPlugins: [
