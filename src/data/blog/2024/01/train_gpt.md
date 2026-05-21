@@ -13,8 +13,6 @@ description: 本文来自 OpenAI 的 Andrej Karpathy 在 Microsoft Build 2023 �
 
 > 本文翻译了 Andrej Karpathy 在 Microsoft Build 2023 大会分享的第一部分内容。
 
-## 目录
-
 ## 1. 引言
 
 人工智能领域正在经历翻天覆地的变化，因此这里讲的只是到目前为止训练 GPT 助手的方法。大致分为四个阶段：

@@ -13,8 +13,6 @@ tags:
 description: "记录 flash-attn 安装失败的根因分析，说明 Invalid cross-device link 与 pip、Linux 文件系统挂载点之间的关系，并给出可复用的解决方案。"
 ---
 
-## 目录
-
 > 在安装 `flash-attn` 时，表面上看像是 CUDA、`nvcc` 或编译环境的问题，但实际根因并不在这些组件上。本文记录一次完整的排障过程，解释为什么 `Invalid cross-device link` 会导致安装在编译前就中断，以及如何稳定修复这一类问题。
 
 ## 一、结论

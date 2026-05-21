@@ -22,8 +22,6 @@ description: "推荐两款基于 LaTeX 源码的 arXiv 论文翻译工具：幻�
 >
 > LaTex: [gpt_academic](https://github.com/binary-husky/gpt_academic/tree/master)
 
-## 目录
-
 ## 一、为什么从 LaTeX 源码翻译？
 
 阅读英文论文是日常工作的刚需。但直接阅读 PDF 往往存在以下问题：

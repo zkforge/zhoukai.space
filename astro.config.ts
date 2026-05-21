@@ -1,8 +1,6 @@
 import { defineConfig, envField } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
-import remarkToc from "remark-toc";
-// import remarkCollapse from "remark-collapse";
 import {
   transformerNotationDiff,
   transformerNotationHighlight,
@@ -20,14 +18,13 @@ export default defineConfig({
     host: true, // 允许从局域网访问
     port: 4321,
   },
-  integrations: [sitemap({
-    filter: page => SITE.showArchives || !page.endsWith("/archives"),
-  }), react()],
+  integrations: [
+    sitemap({
+      filter: page => SITE.showArchives || !page.endsWith("/archives"),
+    }),
+    react(),
+  ],
   markdown: {
-    // remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
-    remarkPlugins: [
-      [remarkToc, { heading: "目录" }],
-    ],
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes
       themes: { light: "min-light", dark: "gruvbox-dark-medium" },
@@ -61,4 +58,4 @@ export default defineConfig({
       }),
     },
   },
-  });
+});

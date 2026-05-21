@@ -16,8 +16,6 @@ description: 从 CodexBar 的一个菜单栏换行问题出发，记录我第一
 
 ![我的第一次 GitHub PR](@/assets/images/og/2026/first-pr.png)
 
-## 目录
-
 > 这篇文章记录一次完整的开源 PR 过程：发现问题、定位根因、提交修复、补测试、处理 review，再把后续修改继续推到同一个 PR。
 
 ## 一、问题从哪里开始

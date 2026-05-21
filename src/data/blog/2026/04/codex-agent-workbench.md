@@ -18,8 +18,6 @@ description: "基于 Codex Full Course 2026 视频笔记，整理 Codex 桌面�
 **原视频链接**：[Codex Full Course 2026](https://www.youtube.com/watch?v=KXIdYEdOPys)  
 **YouTube URL**：<https://www.youtube.com/watch?v=KXIdYEdOPys>
 
-## 目录
-
 > 这篇文章基于 Riley Brown 的 YouTube 视频 [Codex Full Course 2026](https://www.youtube.com/watch?v=KXIdYEdOPys) 整理。重点不是罗列功能，而是抽出一套更实用的工作方式：把 Codex 当成一个围绕项目目录、文件产物、技能插件和自动化运转的 Agent 工作台。
 
 ## 一、核心结论：Codex 不只是聊天框

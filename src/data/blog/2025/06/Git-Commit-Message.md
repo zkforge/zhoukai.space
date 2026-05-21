@@ -12,8 +12,6 @@ description: 本文为 AngularJS Git Commit Message 规范的中文翻译
 
 > AngularJS Git Commit Message 规范
 
-## 目录
-
 ## 1. **目标**
 
 * 允许通过脚本生成 CHANGELOG.md  

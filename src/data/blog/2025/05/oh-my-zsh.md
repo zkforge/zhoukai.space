@@ -15,8 +15,6 @@ description: 本文详细介绍了如何在Mac上美化终端（Terminal），�
 
 > 本文将带你一步步完成 Mac 终端（Terminal）的美化，包括 oh-my-zsh 的安装、主题配置及高效插件推荐。
 
-## 目录
-
 ## 1. 目标
 - 修改 Terminal 的 Profile：让 Terminal 配色更美观
 - 安装 oh-my-zsh 主题：美化 oh-my-zsh

@@ -13,8 +13,6 @@ tags:
 description: "Anthropic 工程文章《How we built our multi-agent research system》的中文全文翻译，聚焦多代理 Research 系统的架构、提示工程、评测方法与生产可靠性。"
 ---
 
-## 目录
-
 > 本文是 Anthropic 工程文章《[How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)》的中文全文翻译。
 
 ## 一、多代理系统的优势

@@ -10,8 +10,6 @@ tags:
 description: "安装 linux 双系统"
 ---
 
-## 目录
-
 > 确保电脑已安装 Windows 系统
 
 ## 1. 确定系统引导格式
