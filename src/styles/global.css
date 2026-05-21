@@ -80,7 +80,7 @@ html[data-theme="dark"] {
 }
 
 @utility max-w-app {
-  @apply max-w-4xl;
+  @apply max-w-3xl;
 }
 
 .active-nav {

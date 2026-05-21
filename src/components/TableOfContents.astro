@@ -1,0 +1,50 @@
+---
+import type { MarkdownHeading } from "astro";
+
+export interface Props {
+  headings: MarkdownHeading[];
+}
+
+const headings = Astro.props.headings.filter(
+  heading =>
+    heading.depth >= 2 && heading.depth <= 3 && heading.text.trim() !== "目录"
+);
+---
+
+{
+  headings.length > 0 && (
+    <aside
+      data-pagefind-ignore
+      class="fixed top-1/2 right-[max(1rem,calc((100vw-48rem)/2-14rem))] hidden w-52 -translate-y-1/2 xl:block"
+    >
+      <nav
+        aria-label="文章目录"
+        class="toc-scroll max-h-[60vh] overflow-y-auto border-l border-border pl-4 text-xs leading-5"
+      >
+        <div class="mb-3 font-semibold text-foreground">本页目录</div>
+        <ol class="space-y-2">
+          {headings.map(heading => (
+            <li class:list={[heading.depth === 3 && "pl-4"]}>
+              <a
+                href={`#${heading.slug}`}
+                class="block break-words opacity-70 transition hover:text-accent hover:opacity-100"
+              >
+                {heading.text}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </nav>
+    </aside>
+  )
+}
+
+<style>
+  .toc-scroll {
+    scrollbar-width: none;
+  }
+
+  .toc-scroll::-webkit-scrollbar {
+    display: none;
+  }
+</style>

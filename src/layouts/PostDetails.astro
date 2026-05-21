@@ -10,6 +10,7 @@ import ShareLinks from "@/components/ShareLinks.astro";
 import Comments from "@/components/Comments";
 import BackButton from "@/components/BackButton.astro";
 import BackToTopButton from "@/components/BackToTopButton.astro";
+import TableOfContents from "@/components/TableOfContents.astro";
 import { getPath } from "@/utils/getPath";
 import { getPostStats } from "@/utils/postStats";
 import { slugifyStr } from "@/utils/slugify";
@@ -37,7 +38,7 @@ const {
   hideEditPost,
 } = post.data;
 
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 const stats = getPostStats(post.body ?? "");
 
 let ogImageUrl: string | undefined;
@@ -165,6 +166,7 @@ const nextPost =
         )
       }
     </div>
+    <TableOfContents {headings} />
   </main>
   <Footer />
 </Layout>
