@@ -43,7 +43,6 @@
       // 启动实时更新
       timerId = startUptimeTimer((uptime: UptimeInfo) => {
         uptimeDisplay.textContent = formatUptime(uptime);
-        uptimeDisplay.title = `网站已正常运行 ${uptime.totalDays} 天`;
 
         // 添加简单的闪烁效果（可选）
         if (uptime.seconds === 0) {
@@ -54,7 +53,6 @@
         }
       });
 
-      uptimeDisplay.style.cursor = 'pointer';
       uptimeDisplay.style.transition = 'color 0.3s ease';
     }
   }
@@ -90,24 +88,4 @@
     opacity: 1 !important;
   }
 
-  #uptime-display {
-    position: relative;
-  }
-
-  #uptime-display:hover::after {
-    content: attr(title);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 12px;
-    white-space: nowrap;
-    z-index: 1000;
-    pointer-events: none;
-    margin-bottom: 4px;
-  }
 </style>
