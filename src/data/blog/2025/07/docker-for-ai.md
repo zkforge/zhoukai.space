@@ -11,19 +11,19 @@ tags:
 description: 本文为 Docker 的初学者教程
 ---
 
-## 0. 前言
+## 前言
 
 随着云原生、AI 等技术的向前推进，容器技术逐渐成为 AI 领域的必备技能之一。本文档从零基础实现将代码打包 Docker 镜像、调试、提交仓库、提交云服务训练模型等流程。同样适用于初次接触 Docker 的初学者。
 
 区别于开发，对于算法而言，仅需要掌握一部分基础命令达到自己的使用目的即可。因此此次简明教程面向算法和 AI 领域，帮助快速上手项目提交和远程服务器训练。
 
-## 1. 基本概念
+## 基本概念
 
 > Docker 最重要的三个概念是：镜像（Image）、容器（Container）、仓库（Repository）。在这三个概念中，镜像是最重要的概念。
 
-## 2. 常用命令
+## 常用命令
 
-### 2.1 拉取镜像
+### 拉取镜像
 
 ```bash
 docker pull [选项] [Docker 镜像地址:标签]
@@ -35,13 +35,13 @@ docker pull [选项] [Docker 镜像地址:标签]
 docker pull hello-world:latest
 ```
 
-### 2.2 运行镜像并创建容器
+### 运行镜像并创建容器
 
 ```bash
 docker run hello-world
 ```
 
-### 2.3 运行镜像并进入容器
+### 运行镜像并进入容器
 
 ```bash
 docker run -it --rm ubuntu:18.04
@@ -51,31 +51,31 @@ docker run -it --rm ubuntu:18.04
 > - `-it`：这是两个参数，一个是 `-i`（交互式操作），一个是 `-t`（终端）。我们这里打算进入 bash 执行一些命令并查看返回结果，因此我们需要交互式终端。
 > - `--rm`：这个参数是说容器退出后随之将其删除。默认情况下，为了排障需求，退出的容器并不会立即删除，除非手动 `docker rm`。我们这里只是随便执行个命令，看看结果，不需要排障和保留结果，因此使用 `--rm` 可以避免浪费空间。
 
-### 2.4 查看本地镜像
+### 查看本地镜像
 
 ```bash
 docker images
 ```
 
-### 2.5 查看运行中的容器
+### 查看运行中的容器
 
 ```bash
 docker ps
 ```
 
-### 2.6 查看所有容器
+### 查看所有容器
 
 ```bash
 docker ps -a
 ```
 
-### 2.7 进入运行中/后台运行的容器
+### 进入运行中/后台运行的容器
 
 ```bash
 docker exec -it [CONTAINER ID] /bin/bash
 ```
 
-### 2.8 保存修改
+### 保存修改
 
 ```bash
 docker commit [CONTAINER ID] registry.cn-shanghai.aliyuncs.com/test/pytorch:myversion
@@ -83,7 +83,7 @@ docker commit [CONTAINER ID] registry.cn-shanghai.aliyuncs.com/test/pytorch:myve
 
 > **注意：** 通过 commit 的形式保存为一个新的镜像虽然也能直观地达到构建新镜像的目的，但是实际操作中，并不推荐这种形式。因为 commit 操作不仅会把有用的修改保存下来，对一些无关的修改也会保存下来（每一个命令行操作都会生成存储，如 `ls` 操作），就会导致镜像比较臃肿。其次，commit 操作属于黑箱操作，后续如果有什么问题维护起来会比较麻烦。建议 commit 仅作为保留现场的手段，然后通过修改 Dockerfile 构建镜像。
 
-### 2.9 打 TAG
+### 打 TAG
 
 有时需要对临时版本或者节点版本做一个标记保留，打 TAG 标签非常好用，并不会额外占用空间：
 
@@ -91,13 +91,13 @@ docker commit [CONTAINER ID] registry.cn-shanghai.aliyuncs.com/test/pytorch:myve
 docker tag registry.cn-shanghai.aliyuncs.com/test/pytorch:myversion my_tmp_version:0.1
 ```
 
-### 2.10 推送镜像到仓库
+### 推送镜像到仓库
 
 ```bash
 docker push registry.cn-shanghai.aliyuncs.com/test/pytorch:myversion
 ```
 
-### 2.11 使用 Dockerfile 构建镜像
+### 使用 Dockerfile 构建镜像
 
 **Dockerfile 示例：**
 
@@ -129,7 +129,7 @@ COPY . .
 ENTRYPOINT [ "python3.10" ]
 ```
 
-### 2.12 构建镜像
+### 构建镜像
 
 ```bash
 docker build -t registry.cn-shanghai.aliyuncs.com/target:test .
@@ -141,7 +141,7 @@ docker build -t registry.cn-shanghai.aliyuncs.com/target:test .
 docker build -f ./Dockerfile -t registry.cn-shanghai.aliyuncs.com/target:test .
 ```
 
-### 2.13 删除镜像/容器
+### 删除镜像/容器
 
 **删除镜像：**
 
@@ -161,7 +161,7 @@ docker rm [CONTAINER ID]
 docker kill [CONTAINER ID]
 ```
 
-## 3. 常规技巧
+## 常规技巧
 
 - **检查基础镜像软件源和 pip 源是否替换为国内源**：如果非国内源，后续每次构建镜像会比较浪费时间。
 

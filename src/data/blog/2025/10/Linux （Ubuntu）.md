@@ -12,7 +12,7 @@ description: "安装 linux 双系统"
 
 > 确保电脑已安装 Windows 系统
 
-## 1. 确定系统引导格式
+## 确定系统引导格式
 
 首先需要确认电脑的引导格式是 UEFI + GPT 还是 BIOS + MBR。
 
@@ -26,9 +26,9 @@ description: "安装 linux 双系统"
 - 如果显示 "UEFI"：请使用本教程（UEFI + GPT 格式）
 - 如果显示 "BIOS"：建议查找其他适用于 BIOS + MBR 格式的教程
 
-## 2. 准备工作
+## 准备工作
 
-### 2.1 下载 Ubuntu 系统镜像
+### 下载 Ubuntu 系统镜像
 
 推荐从以下官方渠道下载：
 - [Ubuntu 官方下载页面](https://cn.ubuntu.com/download)
@@ -36,7 +36,7 @@ description: "安装 linux 双系统"
 
 建议下载 Ubuntu 24.04 桌面版本。(amd64,Desktop LiveDVD)
 
-### 2.2 下载并安装 UltraISO
+### 下载并安装 UltraISO
 
 使用 UltraISO（软碟通）制作启动盘：
 - 下载 UltraISO 软件
@@ -44,7 +44,7 @@ description: "安装 linux 双系统"
 - 插入 U 盘（建议 8GB 以上）
 - 使用 UltraISO 将 Ubuntu 镜像写入 U 盘
 
-### 2.3 磁盘分区规划
+### 磁盘分区规划
 
 为 Ubuntu 分配足够的磁盘空间：
 
@@ -57,7 +57,7 @@ description: "安装 linux 双系统"
 
 > 如果以前安装过双系统，可能需要使用 EasyUEFI 或 DiskGenius 处理启动项。
 
-### 2.4 系统设置
+### 系统设置
 
 **关闭 Windows 快速启动：**
 - 控制面板 → 电源选项 → "选择电源按钮的功能"
@@ -71,16 +71,16 @@ description: "安装 linux 双系统"
 
 > 不同品牌主板的 BIOS 设置可能略有差异，请根据具体主板型号进行调整。
 
-## 3. 安装 Ubuntu 系统
+## 安装 Ubuntu 系统
 
-### 3.1 从 U 盘启动
+### 从 U 盘启动
 
 1. 将制作好的 Ubuntu 启动盘插入电脑
 2. 重启电脑并进入 BIOS/UEFI 设置
 3. 设置 U 盘为第一启动项
 4. 保存设置并重启
 
-### 3.2 Ubuntu 安装过程
+### Ubuntu 安装过程
 
 1. 选择 "Install Ubuntu" 开始安装
 2. 选择语言（推荐选择中文简体）
@@ -88,7 +88,7 @@ description: "安装 linux 双系统"
    - **选择"其他选项"进行手动分区**
    - 不要选择"与 Windows 共存"或"抹除整个磁盘"
 
-### 3.3 磁盘分区设置
+### 磁盘分区设置
 
 在之前预留的未分配空间上创建以下分区：
 
@@ -106,15 +106,15 @@ description: "安装 linux 双系统"
 | 16GB    | 4GB       | 20GB     | 32GB   |
 | 32GB    | 6GB       | 38GB     | 64GB   |
 
-### 3.4 完成安装
+### 完成安装
 
 1. 设置用户名和密码
 2. 等待安装过程完成
 3. 重启系统
 
-## 4. 常见问题解决
+## 常见问题解决
 
-### 4.1 重启后无法进入 Ubuntu（自动进入 Windows）
+### 重启后无法进入 Ubuntu（自动进入 Windows）
 
 这是最常见的问题，解决方法如下：
 
@@ -134,14 +134,14 @@ bcdedit /set {bootmgr} path \EFI\ubuntu\shimx64.efi
 **步骤 3：重启验证**
 重启后应该能看到包含 Ubuntu 和 Windows 选项的 GRUB 菜单。
 
-### 4.2 双系统时间不一致问题
+### 双系统时间不一致问题
 
 在 Ubuntu 终端中运行以下命令并重启：
 ```bash
 timedatectl set-local-rtc 1 --adjust-system-clock
 ```
 
-### 4.3 安装 ubuntu 时黑屏
+### 安装 ubuntu 时黑屏
 
 1. 显卡驱动问题，更换 ubuntu 版本，例如 40 系显卡不要使用 22.04，更换 24.04
 2. 也可以在 grub 页面选择第二个安装选项（除 try or install ubuntu）或者 按 e 添加参数

@@ -14,9 +14,9 @@ description: "在 Linux 系统上微调一个大模型、部署模型、暴露 A
 
 > 本文为转载记录
 
-## 一、简介
+## 简介
 主要分为以下五部分：
-#####  1. 需求和技术
+#####  需求和技术
 - 企业对于大模型的**不同类型**个性化需求
 - **SFT**（有监督微调）、**RLHF**（强化学习）、**RAG**（检索增强生成）
 	-关注：基本概念；分别解决什么问题；如何根据需求选择；
@@ -24,20 +24,20 @@ description: "在 Linux 系统上微调一个大模型、部署模型、暴露 A
 	- 微调算法的分类
 	- **LoRA** 微调算法
 	- 微调常见实现框架
-##### 2. 整体步骤说明
+##### 整体步骤说明
 - 在 Linux 系统上微调一个大模型、部署模型、暴露 API 给 web 后端调用，本机前端展示全过程
-##### 3. 模型微调
+##### 模型微调
 - 框架: **LLama-Factory** (国产最热门的微调框架)
 - 算法: LoRA (最著名的部分参数微调算法）
 - 基座模型：**DeepSeek-R1-Distill-Qwen-1.5B**
 	-蒸馏技术通常用于通过将大模型（教师模型）的知识转移到小模型（学生模型）中，使得小模型能够在尽量保持性能的同时，显著减少模型的参数量和计算需求。
-##### 4. 模型部署和暴露接口
+##### 模型部署和暴露接口
 - 框架：**FastAPI**（一个基于 python 的 web 框架）
-##### 5. web后端调用
+##### web后端调用
 - 通过 **HTTP** 请求交互即可（ Demo 前后端代码都在视频简介）
 
-## 二、需求和技术
-##### 1. 企业对于大模型的不同类型个性化需求
+## 需求和技术
+##### 企业对于大模型的不同类型个性化需求
 - 提高模型对**企业专有信息**的理解、增强模型在**特定行业领域**的知识 - **SFT**
 	- 案例一：希望大模型能更好理解蟹堡王的企业专有知识，如蟹老板的女儿为什么是一头鲸鱼
 	- 案例二：希望大模型能特别精通于汉堡制作，并熟练回答关于汉堡行业的所有问题
@@ -45,18 +45,18 @@ description: "在 Linux 系统上微调一个大模型、部署模型、暴露 A
 	- 案例三：希望大模型能够基于顾客的反馈调整回答方式，比如生成更二次元风格的回答还是更加学术风格的回答
 - 提高模型对企业专有信息的理解、增强模型在特定行业领域的知识、**获取和生成最新的、实时的信息** - **RAG**
 	- 案例四：希望大模型能够实时获取蟹堡王的最新的促销活动信息和每周菜单更新
-##### 2. SFT（有监督微调）、RLHF（强化学习）、RAG（检索增强生成）
-###### 2.1 SFT（Supervised Fine-Tuning）有监督微调
+##### SFT（有监督微调）、RLHF（强化学习）、RAG（检索增强生成）
+###### SFT（Supervised Fine-Tuning）有监督微调
 - 通过提供人工标注的数据，进一步训练**预训练模型**，让模型能够更加精准地处理特定领域的任务
 - 除了“有监督微调”，还有“无监督微调”“自监督微调”，当大家提到“微调”时通常是指有监督微调
-###### 2.2 RLHF（Reinforcement Learning from Human Feedback）强化学习
+###### RLHF（Reinforcement Learning from Human Feedback）强化学习
 - DPO（Direct Preference Optimization）
 	核心思想：通过 **人类对比选择**（例如：A 选项和 B 选项，哪个更好）直接优化生成模型，使其产生更符合用户需求的结果；调整幅度大
 - PPO（Proximal Policy Optimization）
 	核心思想：通过 **奖励信号**（如点赞、点踩）来 **渐进式调整模型的行为策略**；调整幅度小
-###### 2.3 RAG（Retrieval-Augmented Generation）检索增强生成
+###### RAG（Retrieval-Augmented Generation）检索增强生成
 - 将外部信息检索与文本生成结合，帮助模型在生成答案时，实时获取外部信息和最新信息
-##### 3. 微调还是RAG?
+##### 微调还是RAG?
 - 微调：
 	- 适合：拥有非常充足的数据
 	- 能够直接提升模型的固有能力；无需依赖外部检索；
@@ -67,7 +67,7 @@ description: "在 Linux 系统上微调一个大模型、部署模型、暴露 A
 	- 少量企业私有知识：最好微调和 RAG 都做；资源不足时优先 RAG；
 	- 会动态更新的知识：RAG
 	- 大量垂直领域知识：微调
-##### 4. SFT（有监督微调）
+##### SFT（有监督微调）
  通过提供**人工标注**的数据，进一步训练**预训练模型**，让模型能够更加精准地处理**特定领域**的任务
  - 人工标注的数据
 
@@ -91,7 +91,7 @@ description: "在 Linux 系统上微调一个大模型、部署模型、暴露 A
 		- 优点：减少了计算成本；减少过拟合风险；能够以较小的代价获得较好的结果
 		- 缺点：可能无法达到最佳性能
 		- 最著名算法：LoRA
-##### 5. LoRA  微调算法
+##### LoRA  微调算法
 - 论文阅读：
 	- LoRA 开山论文：2021 年 Microsoft Research 提出，首次提出了通过**低秩矩阵分解**的方式来进行**部分参数微调**，极大推动了 AI 技术在多行业的广泛落地应用：[LoRA: Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2106.09685)
 	- 大语言模型开山论文：2017 年 Google Brain 团队发布，标志着 **Transformer** 架构的提出，彻底改变了自然语言处理（NLP）领域，标志着大语言模型时代的开始：[Attention Is All You Need](https://arxiv.org/abs/1706.03762)
@@ -99,22 +99,22 @@ description: "在 Linux 系统上微调一个大模型、部署模型、暴露 A
 	- 矩阵的秩（Rank of a matrix）是指矩阵中**线性无关**的行或列的最大数量。简单来说它能反映矩阵所包含的**有效信息量**
 - LoRA 如何做到部分参数微调
 - LoRA 训练结束后通常需要进行权重合并
-##### 6. 微调常见实现框架
+##### 微调常见实现框架
 - [初学者如何对大模型进行微调？](https://www.zhihu.com/question/638803488/answer/84354509523)
 - **Llama-Factory**：由国内**北航**开源的低代码大模型训练框架，可以实现**零代码微调**，简单易学，功能强大，且目前热度很高，建议新手从这个开始入门
 - **transformers.Trainer**：由 **Hugging Face** 提供的高层 **API**，适用于各种 NLP 任务的微调，提供标准化的训练流程和多种监控工具，适合需要更多**定制化**的场景，尤其在**部署和生产环境**中表现出色
 - **DeepSpeed**：由**微软**开发的开源深度学习优化库，适合大规模模型训练和**分布式训练**，在大模型**预训练**和资源密集型训练的时候用得比较多
 
-## 三、整体步骤说明
+## 整体步骤说明
 
-## 四、模型微调
-##### 1. 准备硬件资源、搭建环境
+## 模型微调
+##### 准备硬件资源、搭建环境
 - 在云平台上租用一个实例（如 **AutoDL**，官网：[https://www.autodl.com/market/list](https://www.autodl.com/market/list)）
 - 云平台一般会配置好常用的深度学习环境，如 anaconda, cuda等等
-##### 2. 本机通过 SSH 连接到远程服务器
+##### 本机通过 SSH 连接到远程服务器
 - 使用 Visual Studio Remote 插件 SSH 连接到你租用的服务器，参考文档: [# 使用VSCode插件Remote-SSH连接服务器](https://www.cnblogs.com/qiuhlee/p/17729647.html)
 - 连接后打开个人数据盘文件夹 **/root/autodl-tmp**
-##### 3. LLaMA-Factory 安装部署
+##### LLaMA-Factory 安装部署
 LLaMA-Factory 的 Github地址：[https://github.com/hiyouga/LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory)
 - 克隆仓库
 ```bash
@@ -148,17 +148,17 @@ pip install -e ".[torch,metrics]"
 ```bash
 llamafactory-cli version
 ```
-##### 4. 启动 LLama-Factory 的可视化微调界面 （由 Gradio 驱动）
+##### 启动 LLama-Factory 的可视化微调界面 （由 Gradio 驱动）
 ```bash
 llamafactory-cli webui
 ```
-##### 5. 配置端口转发
+##### 配置端口转发
 - 参考文档：[SSH隧道](https://www.autodl.com/docs/ssh_proxy/)
 - 在**本地电脑**的终端(cmd / powershell / terminal等)中执行代理命令，其中`root@123.125.240.150`和`42151`分别是实例中SSH指令的访问地址与端口，请找到自己实例的ssh指令做相应**替换**。`7860:127.0.0.1:7860`是指代理实例内`7860`端口到本地的`7860`端口
 ```bash
 ssh -CNg -L 7860:127.0.0.1:7860 root@123.125.240.150 -p 42151
 ```
-##### 6. 从 HuggingFace 上下载基座模型
+##### 从 HuggingFace 上下载基座模型
 HuggingFace 是一个集中管理和共享预训练模型的平台  [https://huggingface.co](https://huggingface.co); 
 从 HuggingFace 上下载模型有多种不同的方式，可以参考：[如何快速下载huggingface模型——全方法总结](https://zhuanlan.zhihu.com/p/663712983)
 - 创建文件夹统一存放所有基座模型
@@ -188,13 +188,13 @@ pip install -U huggingface_hub
 huggingface-cli download --resume-download deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B
 ```
 - 如果直接本机下载了模型压缩包，如何放到你的服务器上？——在 AutoDL 上打开 JupyterLab 直接上传，或者下载软件通过 SFTP 协议传送
-##### 7. 可视化页面上加载模型测试，检验是否加载成功
+##### 可视化页面上加载模型测试，检验是否加载成功
 - 注意：这里的路径是模型文件夹内部的**模型特定快照的唯一哈希值**，而不是整个模型文件夹
 ![[1.png]]
 ```
 /root/autodl-tmp/Hugging-Face/hub/models--deepseek-ai--DeepSeek-R1-Distill-Qwen-1.5B/snapshots/530ca3e1ad39d440e182c2e4317aa40f012512fa
 ```
-##### 8. 准备用于训练的数据集，添加到指定位置
+##### 准备用于训练的数据集，添加到指定位置
 - **README_zh** 中详细介绍了如何配置和描述你的自定义数据集
 - 按照格式准备用于微调的数据集 **magic_conch.json**，数据示例：
 ```
@@ -218,7 +218,7 @@ huggingface-cli download --resume-download deepseek-ai/DeepSeek-R1-Distill-Qwen-
 },
 ```
 - 将数据集 magic_conch.json 放到 LLama-Factory 的 **data 目录** 下
-##### 9. 在页面上进行微调的相关设置，开始微调
+##### 在页面上进行微调的相关设置，开始微调
 - 选择微调算法 **Lora**
 - 添加数据集 **magic_conch**
 - 修改其他训练相关参数，如学习率、训练轮数、截断长度、验证集比例等
@@ -237,7 +237,7 @@ huggingface-cli download --resume-download deepseek-ai/DeepSeek-R1-Distill-Qwen-
 - 在训练过程中注意观察损失曲线，**尽可能将损失降到最低**
 	- 如损失降低太慢，尝试增大学习率
 	- 如训练结束损失还呈下降趋势，增大训练轮数确保拟合
-##### 10. 微调结束，评估微调效果
+##### 微调结束，评估微调效果
 - 观察损失曲线的变化；观察最终损失
 - 在交互页面上通过预测/对话等方式测试微调好的效果
 - **检查点**：保存的是模型在训练过程中的一个中间状态，包含了模型权重、训练过程中使用的配置（如学习率、批次大小）等信息，对LoRA来说，检查点包含了**训练得到的 B 和 A 这两个低秩矩阵的权重**
@@ -246,7 +246,7 @@ huggingface-cli download --resume-download deepseek-ai/DeepSeek-R1-Distill-Qwen-
 	- 增加数据量
 	- 优化数据质量（数据清洗、数据增强等，可学习相关论文如何实现）
 	- 调整训练参数，如学习率、训练轮数、优化器、批次大小等等
-##### 11. 导出合并后的模型
+##### 导出合并后的模型
 - 为什么要合并：因为 LoRA 只是通过**低秩矩阵**调整原始模型的部分权重，而**不直接修改原模型的权重**。合并步骤将 LoRA 权重与原始模型权重融合生成一个完整的模型
 - 先创建目录，用于存放导出后的模型
 ```
@@ -254,8 +254,8 @@ mkdir -p Models/deepseek-r1-1.5b-merged
 ```
 - 在页面上配置导出路径，导出即可
 ![[截屏2025-02-23 21.09.52.png]]
-## 五、模型部署和暴露接口
-##### 1. 创建新的 conda 虚拟环境用于部署模型
+## 模型部署和暴露接口
+##### 创建新的 conda 虚拟环境用于部署模型
 - 创建环境
 ```bash
 conda create -n fastApi python=3.10
@@ -271,7 +271,7 @@ conda install -c conda-forge fastapi uvicorn transformers pytorch
 ```bash
 pip install safetensors sentencepiece protobuf
 ```
-##### 2. 通过 FastAPI 部署模型并暴露 HTTP 接口
+##### 通过 FastAPI 部署模型并暴露 HTTP 接口
 - 创建 App 文件夹
 ```bash
 mkdir App
@@ -331,8 +331,8 @@ http://localhost:8000/docs
 http://localhost:8000/generate?prompt=你是谁？
 ```
 
-## 六、web后端调用
-##### 1. pom.xml 导入依赖
+## web后端调用
+##### pom.xml 导入依赖
 ```xml
 <dependency>  
     <groupId>org.apache.httpcomponents.client5</groupId>  
@@ -340,7 +340,7 @@ http://localhost:8000/generate?prompt=你是谁？
     <version>5.2.1</version>  
 </dependency>
 ```
-##### 2. 自定义方法发送并处理 HTTP 请求，实现对话功能
+##### 自定义方法发送并处理 HTTP 请求，实现对话功能
 ```java
 @Service  
 public class ChatServiceImpl implements ChatService {  
@@ -363,8 +363,8 @@ public class ChatServiceImpl implements ChatService {
     }  
 }
 ```
-##### 3. 本机启动 Demo 前后端工程，测试对话效果
-###### 3.1 启动前端工程
+##### 本机启动 Demo 前后端工程，测试对话效果
+###### 启动前端工程
 - 前端项目地址：
 ```
 https://github.com/huangyf2013320506/magic_conch_frontend.git
@@ -376,7 +376,7 @@ npm install
 ```bash
 npm run dev
 ```
-###### 3.2 启动后端工程
+###### 启动后端工程
 - 后端项目地址：
 ```
 https://github.com/huangyf2013320506/magic_conch_backend.git
@@ -386,7 +386,7 @@ https://github.com/huangyf2013320506/magic_conch_backend.git
 mvn clean install
 ```
 - 在 `MagicConchBackendApplication.java` 类中启动 
-##### 4. FastAPI 支持自定义多种请求响应格式，可自行探索
-##### 5. 如何开放服务端口到公网
+##### FastAPI 支持自定义多种请求响应格式，可自行探索
+##### 如何开放服务端口到公网
 - AutoDL 当前仅支持个人用户通过端口转发在本地访问服务，如需开放服务端口到公网一般需要企业认证，请参考：[开放端口](https://www.autodl.com/docs/port/)
-##### 6. 企业部署还需考虑高并发、高可用、安全机制等问题
+##### 企业部署还需考虑高并发、高可用、安全机制等问题

@@ -12,13 +12,13 @@ description: 本文为 AngularJS Git Commit Message 规范的中文翻译
 
 > AngularJS Git Commit Message 规范
 
-## 1. **目标**
+## **目标**
 
 * 允许通过脚本生成 CHANGELOG.md  
 * 允许在 git bisect 时忽略某些提交（如格式化等不重要的提交）  
 * 在浏览历史时提供更好的信息
 
-## 2. **生成 CHANGELOG.md**
+## **生成 CHANGELOG.md**
 
 我们在 changelog 中使用这三个部分：**Features**、**Bug Fixes**、**BREAKING CHANGES**。  
 这个列表可以在发布时通过脚本生成，同时包含相关提交的链接。  
@@ -34,7 +34,7 @@ git log \<last tag\> HEAD \--pretty=format:%s
 git log \<last release\> HEAD \--grep feature
 ```
 
-## 3. **识别不重要的提交**
+## **识别不重要的提交**
 
 这些是格式化更改（添加/删除空格/空行、缩进）、缺少分号、注释等。所以当你在寻找某些更改时，可以忽略这些提交 - 这些提交中没有逻辑更改。
 
@@ -43,7 +43,7 @@ git log \<last release\> HEAD \--grep feature
 git bisect skip $(git rev-list \--grep irrelevant \<good place\> HEAD)
 ```
 
-## 4. **在浏览历史时提供更多信息**
+## **在浏览历史时提供更多信息**
 
 这将添加某种"上下文"信息。  
 看看这些消息（取自最近几个 angular 的提交）：
@@ -70,7 +70,7 @@ git bisect skip $(git rev-list \--grep irrelevant \<good place\> HEAD)
 
 我知道，你可以通过检查哪些文件被更改来找到这些信息，但那很慢。当查看 git 历史时，我看到我们都在试图指定位置，只是缺少约定。
 
-## 5. **提交信息的格式**
+## **提交信息的格式**
 
 **\<type\>(\<scope\>): \<subject\>**  
 **\<空一行\>**  
@@ -82,15 +82,15 @@ git bisect skip $(git rev-list \--grep irrelevant \<good place\> HEAD)
 
 提交信息由头部、正文和页脚组成，用空行分隔。
 
-## 6. **回退提交**
+## **回退提交**
 
 如果提交回退了之前的提交，其头部应该以 `revert:` 开头，后跟被回退提交的头部。在正文中应该说明：`This reverts commit <hash>.`，其中 hash 是被回退提交的 SHA。
 
-## 7. **消息头部**
+## **消息头部**
 
 消息头部是包含更改的简洁描述的单行，包含 **type**、可选的 **scope** 和 **subject**。
 
-### 7.1 **允许的 type**
+### **允许的 type**
 
 这描述了此提交提供的更改类型。
 
@@ -102,13 +102,13 @@ git bisect skip $(git rev-list \--grep irrelevant \<good place\> HEAD)
 * **test** (when adding missing tests：增加测试)  
 * **chore** (maintain：构建过程或辅助工具的变动)
 
-### 7.2 **允许的 scope**
+### **允许的 scope**
 
 Scope 可以是任何指定提交更改位置的标识。例如 **$location**、**$browser**、**$compile**、**$rootScope**、**ngHref**、**ngClick**、**ngView** 等...
 
 如果没有更合适的 scope，可以使用 `*`。
 
-### 7.3 **subject 文本**
+### **subject 文本**
 
 这是对更改的简短描述。
 
@@ -116,7 +116,7 @@ Scope 可以是任何指定提交更改位置的标识。例如 **$location**、
 * 不要大写第一个字母  
 * 结尾不要加句点 (.)
 
-## 8. **消息正文**
+## **消息正文**
 
 * 与 subject 一样使用祈使句，现在时态："change" 而不是 "changed" 或 "changes"  
 * 包括更改的动机和与之前行为的对比
@@ -124,9 +124,9 @@ Scope 可以是任何指定提交更改位置的标识。例如 **$location**、
 [http://365git.tumblr.com/post/3308646748/writing-git-commit-messages](http://365git.tumblr.com/post/3308646748/writing-git-commit-messages)  
 [http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html](http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html)
 
-## 9. **消息页脚**
+## **消息页脚**
 
-### 9.1 **破坏性更改**
+### **破坏性更改**
 
 所有破坏性更改都必须在页脚中作为破坏性更改块提及，该块应以单词 BREAKING CHANGE: 开头，后跟空格或两个换行符。然后提交消息的其余部分是更改的描述、理由和迁移说明。
 
@@ -159,7 +159,7 @@ BREAKING CHANGE: isolate scope bindings definition has changed and
     The removed \`inject\` wasn't generaly useful for directives so there should be no code using it.
 ```
 
-### 9.2 **引用问题**
+### **引用问题**
 
 已关闭的 bug 应该在页脚中单独一行列出，以 "Closes" 关键字为前缀，如下所示：
 
@@ -169,7 +169,7 @@ Closes \#234
 
 Closes \#123, \#245, \#992
 
-## 10. **示例**
+## **示例**
 
 ---
 ```

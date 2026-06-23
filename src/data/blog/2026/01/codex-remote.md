@@ -14,11 +14,11 @@ description: "介绍如何在远程服务器上使用 Codex 插件，通过 SSH 
 
 > 在远程服务器上使用 VS Code 的 Codex 插件时，网络连接常常是个问题。本文介绍如何通过 SSH 端口转发和 VS Code 代理配置，让运行在远程服务器上的 Codex 插件顺利访问本地代理。
 
-## 一、问题背景
+## 问题背景
 
 在使用 VS Code Remote SSH 连接到远程服务器进行开发时，遇到了一个问题：**Codex 插件无法访问外网**。
 
-### 1.1 问题现象
+### 问题现象
 
 - Codex 插件安装在远程服务器上
 - 插件运行在 Remote Extension Host 进程中
@@ -26,9 +26,9 @@ description: "介绍如何在远程服务器上使用 Codex 插件，通过 SSH 
 
 ---
 
-## 二、原理分析
+## 原理分析
 
-### 2.1 Remote Extension Host 的网络机制
+### Remote Extension Host 的网络机制
 
 关键点在于：**Codex 插件运行在 Remote Extension Host，它使用的是 VS Code 提供的网络层，而不是 shell 的网络设置**。
 
@@ -38,7 +38,7 @@ description: "介绍如何在远程服务器上使用 Codex 插件，通过 SSH 
 - ❌ 在 `.bashrc` 或 `.zshrc` 中配置代理不起作用
 - ✅ 必须通过 VS Code 的代理配置来设置
 
-### 2.2 解决思路
+### 解决思路
 
 既然 VS Code Remote Extension Host 会读取 VS Code 的代理设置，我们需要：
 
@@ -47,9 +47,9 @@ description: "介绍如何在远程服务器上使用 Codex 插件，通过 SSH 
 
 ---
 
-## 三、解决方案
+## 解决方案
 
-### 3.1 配置 SSH 端口转发
+### 配置 SSH 端口转发
 
 首先，在本地 SSH 配置文件中添加端口转发规则。编辑 `~/.ssh/config`：
 
@@ -67,7 +67,7 @@ Host 服务器
 - 本地 yyy 端口运行的是你的代理服务（如 Clash、V2Ray 等）
 - 这样远程服务器就可以通过 `127.0.0.1:xxx` 访问代理通道；该端口会被 SSH 转发到本地的 `127.0.0.1:yyy`。
 
-### 3.2 配置远程 VS Code 代理设置
+### 配置远程 VS Code 代理设置
 
 连接到远程服务器后，编辑远程端的 VS Code 配置文件：
 
@@ -92,7 +92,7 @@ vi ~/.vscode-server/data/Machine/settings.json
 - `"http.proxySupport": "override"`：覆盖系统代理设置，强制使用此代理
 - `"http.proxyStrictSSL": false`：关闭严格的 SSL 验证（根据需要设置）
 
-### 3.3 重启 VS Code 连接
+### 重启 VS Code 连接
 
 配置完成后：
 
@@ -102,9 +102,9 @@ vi ~/.vscode-server/data/Machine/settings.json
 
 ---
 
-## 四、验证与测试
+## 验证与测试
 
-### 4.1 检查端口转发
+### 检查端口转发
 
 在远程服务器上，检查端口转发是否生效：
 
@@ -117,7 +117,7 @@ ss -tuln | grep xxx
 
 应该看到类似 `127.0.0.1:xxx` 的监听记录。
 
-### 4.2 测试代理连接
+### 测试代理连接
 
 在远程服务器上测试代理是否可用：
 
@@ -127,13 +127,13 @@ curl -x http://127.0.0.1:xxx https://www.google.com
 
 如果能正常返回内容，说明代理通道工作正常。
 
-### 4.3 测试 Codex 插件
+### 测试 Codex 插件
 
 在 VS Code Remote 中尝试使用 Codex 功能，验证是否能正常访问网络服务。
 
 ---
 
-## 五、常见问题
+## 常见问题
 
 ### Q1: 配置后仍然无法连接？
 
@@ -165,7 +165,7 @@ curl -x http://127.0.0.1:xxx https://www.google.com
 
 ---
 
-## 六、总结
+## 总结
 
 1. **理解机制**：Remote Extension Host 使用 VS Code 的网络层，不读取 shell 代理设置
 2. **端口转发**：通过 SSH `RemoteForward` 建立本地代理到远程服务器的通道

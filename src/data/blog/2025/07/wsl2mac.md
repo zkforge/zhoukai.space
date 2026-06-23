@@ -14,9 +14,9 @@ description: 使用 ssh 连接 wsl 与 mac 系统，使得能够在 mac 上连�
 
 > 同一局域网内从 Mac 远程连接到 Windows 上的 WSL2（Windows Subsystem for Linux）环境
 
-### 1.1 WSL2 中配置 SSH 服务
+### WSL2 中配置 SSH 服务
 
-#### 1.1.1 修改apt清华镜像
+#### 修改apt清华镜像
 
 > 修改为清华镜像方便接下来的安装过程，如果有🪜可以忽略此步
 
@@ -27,7 +27,7 @@ sudo apt update && sudo apt upgrade -y
 ```
 
 
-#### 1.1.2 安装 OpenSSH Server
+#### 安装 OpenSSH Server
 
 在 WSL2 中打开终端，执行以下命令：
 ```bash
@@ -35,7 +35,7 @@ sudo apt update
 sudo apt install openssh-server
 ```
 
-#### 1.1.3 配置 SSH 服务
+#### 配置 SSH 服务
 
 编辑 SSH 配置文件：
 ```bash
@@ -52,23 +52,23 @@ PasswordAuthentication yes
 PubkeyAuthentication yes
 ```
 
-#### 1.1.4 启动 SSH 服务
+#### 启动 SSH 服务
 
 执行以下命令启动 SSH 服务：
 ```bash
 sudo service ssh start
 ```
 
-#### 1.1.5 配置开机自启
+#### 配置开机自启
 > 在每次启动 WSL 时自动启动 SSH 服务，需要在 WSL 的配置文件中添加启动命令。
 
 
 
-### 1.2 Windows 上设置 SSH 与端口转发
+### Windows 上设置 SSH 与端口转发
 
 > 由于 WSL2 使用虚拟网络，默认情况下无法直接从局域网访问其服务。因此，需要在 Windows 上设置端口转发，将外部请求转发到 WSL2 的 SSH 服务。
 
-#### 1.2.1 端口转发
+#### 端口转发
 
 - 获取 WSL2 的 IP 地址：
 
@@ -85,7 +85,7 @@ netsh interface portproxy reset
 netsh interface portproxy add v4tov4 listenport=2222 listenaddress=0.0.0.0 connectport=2222 connectaddress=120.120.120.120
 ```
 
-### 1.2.2 在 Windows 上安装 OpenSSH server
+### 在 Windows 上安装 OpenSSH server
 
 通过 PowerShell 安装（管理员权限）：
 
@@ -102,7 +102,7 @@ Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
 dism /online /Add-Capability /CapabilityName:OpenSSH.Server~~~~0.0.1.0
 ```
 
-### 1.2.3 启动并配置 SSH 服务
+### 启动并配置 SSH 服务
 
 ```powershell
 # 启动 SSH 服务
@@ -115,14 +115,14 @@ Set-Service -Name sshd -StartupType 'Automatic'
 Get-Service sshd
 ```
 
-### 1.2.4 配置防火墙（允许 SSH 端口 2222）
+### 配置防火墙（允许 SSH 端口 2222）
 
 ```powershell
 # 允许 2222 端口
 New-NetFirewallRule -Name "OpenSSH-Server" -DisplayName "OpenSSH Server (TCP 2222)" -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 2222
 ```
 
-### 1.2.5 测试 SSH 连接
+### 测试 SSH 连接
 
 - 获取 Windows 主机的局域网 IP 地址：
 ```powershell
@@ -139,14 +139,14 @@ ssh <wsl_username>@192.168.1.100 -p 2222
 
 ## 2 **非同一局域网**
 
-### 2.1 Windows 安装
+### Windows 安装
 
 ```powershell
 winget install tailscale
 ```
 
 
-### 2.2 macOS 安装
+### macOS 安装
 
 ```bash
 brew install tailscale
@@ -184,7 +184,7 @@ pause
 
 ## 3 **SSH 代理命令**
 
-### 3.1 代理实例中的端口到本地
+### 代理实例中的端口到本地
 
 具体步骤为：
 
@@ -204,7 +204,7 @@ Windows下的cmd/powershell如果一直提示密码错误，是因为无法粘�
 
 **Step.3** 在本地浏览器中访问 `http://127.0.0.1:6006` 即可打开服务，注意这里的6006端口要和上述 `6006:127.0.0.1:6006` 中的端口保持一致。
 
-### 3.2 代理本地端口到实例
+### 代理本地端口到实例
 
 ```bash
 # 上面代理实例中的端口到本地的Step.2中的命令：

@@ -185,7 +185,7 @@ This paper proposes XXX. The work of this paper is practical and logical. Howeve
 
 ## 学术投稿和审稿通信模板
 
-### 一、投稿时的Cover Letter模板
+### 投稿时的Cover Letter模板
 
 **模板1：标准格式**
 ```
@@ -232,7 +232,7 @@ Please find enclosed for your review an original research article, "论文标题
 We appreciate your consideration of our manuscript, and we look forward to receiving comments from the reviewers.
 ```
 
-### 二、询问稿件状态模板
+### 询问稿件状态模板
 
 **询问是否收到稿件**
 ```
@@ -252,7 +252,7 @@ Sincerely,
 [您的姓名]
 ```
 
-### 三、审稿意见常用表达
+### 审稿意见常用表达
 
 **正面评价：**
 1. "This is a carefully done study and the findings are of considerable interest. A few minor revision are list below."
@@ -272,7 +272,7 @@ Sincerely,
 1. "Preliminary experiments only have been done and with exception of that summarized in Table 2, none has been repeated. This is clearly unsatisfactory, particularly when there is so much variation between assays."
 2. "The condition of incubation are poorly defined. What is the temperature? Were antibody used?"
 
-### 四、回复审稿意见模板
+### 回复审稿意见模板
 
 **总体回应：**
 1. "In reply to the referee's main criticism of paper, it is possible to say that [解释说明]"

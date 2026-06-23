@@ -14,7 +14,7 @@ description: "Linux命令指南，涵盖文件操作、进程管理、网络工�
 
 > 本文整理了从基础到进阶的Linux命令，用于查漏补缺。
 
-## 1. 基础文件操作
+## 基础文件操作
 
 ### 文件浏览与导航
 
@@ -88,7 +88,7 @@ grep -n "search_term" filename
 grep -E "pattern" filename
 ```
 
-## 2. 文本处理与分析
+## 文本处理与分析
 
 ### 文本处理工具
 
@@ -134,7 +134,7 @@ file filename
 file -i filename
 ```
 
-## 3. 进程管理与监控
+## 进程管理与监控
 
 ### 进程查看
 
@@ -188,7 +188,7 @@ fg %job_number
 bg %job_number
 ```
 
-## 4. 网络工具
+## 网络工具
 
 ### 网络连接测试
 
@@ -224,7 +224,7 @@ rsync -avz source/ destination/
 rsync -avz --delete source/ destination/  # 删除目标中源没有的文件
 ```
 
-## 5. 开发环境配置
+## 开发环境配置
 
 ### 包管理
 
@@ -299,7 +299,7 @@ git pull origin branch_name
 git push origin branch_name
 ```
 
-## 6. AI开发相关工具
+## AI开发相关工具
 
 ### GPU监控
 
@@ -357,7 +357,7 @@ echo 'export VARIABLE_NAME=value' >> ~/.bashrc
 source ~/.bashrc
 ```
 
-## 7. 系统监控与性能分析
+## 系统监控与性能分析
 
 ### 系统资源监控
 
@@ -400,7 +400,7 @@ journalctl -n 100
 journalctl --since "2024-01-01" --until "2024-01-02"
 ```
 
-## 8. 实用技巧
+## 实用技巧
 
 ### 别名设置
 
@@ -479,7 +479,7 @@ else
 fi
 ```
 
-## 9. 总结
+## 总结
 
 掌握这些Linux命令将大大提高你在AI研究中的工作效率。建议：
 
@@ -490,7 +490,7 @@ fi
 
 记住，命令行虽然初期学习曲线较陡，但一旦掌握，将大大提升你的开发和研究效率。在AI领域，很多工具和框架都优先支持命令行操作，熟练掌握Linux命令是成为优秀AI研究者的重要基础。
 
-## 10. 推荐资源
+## 推荐资源
 
 - [Linux命令大全](https://www.runoob.com/linux/linux-command-manual.html)
 - [Bash脚本教程](https://www.runoob.com/linux/linux-shell.html)

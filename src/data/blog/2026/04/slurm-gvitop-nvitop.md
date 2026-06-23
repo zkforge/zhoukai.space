@@ -15,7 +15,7 @@ description: "记录一个在 Slurm 集群中快速进入正在运行的作业�
 
 > 在 Slurm 集群上跑训练任务时，登录节点通常看不到计算节点的 GPU 状态。本文记录一个小的 shell 函数：自动找到当前正在运行的 job，通过 `srun --jobid --overlap --pty` 附着到对应计算节点，然后打开 `nvitop` 查看显存占用。
 
-## 一、问题背景
+## 问题背景
 
 在 Slurm 集群上，用户通常先登录到 login node，再通过 `sbatch` 或 `srun` 把任务提交到计算节点。真正占用 GPU 的进程运行在 compute node 上，而不是 login node 上。
 
@@ -27,7 +27,7 @@ nvitop
 
 往往看不到正在训练的进程。更合理的方式是：先找到自己的 Slurm job，再进入这个 job 所在的计算节点查看 GPU。
 
-## 二、核心函数
+## 核心函数
 
 可以把下面这段函数写入 `~/.bashrc` 或 `~/.zshrc`：
 
@@ -61,7 +61,7 @@ source ~/.bashrc
 source ~/.zshrc
 ```
 
-## 三、使用方式
+## 使用方式
 
 如果当前只有一个正在运行的任务，直接执行：
 
@@ -81,7 +81,7 @@ gvitop 123456
 squeue -u "$USER" -t R
 ```
 
-## 四、为什么需要 --overlap
+## 为什么需要 --overlap
 
 核心命令是：
 
@@ -93,7 +93,7 @@ srun --jobid="$jobid" --overlap --pty nvitop
 
 这里运行的是 `nvitop`，目标是观察状态，而不是再启动一个训练任务。因此使用 `--overlap` 更符合这个场景。
 
-## 五、fallback 的意义
+## fallback 的意义
 
 有些集群环境中，直接执行：
 
@@ -109,7 +109,7 @@ srun --jobid="$jobid" --overlap --pty bash -c "nvitop"
 
 先启动 `bash`，再由 `bash` 执行 `nvitop`，通常能复用更多用户侧的 shell 环境。
 
-## 六、常见问题
+## 常见问题
 
 如果输出：
 
@@ -135,7 +135,7 @@ which nvitop
 srun --jobid="$jobid" --overlap --pty bash -lc "conda activate your-env && nvitop"
 ```
 
-## 七、总结
+## 总结
 
 这个函数解决的是 Slurm 集群上的一个具体问题：训练任务跑在计算节点，但用户日常登录的是 login node，直接运行 `nvitop` 往往看不到真正的 GPU 占用。
 

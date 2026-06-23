@@ -16,13 +16,13 @@ description: "详细介绍如何配置 Hugging Face 的国内镜像源，包括C
 
 ## 方法一：安装 CLI 工具并设置环境变量（推荐-简单）
 
-### 1. 安装 huggingface_hub
+### 安装 huggingface_hub
 
 ```bash
 pip install -U huggingface_hub
 ```
 
-### 2. 设置环境变量
+### 设置环境变量
 
 ```bash
 export HF_ENDPOINT=https://hf-mirror.com
@@ -38,7 +38,7 @@ echo $HF_ENDPOINT
 echo $HF_HOME
 ```
 > 检查是否生效
-### 3. 下载模型示例
+### 下载模型示例
 
 ```bash
 huggingface-cli download \
