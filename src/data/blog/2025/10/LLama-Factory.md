@@ -4,11 +4,7 @@ author: Kai Zhou
 pubDatetime: 2025-10-15T15:00:00.00+08:00
 featured: false
 draft: false
-tags:
-  - LLama-Factory
-  - AI
-  - 大模型
-  - 微调
+tags: [AI]
 description: "在 Linux 系统上微调一个大模型、部署模型、暴露 API 给 web 后端调用，本机前端展示全过程"
 ---
 

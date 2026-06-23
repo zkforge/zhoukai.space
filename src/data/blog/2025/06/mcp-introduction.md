@@ -4,10 +4,7 @@ author: Kai Zhou
 pubDatetime: 2025-06-24T10:00:00.00+08:00
 featured: false
 draft: false
-tags:
-  - LLM
-  - MCP
-  - AI
+tags: [AI, Agent]
 description: 本文简单介绍了 MCP (Model Context Protocol)
 ---
 

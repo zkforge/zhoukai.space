@@ -4,9 +4,7 @@ author: Kai Zhou
 pubDatetime: 2025-06-14T20:20:00.00+08:00
 featured: false
 draft: false
-tags:
-  - Git
-  - 开发规范
+tags: [Dev Tools, Writing]
 description: 本文为 AngularJS Git Commit Message 规范的中文翻译
 ---
 

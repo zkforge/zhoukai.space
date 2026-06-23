@@ -5,12 +5,7 @@ pubDatetime: 2026-01-31T10:00:00+08:00
 featured: false
 draft: false
 ogImage: ../../../../assets/images/og/2026/hjfy.png
-tags:
-  - 论文翻译
-  - arXiv
-  - AI工具
-  - 科研工具
-  - LaTeX
+tags: [Research, AI]
 description: "推荐两款基于 LaTeX 源码的 arXiv 论文翻译工具：幻觉翻译网站和 AI Agent 翻译方法"
 ---
 

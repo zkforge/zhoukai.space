@@ -4,9 +4,7 @@ author: Kai Zhou
 pubDatetime: 2025-10-09T10:00:00.00+08:00
 featured: false
 draft: false
-tags:
-  - Linux
-  - 系统
+tags: [Linux]
 description: "安装 linux 双系统"
 ---
 

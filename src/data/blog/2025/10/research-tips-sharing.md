@@ -4,9 +4,7 @@ author: Kai Zhou
 pubDatetime: 2025-10-15T10:00:00+08:00
 featured: false
 draft: false
-tags:
-  - 笔记
-  - 科研
+tags: [Research]
 description: 如何系统地阅读论文、找研究方向与撰写科研论文
 ---
 

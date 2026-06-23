@@ -4,12 +4,7 @@ author: Kai Zhou
 pubDatetime: 2025-05-22T20:20:00.00+08:00
 featured: false
 draft: false
-tags:
-  - 终端美化
-  - oh-my-zsh
-  - 插件推荐
-  - Mac
-  - 开发工具
+tags: [Dev Tools]
 description: 本文详细介绍了如何在Mac上美化终端（Terminal），包括配置配色方案、安装和配置oh-my-zsh、主题与高效插件推荐。
 ---
 

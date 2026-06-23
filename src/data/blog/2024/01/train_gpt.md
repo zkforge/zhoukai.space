@@ -4,10 +4,7 @@ author: Kai Zhou
 pubDatetime: 2024-01-14T15:20:00.00+08:00
 featured: false
 draft: false
-tags:
-  - LLM
-  - GPT
-  - AI
+tags: [AI]
 description: 本文来自 OpenAI 的 Andrej Karpathy 在 Microsoft Build 2023 大会的分享
 ---
 

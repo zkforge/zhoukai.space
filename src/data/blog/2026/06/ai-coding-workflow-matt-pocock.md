@@ -4,11 +4,7 @@ author: Kai Zhou
 pubDatetime: 2026-06-05T13:40:00+08:00
 featured: false
 draft: false
-tags:
-  - AI Coding
-  - AI Agent
-  - Workflow
-  - TDD
+tags: [AI, Dev Tools]
 description: "基于 Matt Pocock 的 AI Coding 工作流演讲，整理一套从需求对齐、任务拆分、Agent 实现到评审验证的工程方法。"
 ---
 

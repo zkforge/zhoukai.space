@@ -5,12 +5,7 @@ pubDatetime: 2026-03-18T20:00:00+08:00
 featured: false
 draft: false
 ogImage: ../../../../assets/images/og/2026/first-pr.png
-tags:
-  - GitHub
-  - 开源
-  - PR
-  - SwiftUI
-  - CodexBar
+tags: [Dev Tools]
 description: 从 CodexBar 的一个菜单栏换行问题出发，记录我第一次完整走完 GitHub PR、验证、fork 与 review follow-up 的过程。
 ---
 

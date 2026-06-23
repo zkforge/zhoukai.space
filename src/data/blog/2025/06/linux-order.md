@@ -4,11 +4,7 @@ author: Kai Zhou
 pubDatetime: 2025-06-26T10:00:00.00+08:00
 featured: false
 draft: false
-tags:
-  - Linux
-  - AI
-  - 命令行
-  - 工具
+tags: [Linux]
 description: "Linux命令指南，涵盖文件操作、进程管理、网络工具、开发环境配置等实用技能"
 ---
 

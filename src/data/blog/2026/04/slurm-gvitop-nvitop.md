@@ -4,12 +4,7 @@ author: Kai Zhou
 pubDatetime: 2026-04-21T22:46:00+08:00
 featured: false
 draft: false
-tags:
-  - Slurm
-  - GPU
-  - Linux
-  - 集群
-  - Shell
+tags: [Linux]
 description: "记录一个在 Slurm 集群中快速进入正在运行的作业并用 nvitop 查看计算节点 GPU 显存占用的小函数。"
 ---
 

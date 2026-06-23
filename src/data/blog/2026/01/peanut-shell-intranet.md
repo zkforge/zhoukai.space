@@ -4,12 +4,7 @@ author: Kai Zhou
 pubDatetime: 2026-01-28T10:00:00+08:00
 featured: false
 draft: false
-tags:
-  - Linux
-  - 内网穿透
-  - SSH
-  - 网络配置
-  - Ubuntu
+tags: [Linux, Dev Tools]
 description: "详细介绍使用贝锐花生壳实现国内设备连接校内Ubuntu服务器的完整流程，包括安装、配置、端口映射和问题排查"
 ---
 

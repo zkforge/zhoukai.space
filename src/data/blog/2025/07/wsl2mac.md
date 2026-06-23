@@ -4,9 +4,7 @@ author: Kai Zhou
 pubDatetime: 2025-07-20T10:00:00.00+08:00
 featured: false
 draft: false
-tags:
-  - wsl
-  - ssh
+tags: [Linux, Dev Tools]
 description: 使用 ssh 连接 wsl 与 mac 系统，使得能够在 mac 上连接并训练模型
 ---
 

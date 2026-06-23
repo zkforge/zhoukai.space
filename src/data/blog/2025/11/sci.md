@@ -4,11 +4,7 @@ author: Kai Zhou
 pubDatetime: 2025-11-13T10:00:00.00+08:00
 featured: false
 draft: false
-tags:
-  - 科研
-  - 论文
-  - 学术写作
-  - 研究方法
+tags: [Research, Writing]
 description: 从文献阅读到论文发表的完整科研指南，涵盖baseline选择、创新点构建、学术评价体系等核心内容
 ---
 

@@ -4,10 +4,7 @@ author: Kai Zhou
 pubDatetime: 2025-07-01T10:00:00.00+08:00
 featured: false
 draft: false
-tags:
-  - LLM
-  - Agent
-  - AI
+tags: [AI, Dev Tools]
 description: 本文为 Docker 的初学者教程
 ---
 

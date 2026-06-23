@@ -4,12 +4,7 @@ author: Kai Zhou
 pubDatetime: 2026-05-01T22:30:00+08:00
 featured: false
 draft: false
-tags:
-  - Codex
-  - zsh
-  - SSH
-  - 远程开发
-  - 开发工具
+tags: [Dev Tools]
 description: "介绍一个 Codex auth.json 同步方案，用于在本地和多台服务器之间复用最新登录状态。"
 ---
 

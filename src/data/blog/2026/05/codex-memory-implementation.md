@@ -5,11 +5,7 @@ pubDatetime: 2026-05-21T10:30:00+08:00
 featured: false
 draft: false
 ogImage: ../../../../assets/images/og/2026/codex-memory-implementation.png
-tags:
-  - Codex
-  - AI Agent
-  - Memory
-  - Workflow
+tags: [Agent, Dev Tools]
 description: "基于本机 Codex 记忆目录的实际结构，解释记忆功能如何存放、索引、查找和复用。"
 ---
 

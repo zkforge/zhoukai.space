@@ -4,9 +4,7 @@ author: Kai Zhou
 pubDatetime: 2025-10-29T20:20:00.00+08:00
 featured: false
 draft: false
-tags:
-  - Review
-  - 笔记
+tags: [Research, Writing]
 description: 网上搜集到的一些文章 Review 方法的总结以及一些句式的参考
 ---
 

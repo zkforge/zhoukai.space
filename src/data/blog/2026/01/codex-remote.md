@@ -4,11 +4,7 @@ author: Kai Zhou
 pubDatetime: 2026-01-18T23:00:00+08:00
 featured: true
 draft: false
-tags:
-  - VS Code
-  - 远程开发
-  - 代理配置
-  - 开发工具
+tags: [Dev Tools]
 description: "介绍如何在远程服务器上使用 Codex 插件，通过 SSH 端口转发和 VS Code 代理设置让其连接到本地代理"
 ---
 

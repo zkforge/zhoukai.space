@@ -4,12 +4,7 @@ author: Kai Zhou
 pubDatetime: 2026-03-31T10:00:00+08:00
 featured: false
 draft: false
-tags:
-  - Python
-  - CUDA
-  - Linux
-  - 环境配置
-  - 故障排查
+tags: [Linux, AI]
 description: "记录 flash-attn 安装失败的根因分析，说明 Invalid cross-device link 与 pip、Linux 文件系统挂载点之间的关系，并给出可复用的解决方案。"
 ---
 

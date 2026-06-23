@@ -4,9 +4,7 @@ author: Kai Zhou
 pubDatetime: 2026-06-10T11:00:00+08:00
 featured: false
 draft: false
-tags:
-  - Shell
-  - 效率
+tags: [Dev Tools]
 description: "一个叫 gtc 的 zsh 函数：切到统一目录、clone、自动 cd 进仓库，三步并一步。"
 ---
 
