@@ -112,6 +112,9 @@ const { src = "/models/robot.glb", zoom = 1 } = Astro.props;
       const { GLTFLoader } = await import(
         "three/examples/jsm/loaders/GLTFLoader.js"
       );
+      const { MeshoptDecoder } = await import(
+        "three/examples/jsm/libs/meshopt_decoder.module.js"
+      );
       const { OrbitControls } = await import(
         "three/examples/jsm/controls/OrbitControls.js"
       );
@@ -149,6 +152,7 @@ const { src = "/models/robot.glb", zoom = 1 } = Astro.props;
       controls.autoRotateSpeed = 2.0;
 
       const loader = new GLTFLoader();
+      loader.setMeshoptDecoder(MeshoptDecoder);
       const gltf = await loader.loadAsync(src);
       const model = gltf.scene;
 
