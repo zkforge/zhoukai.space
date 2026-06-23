@@ -3,6 +3,7 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import Breadcrumb from "@/components/Breadcrumb.astro";
 import Datetime from "@/components/Datetime.astro";
+import ModelViewer from "@/components/ModelViewer.astro";
 import IconLanguageZh from "@/assets/icons/IconLanguageZh.svg";
 import Layout from "./Layout.astro";
 import { SITE } from "@/config";
@@ -57,7 +58,11 @@ const modDatetime = frontmatter.modDatetime;
           )
         }
       </div>
+      <div class="not-prose md:float-left md:mr-10 md:w-80">
+        <ModelViewer src="/models/asw-g-01_gundam_bael.glb" zoom={1.8} />
+      </div>
       <slot />
+      <div class="clear-both"></div>
     </section>
   </main>
   <Footer />

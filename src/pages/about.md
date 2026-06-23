@@ -14,10 +14,6 @@ modDatetime: 2026-05-02T10:40:00+08:00
     我的研究方向是 Agent，关注智能体系统、工具使用、任务规划，以及大语言模型在复杂任务中的推理与协作能力。
   </p>
 
-  <div>
-    <img src="/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
-  </div>
-
   <h2>研究兴趣</h2>
 
   <ul>
@@ -42,10 +38,6 @@ modDatetime: 2026-05-02T10:40:00+08:00
   <p>
     My research focuses on agents, including agentic systems, tool use, task planning, and the reasoning and collaboration abilities of large language models in complex tasks.
   </p>
-
-  <div>
-    <img src="/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
-  </div>
 
   <h2>Research Interests</h2>
 

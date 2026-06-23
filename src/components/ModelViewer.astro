@@ -1,0 +1,274 @@
+---
+/**
+ * ModelViewer —— 原生 Three.js 3D 模型查看器（about 页主视觉）。
+ *
+ * 设计要点：
+ * - 懒加载：Three.js（约 150KB）与模型文件只在容器滚动进视口时才下载，不阻塞首屏。
+ * - 仅作展示：用原生 Three.js 而非 react-three-fiber，避免为一个装饰引入 React 运行时。
+ * - 兼容 ClientRouter：在 astro:page-load 初始化、astro:before-swap 清理，防止内存泄漏。
+ * - 可访问性：尊重 prefers-reduced-motion，关闭自动旋转与骨骼动画。
+ *
+ * Props:
+ * - src: 模型文件路径（.glb / .gltf），默认指向 public/models/robot.glb。
+ * - zoom: 取景松紧倍数，默认 1；值越大模型显示越大（相机越近）。
+ *   适用于“主体小、附件伸很长”的模型（如手持长武器），可拉近让主体填满画面。
+ */
+interface Props {
+  src?: string;
+  zoom?: number;
+}
+
+const { src = "/models/robot.glb", zoom = 1 } = Astro.props;
+---
+
+<div
+  class="not-prose mx-auto my-6 w-full max-w-80"
+  data-model-viewer
+  data-model-src={src}
+  data-model-zoom={zoom}
+>
+  <div
+    class="relative aspect-square w-full overflow-hidden rounded-xl"
+    data-model-canvas-wrap
+  >
+    <div
+      class="absolute inset-0 flex items-center justify-center"
+      data-model-status
+    >
+      <span
+        class="size-8 animate-spin rounded-full border-2 border-foreground/20 border-t-accent"
+        aria-hidden="true"></span>
+      <span class="sr-only">正在加载 3D 模型…</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  import type * as ThreeNamespace from "three";
+
+  /**
+   * 单个查看器实例的运行时状态，用于在清理阶段释放所有资源。
+   */
+  interface ViewerInstance {
+    renderer: ThreeNamespace.WebGLRenderer;
+    scene: ThreeNamespace.Scene;
+    mixer: ThreeNamespace.AnimationMixer | null;
+    controls: { update: () => void; dispose: () => void };
+    frameId: number;
+    resizeObserver: ResizeObserver;
+    reducedMotion: boolean;
+  }
+
+  // 记录每个容器对应的实例与懒加载观察器，便于切页时精确清理。
+  const instances = new WeakMap<HTMLElement, ViewerInstance>();
+  const observers = new WeakMap<HTMLElement, IntersectionObserver>();
+
+  /**
+   * 释放一个查看器实例占用的全部 GPU / DOM 资源。
+   */
+  function disposeInstance(root: HTMLElement) {
+    const instance = instances.get(root);
+    if (!instance) return;
+
+    cancelAnimationFrame(instance.frameId);
+    instance.resizeObserver.disconnect();
+    instance.controls.dispose();
+    instance.mixer?.stopAllAction();
+
+    // 遍历场景释放几何体与材质，避免 WebGL 上下文泄漏。
+    instance.scene.traverse(object => {
+      const mesh = object as ThreeNamespace.Mesh;
+      mesh.geometry?.dispose();
+      const material = mesh.material;
+      if (Array.isArray(material)) {
+        material.forEach(m => m.dispose());
+      } else {
+        material?.dispose();
+      }
+    });
+
+    instance.renderer.dispose();
+    instance.renderer.domElement.remove();
+    instances.delete(root);
+  }
+
+  /**
+   * 加载模型并搭建场景。仅在容器进入视口后调用一次。
+   */
+  async function buildViewer(root: HTMLElement) {
+    if (instances.has(root)) return;
+
+    const wrap = root.querySelector<HTMLElement>("[data-model-canvas-wrap]");
+    const status = root.querySelector<HTMLElement>("[data-model-status]");
+    const src = root.dataset.modelSrc;
+    const zoom = parseFloat(root.dataset.modelZoom ?? "1") || 1;
+    if (!wrap || !src) return;
+
+    // 标记占位，防止重复构建（异步加载期间再次触发）。
+    instances.set(root, {} as ViewerInstance);
+
+    try {
+      const THREE = await import("three");
+      const { GLTFLoader } = await import(
+        "three/examples/jsm/loaders/GLTFLoader.js"
+      );
+      const { OrbitControls } = await import(
+        "three/examples/jsm/controls/OrbitControls.js"
+      );
+
+      const reducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+
+      const width = wrap.clientWidth || 320;
+      const height = wrap.clientHeight || 320;
+
+      const scene = new THREE.Scene();
+
+      const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+
+      const renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true, // 透明背景，融入站点明暗主题
+      });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(width, height);
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      wrap.appendChild(renderer.domElement);
+
+      // 半球光提供柔和环境照明，平行光勾勒立体感。
+      scene.add(new THREE.HemisphereLight(0xffffff, 0x444444, 2.0));
+      const dirLight = new THREE.DirectionalLight(0xffffff, 2.5);
+      dirLight.position.set(5, 10, 7.5);
+      scene.add(dirLight);
+
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.enablePan = false;
+      controls.autoRotate = !reducedMotion;
+      controls.autoRotateSpeed = 2.0;
+
+      const loader = new GLTFLoader();
+      const gltf = await loader.loadAsync(src);
+      const model = gltf.scene;
+
+      // 居中模型并根据包围盒自动取景，适配任意尺寸的模型。
+      const box = new THREE.Box3().setFromObject(model);
+      const center = box.getCenter(new THREE.Vector3());
+      const size = box.getSize(new THREE.Vector3());
+      model.position.sub(center);
+
+      const maxDim = Math.max(size.x, size.y, size.z);
+      // 取景距离按包围盒计算；zoom 越大相机越近、模型显示越大。
+      const fitDistance =
+        ((maxDim / 2 / Math.tan((camera.fov * Math.PI) / 360)) * 1.6) / zoom;
+      camera.position.set(fitDistance * 0.4, fitDistance * 0.2, fitDistance);
+      // 裁剪面随取景距离自适应，避免大尺寸模型被远裁剪面裁掉。
+      camera.near = fitDistance / 100;
+      camera.far = fitDistance * 10;
+      camera.updateProjectionMatrix();
+      camera.lookAt(0, 0, 0);
+      controls.target.set(0, 0, 0);
+      controls.minDistance = fitDistance * 0.6;
+      controls.maxDistance = fitDistance * 2.5;
+      controls.update();
+
+      scene.add(model);
+
+      // 播放骨骼动画（优先 Idle，否则取第一段），让模型保持微动。
+      let mixer: ThreeNamespace.AnimationMixer | null = null;
+      if (!reducedMotion && gltf.animations.length > 0) {
+        mixer = new THREE.AnimationMixer(model);
+        // 优先选名字含 idle 的待机动画（兼容 "Idle" 与 "Armature|Robot_Idle" 等命名），否则取第一段。
+        const idle =
+          gltf.animations.find(clip => /idle/i.test(clip.name)) ??
+          gltf.animations[0];
+        mixer.clipAction(idle).play();
+      }
+
+      status?.remove();
+
+      const instance: ViewerInstance = {
+        renderer,
+        scene,
+        mixer,
+        controls,
+        frameId: 0,
+        reducedMotion,
+        resizeObserver: new ResizeObserver(() => {
+          const w = wrap.clientWidth || 320;
+          const h = wrap.clientHeight || 320;
+          camera.aspect = w / h;
+          camera.updateProjectionMatrix();
+          renderer.setSize(w, h);
+        }),
+      };
+      instance.resizeObserver.observe(wrap);
+      instances.set(root, instance);
+
+      let lastTime = performance.now();
+      const animate = () => {
+        instance.frameId = requestAnimationFrame(animate);
+        const now = performance.now();
+        mixer?.update((now - lastTime) / 1000); // 帧间隔（秒）
+        lastTime = now;
+        controls.update();
+        renderer.render(scene, camera);
+      };
+      animate();
+    } catch (error) {
+      console.error("[ModelViewer] 模型加载失败:", error);
+      instances.delete(root);
+      if (status) {
+        status.innerHTML =
+          '<span class="text-xs opacity-60">3D 模型加载失败</span>';
+      }
+    }
+  }
+
+  /**
+   * 为页面上所有查看器容器注册懒加载：进入视口后构建，离开后保持。
+   */
+  function initModelViewers() {
+    document
+      .querySelectorAll<HTMLElement>("[data-model-viewer]")
+      .forEach(root => {
+        if (instances.has(root) || observers.has(root)) return;
+
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                obs.disconnect();
+                observers.delete(root);
+                buildViewer(root);
+              }
+            });
+          },
+          { rootMargin: "200px" }
+        );
+
+        observer.observe(root);
+        observers.set(root, observer);
+      });
+  }
+
+  /**
+   * 切页前清理：释放实例资源并断开尚未触发的观察器。
+   */
+  function cleanupModelViewers() {
+    document
+      .querySelectorAll<HTMLElement>("[data-model-viewer]")
+      .forEach(root => {
+        disposeInstance(root);
+        observers.get(root)?.disconnect();
+        observers.delete(root);
+      });
+  }
+
+  // 立即执行（覆盖 ClientRouter 切入时脚本首次运行的场景），
+  // 同时监听 astro:page-load 以兼容脚本持久化后的后续导航。
+  initModelViewers();
+  document.addEventListener("astro:page-load", initModelViewers);
+  document.addEventListener("astro:before-swap", cleanupModelViewers);
+</script>
