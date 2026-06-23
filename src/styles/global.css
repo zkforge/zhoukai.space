@@ -53,6 +53,14 @@ html[data-theme="dark"] {
   --color-border: var(--border);
 }
 
+@theme {
+  /* 在等宽字体栈中追加中文回退：Mac 用苹方，Windows 用微软雅黑，
+     避免中文掉到宋体点阵导致 Windows 上观感很丑。英文仍优先等宽字体。 */
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei",
+    "Courier New", monospace;
+}
+
 @layer base {
   * {
     @apply border-border outline-accent/75;
