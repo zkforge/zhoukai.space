@@ -110,11 +110,41 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 </Layout>
 
 <script>
+  const ABOUT_MODEL_HREF = "/models/asw-g-01_gundam_bael.glb";
+
+  function prefetchAboutModel() {
+    if (
+      document.querySelector(
+        `link[data-about-model-prefetch][href="${ABOUT_MODEL_HREF}"]`
+      )
+    ) {
+      return;
+    }
+
+    const link = document.createElement("link");
+    link.rel = "prefetch";
+    link.as = "fetch";
+    link.href = ABOUT_MODEL_HREF;
+    link.type = "model/gltf-binary";
+    link.setAttribute("data-about-model-prefetch", "true");
+    document.head.appendChild(link);
+  }
+
+  function scheduleAboutModelPrefetch() {
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(prefetchAboutModel, { timeout: 4000 });
+      return;
+    }
+
+    setTimeout(prefetchAboutModel, 1500);
+  }
+
   document.addEventListener("astro:page-load", () => {
     const indexLayout = (document.querySelector("#main-content") as HTMLElement)
       ?.dataset?.layout;
     if (indexLayout) {
       sessionStorage.setItem("backUrl", "/");
+      scheduleAboutModelPrefetch();
     }
   });
 </script>
