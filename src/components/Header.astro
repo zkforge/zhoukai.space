@@ -8,12 +8,16 @@ import IconSunHigh from "@/assets/icons/IconSunHigh.svg";
 import IconMenuDeep from "@/assets/icons/IconMenuDeep.svg";
 import LinkButton from "./LinkButton.astro";
 import { SITE } from "@/config";
+import { withBase, withoutBase } from "@/utils/url";
 
 const { pathname } = Astro.url;
 
 // Remove trailing slash from current pathname if exists
+const pathWithoutBase = withoutBase(pathname);
 const currentPath =
-  pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname;
+  pathWithoutBase.endsWith("/") && pathWithoutBase !== "/"
+    ? pathWithoutBase.slice(0, -1)
+    : pathWithoutBase;
 
 const isActive = (path: string) => {
   const currentPathArray = currentPath.split("/").filter(p => p.trim());
@@ -40,7 +44,7 @@ const isActive = (path: string) => {
       class="relative flex w-full items-baseline justify-between bg-background p-4 sm:items-center sm:py-6"
     >
       <a
-        href="/"
+        href={withBase("/")}
         class="absolute py-1 text-xl leading-8 font-semibold whitespace-nowrap sm:static sm:my-auto sm:text-2xl sm:leading-none"
       >
         {SITE.title}
@@ -69,22 +73,34 @@ const isActive = (path: string) => {
           ]}
         >
           <li class="col-span-2">
-            <a href="/about" class:list={{ "active-nav": isActive("/about") }}>
+            <a
+              href={withBase("/about")}
+              class:list={{ "active-nav": isActive("/about") }}
+            >
               About
             </a>
           </li>
           <li class="col-span-2">
-            <a href="/publications" class:list={{ "active-nav": isActive("/publications") }}>
+            <a
+              href={withBase("/publications")}
+              class:list={{ "active-nav": isActive("/publications") }}
+            >
               Publications
             </a>
           </li>
           <!-- <li class="col-span-2">
-            <a href="/resume" class:list={{ "active-nav": isActive("/resume") }}>
+            <a
+              href={withBase("/resume")}
+              class:list={{ "active-nav": isActive("/resume") }}
+            >
               Resume
             </a>
           </li> -->
           <li class="col-span-2">
-            <a href="/tags" class:list={{ "active-nav": isActive("/tags") }}>
+            <a
+              href={withBase("/tags")}
+              class:list={{ "active-nav": isActive("/tags") }}
+            >
               Tags
             </a>
           </li>
@@ -92,7 +108,7 @@ const isActive = (path: string) => {
             SITE.showArchives && (
               <li class="col-span-2">
                 <LinkButton
-                  href="/archives"
+                  href={withBase("/archives")}
                   class:list={[
                     "focus-outline flex justify-center p-3 sm:p-1",
                     {
@@ -110,7 +126,7 @@ const isActive = (path: string) => {
           }
           <li class="col-span-1 flex items-center justify-center">
             <LinkButton
-              href="/search"
+              href={withBase("/search")}
               class:list={[
                 "focus-outline flex p-3 sm:p-1",
                 { "[&>svg]:stroke-accent": isActive("/search") },

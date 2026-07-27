@@ -5,11 +5,13 @@ import { useEffect, useState } from "react";
 interface CommentsProps {
   lightTheme?: Theme;
   darkTheme?: Theme;
+  term: string;
 }
 
 export default function Comments({
   lightTheme = "light",
   darkTheme = "dark",
+  term,
 }: CommentsProps) {
   const [theme, setTheme] = useState<"light" | "dark">(() => {
     if (typeof document !== "undefined") {
@@ -39,6 +41,7 @@ export default function Comments({
       <Giscus
         theme={theme === "light" ? lightTheme : darkTheme}
         {...GISCUS}
+        term={term}
       />
     </div>
   );

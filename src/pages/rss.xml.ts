@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import { getPath } from "@/utils/getPath";
 import getSortedPosts from "@/utils/getSortedPosts";
 import { SITE } from "@/config";
+import { withBase } from "@/utils/url";
 
 export async function GET() {
   const posts = await getCollection("blog");
@@ -10,7 +11,7 @@ export async function GET() {
   return rss({
     title: SITE.title,
     description: SITE.desc,
-    site: SITE.website,
+    site: new URL(withBase("/"), SITE.website),
     items: sortedPosts.map(({ data, id, filePath }) => ({
       link: getPath(id, filePath),
       title: data.title,

@@ -14,6 +14,8 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
+  base: "/blog",
+  outDir: "./dist/blog",
   server: {
     host: true, // 允许从局域网访问
     port: 4321,

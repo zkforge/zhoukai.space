@@ -10,6 +10,7 @@ import IconFacebook from "@/assets/icons/IconFacebook.svg";
 import IconTelegram from "@/assets/icons/IconTelegram.svg";
 import IconPinterest from "@/assets/icons/IconPinterest.svg";
 import { SITE } from "@/config";
+import { withBase } from "@/utils/url";
 
 interface Social {
   name: string;
@@ -39,7 +40,7 @@ export const SOCIALS: Social[] = [
   },
   {
     name: "WeChat",
-    href: "/wechat/",
+    href: withBase("/wechat/"),
     linkTitle: `Add ${SITE.author} on WeChat`,
     icon: IconWechat,
   },
@@ -95,7 +96,7 @@ export const GISCUS: GiscusProps = {
   repoId: "R_kgDOO7Y9Kg",
   category: "Announcements",
   categoryId: "DIC_kwDOO7Y9Ks4C9eOG",
-  mapping: "pathname",
+  mapping: "specific",
   strict: "1",
   reactionsEnabled: "1",
   emitMetadata: "0",

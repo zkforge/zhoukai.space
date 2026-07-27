@@ -5,6 +5,7 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import LinkButton from "@/components/LinkButton.astro";
 import { SITE } from "@/config";
+import { withBase } from "@/utils/url";
 
 interface PublicationLink {
   name: string;
@@ -43,7 +44,7 @@ const publicationSections: PublicationSection[] = [
         items: [
           {
             title: "PaperDue",
-            image: "/assets/img/paperdue.png",
+            image: withBase("/assets/img/paperdue.png"),
             authors: "Kai Zhou",
             description:
               "PaperDue keeps research conference dates, submission milestones, followed venues, and local reminders in one small, calm app.",
@@ -62,7 +63,7 @@ const publicationSections: PublicationSection[] = [
           },
           {
             title: "Native macOS menu bar app for CCF deadlines",
-            image: "/assets/img/ccfddlmenubar.png",
+            image: withBase("/assets/img/ccfddlmenubar.png"),
             authors: "Kai Zhou",
             venue: "Open Source",
             badge: "ConfBar",
@@ -86,7 +87,7 @@ const publicationSections: PublicationSection[] = [
         items: [
           {
             title: "Example",
-            image: "/assets/img/papers_preview/bisenetv2.png",
+            image: withBase("/assets/img/papers_preview/bisenetv2.png"),
             authors: "Kai Zhou",
             venue: "CVPR 2025",
             links: [

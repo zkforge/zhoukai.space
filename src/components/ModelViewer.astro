@@ -1,4 +1,6 @@
 ---
+import { withBase } from "@/utils/url";
+
 /**
  * ModelViewer —— 原生 Three.js 3D 模型查看器（about 页主视觉）。
  *
@@ -18,7 +20,7 @@ interface Props {
   zoom?: number;
 }
 
-const { src = "/models/robot.glb", zoom = 1 } = Astro.props;
+const { src = withBase("/models/robot.glb"), zoom = 1 } = Astro.props;
 ---
 
 <div

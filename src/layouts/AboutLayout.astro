@@ -7,6 +7,7 @@ import ModelViewer from "@/components/ModelViewer.astro";
 import IconLanguageZh from "@/assets/icons/IconLanguageZh.svg";
 import Layout from "./Layout.astro";
 import { SITE } from "@/config";
+import { withBase } from "@/utils/url";
 
 export interface Props {
   frontmatter: {
@@ -59,7 +60,10 @@ const modDatetime = frontmatter.modDatetime;
         }
       </div>
       <div class="not-prose md:float-left md:mr-10 md:w-80">
-        <ModelViewer src="/models/asw-g-01_gundam_bael.glb" zoom={1.8} />
+        <ModelViewer
+          src={withBase("/models/asw-g-01_gundam_bael.glb")}
+          zoom={1.8}
+        />
       </div>
       <slot />
       <div class="clear-both"></div>
