@@ -2,6 +2,14 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
+      "source": "/tools/:tool",
+      "destination": "https://qiuzhao-tracker.vercel.app/apps/:tool/index.html"
+    },
+    {
+      "source": "/tools/:tool/",
+      "destination": "https://qiuzhao-tracker.vercel.app/apps/:tool/index.html"
+    },
+    {
       "source": "/tools/:path*",
       "destination": "https://qiuzhao-tracker.vercel.app/apps/:path*"
     }
