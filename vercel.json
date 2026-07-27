@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/tools/:path*",
+      "destination": "https://qiuzhao-tracker.vercel.app/apps/:path*"
+    }
+  ]
+}
