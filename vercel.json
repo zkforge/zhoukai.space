@@ -3,15 +3,15 @@
   "rewrites": [
     {
       "source": "/tools/:tool",
-      "destination": "https://qiuzhao-tracker.vercel.app/apps/:tool/index.html"
+      "destination": "https://zhoukai-tools.vercel.app/apps/:tool/index.html"
     },
     {
       "source": "/tools/:tool/",
-      "destination": "https://qiuzhao-tracker.vercel.app/apps/:tool/index.html"
+      "destination": "https://zhoukai-tools.vercel.app/apps/:tool/index.html"
     },
     {
       "source": "/tools/:path*",
-      "destination": "https://qiuzhao-tracker.vercel.app/apps/:path*"
+      "destination": "https://zhoukai-tools.vercel.app/apps/:path*"
     }
   ]
 }
