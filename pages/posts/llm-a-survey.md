@@ -6,6 +6,8 @@ draft: false
 description: "本文为论文《Large language models: a survey》的阅读笔记"
 ---
 
+[[toc]]
+
 > 本文是对论文《Large language models: a survey》的阅读笔记和个人理解。这篇综述详细回顾了一些最具代表性的大语言模型，包括三个流行的大语言模型家族（GPT、LLaMA、PaLM），讨论了它们的特点、贡献和局限性，并概述了用于构建和增强大语言模型的相关技术。
 
 ## 如何构建大模型

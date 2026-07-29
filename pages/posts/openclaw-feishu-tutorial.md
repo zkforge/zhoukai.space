@@ -6,6 +6,8 @@ draft: false
 description: "详细演示如何在 Linux 上完成 OpenClaw 的安装、初始配置，并一步步接入飞书机器人，最终实现在飞书 App 中直接指挥 AI 助手"
 ---
 
+[[toc]]
+
 ## 什么是 OpenClaw？
 
 在开始之前，先做一下简单的科普：

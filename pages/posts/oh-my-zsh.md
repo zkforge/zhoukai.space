@@ -6,6 +6,8 @@ draft: false
 description: "本文详细介绍了如何在Mac上美化终端（Terminal），包括配置配色方案、安装和配置oh-my-zsh、主题与高效插件推荐。"
 ---
 
+[[toc]]
+
 > 本文将带你一步步完成 Mac 终端（Terminal）的美化，包括 oh-my-zsh 的安装、主题配置及高效插件推荐。
 
 ## 目标

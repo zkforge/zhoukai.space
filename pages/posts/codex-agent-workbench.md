@@ -4,10 +4,9 @@ date: 2026-04-22T20:40:00+08:00
 lang: zh
 draft: false
 description: "基于 Codex Full Course 2026 视频笔记，整理 Codex 桌面应用的项目组织、多聊天协作、技能插件、自动化与验证闭环。"
-image: https://zhoukai.space/images/blog/2026/codex-full-course-2026.jpg
 ---
 
-![Codex Full Course 2026 视频缩略图](/images/blog/2026/codex-full-course-2026.jpg)
+[[toc]]
 
 **原视频链接**：[Codex Full Course 2026](https://www.youtube.com/watch?v=KXIdYEdOPys)  
 **YouTube URL**：<https://www.youtube.com/watch?v=KXIdYEdOPys>

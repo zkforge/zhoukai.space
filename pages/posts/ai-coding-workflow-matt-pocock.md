@@ -6,6 +6,8 @@ draft: false
 description: "基于 Matt Pocock 的 AI Coding 工作流演讲，整理一套从需求对齐、任务拆分、Agent 实现到评审验证的工程方法。"
 ---
 
+[[toc]]
+
 **原视频链接**：[Full Walkthrough Workflow for AI Coding](https://www.youtube.com/watch?v=-QFHIoCo-Ko)  
 **YouTube URL**：<https://www.youtube.com/watch?v=-QFHIoCo-Ko>
 

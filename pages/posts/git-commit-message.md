@@ -6,6 +6,8 @@ draft: false
 description: "本文为 AngularJS Git Commit Message 规范的中文翻译"
 ---
 
+[[toc]]
+
 > AngularJS Git Commit Message 规范
 
 ## **目标**

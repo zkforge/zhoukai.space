@@ -6,6 +6,8 @@ draft: false
 description: "介绍如何在远程服务器上使用 Codex 插件，通过 SSH 端口转发和 VS Code 代理设置让其连接到本地代理"
 ---
 
+[[toc]]
+
 > 在远程服务器上使用 VS Code 的 Codex 插件时，网络连接常常是个问题。本文介绍如何通过 SSH 端口转发和 VS Code 代理配置，让运行在远程服务器上的 Codex 插件顺利访问本地代理。
 
 ## 问题背景

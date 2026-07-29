@@ -1,5 +1,5 @@
 ---
-title: 周凯
+title: 走开
 description: 周凯的个人主页
 lang: zh-CN
 art: random
@@ -27,3 +27,15 @@ art: random
   <a href="/photos"><span op75 i-ri-camera-3-line /> 照片</a>
   <a href="/demos"><span op75 i-ri-screenshot-line /> 小实验</a>
 </p>
+
+---
+
+联系我
+
+<p flex="~ gap-2 wrap" class="mt--2!">
+  <a href="https://github.com/zkforge" target="_blank"><span op75 i-simple-icons-github /> GitHub</a>
+  <a href="https://x.com/xk_iuy" target="_blank"><span op75 i-ri-twitter-x-fill /> X</a>
+  <a href="https://www.linkedin.com/in/kaizhou0305/" target="_blank"><span op75 i-ri-linkedin-box-fill /> LinkedIn</a>
+</p>
+
+或发邮件至 <a href="mailto:kaizhou0305@gmail.com"><span font-mono>kaizhou0305<span i-carbon-at />gmail.com</span></a>

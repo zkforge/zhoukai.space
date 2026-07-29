@@ -4,10 +4,9 @@ date: 2026-05-21T10:30:00+08:00
 lang: zh
 draft: false
 description: "基于本机 Codex 记忆目录的实际结构，解释记忆功能如何存放、索引、查找和复用。"
-image: https://zhoukai.space/images/blog/2026/codex-memory-implementation.png
 ---
 
-![Codex 记忆功能的本地文件索引示意图](/images/blog/2026/codex-memory-implementation.png)
+[[toc]]
 
 > 记录一次对 Codex 记忆功能的实际拆解。它不是把信息写进模型参数，也不是一个必须依赖远程数据库的黑盒系统，而是用本地文件保存摘要、索引和历史会话路径，再在需要时按关键词检索和注入上下文。
 

@@ -6,6 +6,8 @@ draft: false
 description: "使用 ssh 连接 wsl 与 mac 系统，使得能够在 mac 上连接并训练模型"
 ---
 
+[[toc]]
+
 ## 1 **同一局域网下**
 
 > 同一局域网内从 Mac 远程连接到 Windows 上的 WSL2（Windows Subsystem for Linux）环境

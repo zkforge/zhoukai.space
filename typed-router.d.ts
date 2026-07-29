@@ -129,13 +129,6 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/posts/first-github-pr-codexbar': RouteRecordInfo<
-      '/posts/first-github-pr-codexbar',
-      '/posts/first-github-pr-codexbar',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/posts/flash-attn-install-cross-device-link': RouteRecordInfo<
       '/posts/flash-attn-install-cross-device-link',
       '/posts/flash-attn-install-cross-device-link',
@@ -185,23 +178,9 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/posts/llama-factory': RouteRecordInfo<
-      '/posts/llama-factory',
-      '/posts/llama-factory',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/posts/llm-a-survey': RouteRecordInfo<
       '/posts/llm-a-survey',
       '/posts/llm-a-survey',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/posts/mcp-introduction': RouteRecordInfo<
-      '/posts/mcp-introduction',
-      '/posts/mcp-introduction',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -394,14 +373,6 @@ declare module 'vue-router/auto-routes' {
       pathParamNames:
         | never
     }
-    'pages/posts/first-github-pr-codexbar.md': {
-      routes:
-        | '/posts/first-github-pr-codexbar'
-      views:
-        | never
-      pathParamNames:
-        | never
-    }
     'pages/posts/flash-attn-install-cross-device-link.md': {
       routes:
         | '/posts/flash-attn-install-cross-device-link'
@@ -458,25 +429,9 @@ declare module 'vue-router/auto-routes' {
       pathParamNames:
         | never
     }
-    'pages/posts/llama-factory.md': {
-      routes:
-        | '/posts/llama-factory'
-      views:
-        | never
-      pathParamNames:
-        | never
-    }
     'pages/posts/llm-a-survey.md': {
       routes:
         | '/posts/llm-a-survey'
-      views:
-        | never
-      pathParamNames:
-        | never
-    }
-    'pages/posts/mcp-introduction.md': {
-      routes:
-        | '/posts/mcp-introduction'
       views:
         | never
       pathParamNames:

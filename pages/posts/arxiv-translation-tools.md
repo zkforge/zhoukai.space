@@ -4,10 +4,9 @@ date: 2026-01-31T10:00:00+08:00
 lang: zh
 draft: false
 description: "推荐两款基于 LaTeX 源码的 arXiv 论文翻译工具：幻觉翻译网站和 AI Agent 翻译方法"
-image: https://zhoukai.space/images/blog/2026/hjfy.png
 ---
 
-![hjfy.top](/images/blog/2026/hjfy.png)
+[[toc]]
 
 > 除此之外还推荐两个工具：
 >

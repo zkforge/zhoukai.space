@@ -6,6 +6,8 @@ draft: false
 description: "一个叫 gtc 的 zsh 函数：切到统一目录、clone、自动 cd 进仓库，三步并一步。"
 ---
 
+[[toc]]
+
 `git clone` 前后各有一个 `cd`，几乎是每个开发者的肌肉记忆。先切到某个统一目录，clone 完再切进仓库。步骤不多，但每天重复十几次就烦了。
 
 ```bash

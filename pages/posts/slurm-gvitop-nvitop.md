@@ -6,6 +6,8 @@ draft: false
 description: "记录一个在 Slurm 集群中快速进入正在运行的作业并用 nvitop 查看计算节点 GPU 显存占用的小函数。"
 ---
 
+[[toc]]
+
 > 在 Slurm 集群上跑训练任务时，登录节点通常看不到计算节点的 GPU 状态。本文记录一个小的 shell 函数：自动找到当前正在运行的 job，通过 `srun --jobid --overlap --pty` 附着到对应计算节点，然后打开 `nvitop` 查看显存占用。
 
 ## 问题背景
