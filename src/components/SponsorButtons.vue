@@ -1,18 +1,17 @@
-<template>
-  <p>
-    If you enjoy my work and find them useful,
-    consider sponsor me and the ecosystem to help Open Source sustainable. Thank you!
-  </p>
+<script setup lang="ts">
+defineProps<{
+  github?: string
+  collective?: string
+  afdian?: string
+}>()
+</script>
 
-  <p flex="~ gap-2 wrap items-center">
-    <SponsorButtonCollective />
-    <span op50 text-sm>
-      <a href="/posts/sponsorship-forwarding" target="_blank">How does this work?</a>
-    </span>
-  </p>
-  <p flex="~ gap-2 wrap">
+<template>
+  <p v-if="github || collective || afdian" flex="~ gap-2 wrap">
+    <SponsorButtonCollective v-if="collective" :href="collective" />
     <a
-      href="https://github.com/sponsors/antfu"
+      v-if="github"
+      :href="github"
       target="_blank"
       class="group btn-rose inline-block"
     >
@@ -21,10 +20,11 @@
         group-hover="i-ph-heart-fill text-rose"
         transition-all duration-200 ease-out
       />
-      Sponsor to support Anthony
+      GitHub Sponsors
     </a>
     <a
-      href="https://afdian.com/a/antfu"
+      v-if="afdian"
+      :href="afdian"
       target="_blank"
       class="group btn-yellow inline-block"
     >
@@ -33,7 +33,7 @@
         group-hover="i-ph-lightning-fill text-yellow"
         transition-all duration-200 ease-out
       />
-      在爱发电上支持我
+      爱发电
     </a>
   </p>
 </template>

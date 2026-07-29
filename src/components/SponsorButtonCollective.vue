@@ -1,6 +1,12 @@
+<script setup lang="ts">
+defineProps<{
+  href: string
+}>()
+</script>
+
 <template>
   <a
-    href="https://opencollective.com/antfu"
+    :href="href"
     target="_blank"
     class="group btn-rose text-base p2 px3 pr2"
   >
@@ -9,6 +15,6 @@
       group-hover="i-ph-hand-heart-fill text-rose"
       transition-all duration-200 ease-out
     />
-    Sponsor the Ecosystem
+    Open Collective
   </a>
 </template>

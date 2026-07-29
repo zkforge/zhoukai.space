@@ -1,8 +1,8 @@
 import dayjs from 'dayjs'
 
 export const isDark = useDark()
-export const englishOnly = useLocalStorage('antfu-english-only', false)
-export const galleryView = useLocalStorage<'cover' | 'contain'>('antfu-gallery-view', 'cover')
+export const englishOnly = useLocalStorage('zhoukai-english-only', false)
+export const galleryView = useLocalStorage<'cover' | 'contain'>('zhoukai-gallery-view', 'cover')
 
 /**
  * Credit to [@hooray](https://github.com/hooray)

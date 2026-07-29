@@ -43,7 +43,7 @@ async function buildBlogRSS() {
           const raw = await fs.readFile(i, 'utf-8')
           const { data, content } = matter(raw)
 
-          if (data.lang !== 'en')
+          if (!data.lang?.startsWith('zh'))
             return
 
           const html = markdown.render(content)
@@ -70,7 +70,7 @@ async function buildBlogRSS() {
 
 async function writeFeed(name: string, options: FeedOptions, items: Item[]) {
   options.author = AUTHOR
-  options.image = `${DOMAIN}/logo.png`
+  options.image = `${DOMAIN}/favicon.svg`
   options.favicon = `${DOMAIN}/favicon.svg`
 
   const feed = new Feed(options)
