@@ -13,12 +13,14 @@ description: "安装 linux 双系统"
 首先需要确认电脑的引导格式是 UEFI + GPT 还是 BIOS + MBR。
 
 **检查方法：**
+
 - 打开 Windows 系统
 - 按下 `Win + R` 键
 - 输入 `msinfo32` 并运行
 - 查看 "BIOS 模式" 一项
 
 **结果判断：**
+
 - 如果显示 "UEFI"：请使用本教程（UEFI + GPT 格式）
 - 如果显示 "BIOS"：建议查找其他适用于 BIOS + MBR 格式的教程
 
@@ -27,6 +29,7 @@ description: "安装 linux 双系统"
 ### 下载 Ubuntu 系统镜像
 
 推荐从以下官方渠道下载：
+
 - [Ubuntu 官方下载页面](https://cn.ubuntu.com/download)
 - [清华大学开源镜像站](https://mirrors.tuna.tsinghua.edu.cn/)
 
@@ -35,6 +38,7 @@ description: "安装 linux 双系统"
 ### 下载并安装 UltraISO
 
 使用 UltraISO（软碟通）制作启动盘：
+
 - 下载 UltraISO 软件
 - 安装并运行
 - 插入 U 盘（建议 8GB 以上）
@@ -45,6 +49,7 @@ description: "安装 linux 双系统"
 为 Ubuntu 分配足够的磁盘空间：
 
 **分区步骤：**
+
 1. 右键点击"此电脑" → "管理" → "磁盘管理"
 2. 选择要压缩的卷（通常是 C 盘）
 3. 右键点击 → "压缩卷"
@@ -56,11 +61,13 @@ description: "安装 linux 双系统"
 ### 系统设置
 
 **关闭 Windows 快速启动：**
+
 - 控制面板 → 电源选项 → "选择电源按钮的功能"
 - 点击"更改当前不可用的设置"
 - 取消勾选"启用快速启动"
 
 **关闭 BIOS 安全启动：**
+
 - 重启电脑进入 BIOS 设置
 - 找到 Security Boot 选项并禁用
 - 保存设置并重启
@@ -89,6 +96,7 @@ description: "安装 linux 双系统"
 在之前预留的未分配空间上创建以下分区：
 
 **推荐分区方案：**
+
 - `/boot` 分区：512MB - 1GB（EFI 分区）
 - `swap` 交换空间：根据内存大小确定，看下表
 - `/` 根分区：至少 20GB
@@ -97,10 +105,10 @@ description: "安装 linux 双系统"
 **Swap 大小建议：**
 | 物理内存 | 不需要休眠 | 需要休眠 | 最大值 |
 |---------|-----------|----------|--------|
-| 4GB     | 2GB       | 6GB      | 8GB    |
-| 8GB     | 3GB       | 11GB     | 16GB   |
-| 16GB    | 4GB       | 20GB     | 32GB   |
-| 32GB    | 6GB       | 38GB     | 64GB   |
+| 4GB | 2GB | 6GB | 8GB |
+| 8GB | 3GB | 11GB | 16GB |
+| 16GB | 4GB | 20GB | 32GB |
+| 32GB | 6GB | 38GB | 64GB |
 
 ### 完成安装
 
@@ -115,6 +123,7 @@ description: "安装 linux 双系统"
 这是最常见的问题，解决方法如下：
 
 **步骤 1：使用 Boot Repair 工具**
+
 ```bash
 sudo add-apt-repository ppa:yannubuntu/boot-repair
 sudo apt-get update
@@ -123,6 +132,7 @@ sudo apt-get install -y boot-repair && boot-repair
 
 **步骤 2：在 Windows 中修复引导**
 以管理员权限运行 cmd，执行：
+
 ```cmd
 bcdedit /set {bootmgr} path \EFI\ubuntu\shimx64.efi
 ```
@@ -133,6 +143,7 @@ bcdedit /set {bootmgr} path \EFI\ubuntu\shimx64.efi
 ### 双系统时间不一致问题
 
 在 Ubuntu 终端中运行以下命令并重启：
+
 ```bash
 timedatectl set-local-rtc 1 --adjust-system-clock
 ```
@@ -143,6 +154,7 @@ timedatectl set-local-rtc 1 --adjust-system-clock
 2. 也可以在 grub 页面选择第二个安装选项（除 try or install ubuntu）或者 按 e 添加参数
 
 ## 其余个人配置记录
+
 ### 必要资源
 
 - 主题（[theme](https://github.com/vinceliuice/WhiteSur-gtk-theme)）

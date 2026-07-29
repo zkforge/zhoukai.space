@@ -56,7 +56,7 @@ export const meta = {
   description: 'Find flaky tests and propose fixes',
   phases: [
     { title: 'Scan', detail: 'grep test logs for retries' },
-    { title: 'Fix',  detail: 'one agent per flaky test' },
+    { title: 'Fix', detail: 'one agent per flaky test' },
   ],
 }
 
@@ -68,19 +68,19 @@ phase('Fix')
 
 核心原语不多，一张表就够了：
 
-| 原语 | 作用 |
-| --- | --- |
-| `agent(prompt, opts)` | 起一个 subagent，prompt 是普通 JS 字符串 |
-| `parallel(tasks)` | 一批 agent 全部跑完才往下走（有屏障） |
-| `pipeline(items, ...stages)` | 每个 item 独立流过多阶段，互不等待 |
-| `phase(title)` | 标记阶段边界，对应 meta.phases |
-| `log(msg)` | 向用户输出状态，不进主上下文 |
+| 原语                         | 作用                                     |
+| ---------------------------- | ---------------------------------------- |
+| `agent(prompt, opts)`        | 起一个 subagent，prompt 是普通 JS 字符串 |
+| `parallel(tasks)`            | 一批 agent 全部跑完才往下走（有屏障）    |
+| `pipeline(items, ...stages)` | 每个 item 独立流过多阶段，互不等待       |
+| `phase(title)`               | 标记阶段边界，对应 meta.phases           |
+| `log(msg)`                   | 向用户输出状态，不进主上下文             |
 
 整段脚本里最容易踩的坑，是 `pipeline` 和 `parallel` 分不清。两者的本质分界是**有没有屏障**：`parallel` 会等这一批全部跑完才往下走，`pipeline` 则让每个 item 各自独立流过所有 stage。
 
 典型浪费写法：
 
-```javascript
+```text
 const a = await parallel(...)   // 屏障：等全部跑完
 const b = transform(a)          // 只是 flatten/map/filter，没有跨 item 依赖
 const c = await parallel(b.map(...))
@@ -107,7 +107,7 @@ const results = await pipeline(
 
 Workflow 不一样。它是**图灵完备的命令式 JavaScript**，能写出 DAG 表达不了的东西，最典型的就是循环——比如"一直找 bug，直到连续两轮都没有新增"：
 
-```javascript
+```text
 let dry = 0
 while (dry < 2) {                            // 回边，控制流图里有环
   const fresh = (await parallel(FINDERS.map(...))).filter(isNew)
@@ -154,7 +154,7 @@ Bun 是个极端案例。我自己拿一个更日常的任务试了一下：给 
 
 执行体大致长这样：
 
-```javascript
+```text
 phase('分析')
 const batches = Array.from({ length: 10 }, (_, i) =>
   `${DIR}/batch_${String(i + 1).padStart(2, '0')}.md`)
@@ -190,13 +190,13 @@ return report  // 唯一回到主上下文的东西
 
 但差异不止"模型自动编排"一条：
 
-| 维度 | n8n / Coze / Dify | Dynamic Workflows |
-| --- | --- | --- |
-| **编排作者** | 人 | Claude 现场生成 |
-| **编排载体** | 可视化 DAG（有向无环） | 图灵完备 JS 代码（可写循环） |
-| **节点性质** | 固定连接器或模板 prompt | 每个节点是自主 agent |
-| **生成时机** | 人预先搭建 | 针对当次任务量身生成 |
-| **可复用性** | 建一次反复用 | 存为 `/` 命令反复用 |
+| 维度         | n8n / Coze / Dify       | Dynamic Workflows            |
+| ------------ | ----------------------- | ---------------------------- |
+| **编排作者** | 人                      | Claude 现场生成              |
+| **编排载体** | 可视化 DAG（有向无环）  | 图灵完备 JS 代码（可写循环） |
+| **节点性质** | 固定连接器或模板 prompt | 每个节点是自主 agent         |
+| **生成时机** | 人预先搭建              | 针对当次任务量身生成         |
+| **可复用性** | 建一次反复用            | 存为 `/` 命令反复用          |
 
 压成一句：**Workflow ≈ 把 n8n 那张图，换成模型现场生成的一段代码。** 换了作者（人 → 模型）和载体（可视化 DAG → 命令式代码）。第一样带来即时性和定制性，第二样带来表达力提升（能写循环和动态扇出）。
 
@@ -242,12 +242,12 @@ claude -p "综合这些发现：$(cat out_*.json)" > report.md
 
 把 Claude Code 现有的几种协作原语放在一起，选型逻辑大致是：
 
-| 场景 | 用哪个 |
-| --- | --- |
-| 主流程中派活搜索、读文件、跑命令 | Subagent |
-| 多角色讨论、需要队员通信 | Agent Teams |
-| 可复用的固定格式工作流 | Skill |
-| 大规模并行、多阶段编排、循环验证 | Workflow |
+| 场景                             | 用哪个      |
+| -------------------------------- | ----------- |
+| 主流程中派活搜索、读文件、跑命令 | Subagent    |
+| 多角色讨论、需要队员通信         | Agent Teams |
+| 可复用的固定格式工作流           | Skill       |
+| 大规模并行、多阶段编排、循环验证 | Workflow    |
 
 一句话：需要"跑腿"用 subagent，需要"开会讨论"用 Agent Teams，需要"流水线作业"用 Workflow。
 

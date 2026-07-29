@@ -13,6 +13,7 @@ description: "网上搜集到的一些文章 Review 方法的总结以及一些�
 ### 审稿记录
 
 **建议的记录方法：**
+
 - 使用电子PDF版本直接做笔记
 - 保持打开的文字处理文件，列出"主要项目"和"次要项目"
 - 使用荧光笔和其他笔进行标记
@@ -93,9 +94,9 @@ description: "网上搜集到的一些文章 Review 方法的总结以及一些�
 作者应该对审稿人和编辑有足够的尊重，以提交一篇经过彻底校对的论文。非母语作者有责任确保他们提交的质量符合母语人士提交的质量，即使他们必须花钱请人帮助编辑过程。
 
 然而，作为审稿人，您经常会发现作者忽略的小拼写或语法错误。在所有这些情况下，由您决定编辑论文的程度：
+
 - 您可以决定更正前几页，或反复出现问题的前几个案例
 - 如果论文需要进行重大修改，并且您知道更正后的草稿将再次进行审查，您可以建议作者在修改过程中进行此类校对
-
 
 ## 审稿技巧和模板
 
@@ -118,6 +119,7 @@ description: "网上搜集到的一些文章 Review 方法的总结以及一些�
 #### A. 接受 (Accept)
 
 **直接接受：**
+
 ```
 The authors have made sufficient modifications according to the modification comments, and I suggest that this paper be accepted without further modification.
 ```
@@ -125,6 +127,7 @@ The authors have made sufficient modifications according to the modification com
 #### B. 拒绝 (Reject)
 
 **标准拒绝模板：**
+
 ```
 This paper proposes XXX. The work of this paper is clear and logical. However, I have to reject it because of the following problems:
 
@@ -138,6 +141,7 @@ This paper proposes XXX. The work of this paper is clear and logical. However, I
 #### C. 小修改/大修改 (Minor/Major Changes)
 
 **修改建议模板：**
+
 ```
 This paper proposes XXX. The work of this paper is practical and logical. However, there are some problems to be further improved as well:
 
@@ -153,21 +157,25 @@ This paper proposes XXX. The work of this paper is practical and logical. Howeve
 ### 常见评审要点
 
 **文法错误：**
+
 - 检查拼写错误和语法错误
 - 注意术语使用的一致性
 - 确保表达清晰准确
 
 **创新性评估：**
+
 - 方法是否有足够的创新性
 - 是否只是简单组合他人方法
 - 作者是否突出了创新贡献
 
 **实验验证：**
+
 - 实验是否充分验证方法的有效性
 - 实验设置是否合理
 - 超参数是否过多影响结论说服力
 
 **文献综述：**
+
 - 是否涵盖了相关领域的重要工作
 - 是否遗漏了关键的对比方法
 - 引用是否准确和适当
@@ -175,15 +183,16 @@ This paper proposes XXX. The work of this paper is practical and logical. Howeve
 ## 参考资源和延伸阅读
 
 ### 官方审稿指南
+
 - **Science期刊同行评审指南**：[Peer Review at Science Publications](https://www.science.org/content/page/peer-review-science-publications)
 - **学术审稿最佳实践**：[Peer Review Resources](https://web.njit.edu/~bieber/review.html#samples)
-
 
 ## 学术投稿和审稿通信模板
 
 ### 投稿时的Cover Letter模板
 
 **模板1：标准格式**
+
 ```
 Here within enclosed is our paper for consideration to be published on "(Journal name)". The further information about the paper is in the following:
 The Title: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -206,6 +215,7 @@ Dr. XXX
 ```
 
 **模板2：简洁格式**
+
 ```
 Dear Dr. [编辑姓名]:
 I am sending a manuscript entitled "论文标题" by [作者姓名] which I should like to submit for possible publication in the journal of [期刊名称].
@@ -215,12 +225,14 @@ Yours sincerely
 ```
 
 **模板3：针对性格式**
+
 ```
 Dear Dr. [编辑姓名]:
 Enclosed is a manuscript entitled "论文标题" by [作者姓名], which we are submitting for publication in the journal of [期刊名称]. We have chosen this journal because it deals with [期刊涉及领域]. We believe that [论文内容] would be of interest to the journal's readers.
 ```
 
 **模板4：完整性格式**
+
 ```
 Dear Dr. [编辑姓名]:
 Please find enclosed for your review an original research article, "论文标题" by [作者姓名]. All authors have read and approve this version of the article, and due care has been taken to ensure the integrity of the work. No part of this paper has published or submitted elsewhere. No conflict of interest exits in the submission of this manuscript, and we have attached to this letter the signed letter granting us permission to use Figure 1 from another source.
@@ -231,6 +243,7 @@ We appreciate your consideration of our manuscript, and we look forward to recei
 ### 询问稿件状态模板
 
 **询问是否收到稿件**
+
 ```
 Dear Editors,
 We dispatched our manuscript to your journal on [投稿日期] but have not, as yet, receive acknowledgement of their safe arrival. We fear that may have been lost and should be grateful if you would let us know whether or not you have received them. If not, we will send our manuscript again. Thank you in advance for your help.
@@ -240,6 +253,7 @@ Sincerely,
 ```
 
 **询问审稿进度**
+
 ```
 Dear Editors，
 It is more than [等待时间，如12 weeks] since I submitted our manuscript (No: [稿件编号]) for possible publication in your journal. I have not yet received a reply and am wondering whether you have reached a decision. I should appreciated your letting me know what you have decided as soon as possible.
@@ -251,31 +265,37 @@ Sincerely,
 ### 审稿意见常用表达
 
 **正面评价：**
+
 1. "This is a carefully done study and the findings are of considerable interest. A few minor revision are list below."
 2. "This is a well-written paper containing interesting results which merit publication. For the benefit of the reader, however, a number of points need clarifying and certain statements require further justification."
 3. "Although this paper is good, it would be ever better if some extra data were added."
 
 **建议拒绝：**
+
 1. "Although these observation are interesting, they are rather limited and do not advance our knowledge of the subject sufficiently to warrant publication in [期刊名称]. We suggest that the authors try submitting their findings to specialist journal such as [其他期刊]"
 2. "This manuscript is not suitable for publication in the journal of [期刊名称] because the main observation it describe was reported 3 years ago in a reputable journal of [其他期刊]."
 
 **语言问题：**
+
 1. "Please ask someone familiar with English language to help you rewrite this paper. As you will see, I have made some correction at the beginning of the paper where some syntax is not satisfactory."
 2. "We feel that this potentially interesting study has been marred by an inability to communicate the finding correctly in English and should like to suggest that the authors seek the advice of someone with a good knowledge of English, preferable native speaker."
 3. "The wording and style of some section, particularly those concerning [具体技术], need careful editing. Attention should be paid to the wording of those parts of the Discussion of and Summary which have been underlined."
 
 **实验和方法问题：**
+
 1. "Preliminary experiments only have been done and with exception of that summarized in Table 2, none has been repeated. This is clearly unsatisfactory, particularly when there is so much variation between assays."
 2. "The condition of incubation are poorly defined. What is the temperature? Were antibody used?"
 
 ### 回复审稿意见模板
 
 **总体回应：**
+
 1. "In reply to the referee's main criticism of paper, it is possible to say that [解释说明]"
 2. "Thank you for your letter of [日期] and for the referee's comments concerning our manuscript entitled "论文标题". We have studied their comments carefully and have made correction which we hope meet with their approval."
 3. "We are sending the revised manuscript according to the comments of the reviewers. Revised portion are underlined in red."
 
 **具体修改回应：**
+
 1. "One minor point raised by the referee concerns of the extra composition of the reaction mixture in Figure 1. This has now been corrected. Further minor changes had been made on page 3, paragraph 1 (line 3-8) and 2 (line 6-11)."
 2. "We deleted the relevant passage since they are not essential to the contents of the paper."
 3. "The running title has been changed to [新标题]."
@@ -283,10 +303,12 @@ Sincerely,
 5. "The concentration of HAT media (page12 paragraph 2) was incorrectly stated in the original manuscript. This has been rectified. The authors are grateful to the referees for pointing out their error."
 
 **补充实验回应：**
+
 1. "I enclosed a revised manuscript which includes a report of additional experiments done at the referee's suggestion. You will see that our original findings are confirmed."
 2. "We have therefore completed a further series of experiments, the result of which are summarized in Table 5. From this we conclude that intrinsic factor is not account."
 
 **感谢和结尾：**
+
 1. "We found the referee's comments most helpful and have revised the manuscript."
 2. "We are pleased to note the favorable comments of reviewers in their opening sentence."
 3. "Thank you for your letter. I am very pleased to learn that our manuscript is acceptable for publication in [期刊名称] with minor revision."

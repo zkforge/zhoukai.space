@@ -8,12 +8,12 @@ description: "本文为论文《Large language models: a survey》的阅读笔�
 
 > 本文是对论文《Large language models: a survey》的阅读笔记和个人理解。这篇综述详细回顾了一些最具代表性的大语言模型，包括三个流行的大语言模型家族（GPT、LLaMA、PaLM），讨论了它们的特点、贡献和局限性，并概述了用于构建和增强大语言模型的相关技术。
 
-
 ## 如何构建大模型
 
 ### 数据清理
 
 数据清理是大模型训练的基础，主要包括：
+
 - 数据过滤：去除噪声、异常值、不平衡数据、含歧义文本等。
 - 文本预处理：如去除停用词、特殊符号等。
 - 删除重复值，保证数据多样性和有效性。
@@ -71,6 +71,7 @@ description: "本文为论文《Large language models: a survey》的阅读笔�
 ## 如何使用大模型——提示词工程
 
 ### 思维链（Chain of Thought, CoT）
+
 - Zero-Shot CoT
 - Manual CoT
 - Automatic CoT
@@ -92,15 +93,17 @@ description: "本文为论文《Large language models: a survey》的阅读笔�
 ## 如何扩展大模型——RAG
 
 > 检索增强生成（Retrieval-Augmented Generation, RAG）
-> 
+>
 > 自动多步推理和工具使用（ART）
 
 ### Agent 中的提示词工程
+
 - ReWOO、ReAct、DERA 等
 
 ## 大模型 LLMs 的评估数据集
 
 ### 基本任务的数据集：语言建模、理解、生成
+
 - Natural Questions（QA 数据集）
 - MMLU
 - MBPP（Python 代码生成）
@@ -114,20 +117,24 @@ description: "本文为论文《Large language models: a survey》的阅读笔�
 - MultiRC（阅读理解）
 
 ### 指令跟随、CoT 推理等新兴能力的数据集
+
 - GSM8K（数学推理）
 - MATH（数学竞赛题）
 
 ## 三种类型的架构
 
 ### Encoder-only
+
 - BERT
 
 ### Decoder-only
+
 - GPT-1
 - GPT-2
 
 **Decoder-Only**：这类模型在每个阶段，对于任何单词，注意力层只能访问该单词之前的内容，属于自回归模型。
 
 ### Encoder-Decoder
+
 - T5
 - BART

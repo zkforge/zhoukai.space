@@ -9,11 +9,13 @@ description: "本文详细介绍了如何在Mac上美化终端（Terminal），�
 > 本文将带你一步步完成 Mac 终端（Terminal）的美化，包括 oh-my-zsh 的安装、主题配置及高效插件推荐。
 
 ## 目标
+
 - 修改 Terminal 的 Profile：让 Terminal 配色更美观
 - 安装 oh-my-zsh 主题：美化 oh-my-zsh
 - 安装 oh-my-zsh 必备插件：让 Terminal 具有更高级和便利的功能
 
 ## 准备工作
+
 先安装 Homebrew，方便后续工具安装：
 
 ```sh
@@ -30,10 +32,12 @@ chsh -s /usr/local/bin/zsh
 ```
 
 ### 修改 Terminal Profile 主题设置
+
 1. 在 GitHub 的 [osx-terminal-theme](https://github.com/lysyi3m/osx-terminal-themes) 项目主页里寻找你喜欢的主题。
 2. 在 schemes 目录里找到对应的主题文件并安装到 Terminal，设置为默认。
 
 ## 安装 oh-my-zsh
+
 Oh My Zsh 是一个令人愉快的、开源的、社区驱动的管理 zsh 配置的框架。它为我们带来了数千个有用的功能、助手、插件、主题，和其他一些令人惊叹的功能。
 
 安装 oh-my-zsh：
@@ -43,17 +47,22 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 ```
 
 ### 安装 oh-my-zsh 主题
+
 #### 内置主题列表
+
 oh-my-zsh 提供一批内置主题，可以直接设置使用。
+
 - 在[内置主题列表](https://github.com/robbyrussell/oh-my-zsh/wiki/Themes)寻找你喜欢的主题。
 - 在 `~/.zshrc` 配置文件里设置 `ZSH_THEME` 为你的主题名称。
 - 激活设置：`source ~/.zshrc`
 - 也可以直接使用默认主题，不需要任何操作
 
 #### 第三方主题列表
+
 许多第三方也开发了供 oh-my-zsh 使用的主题，可以去[第三方主题列表](https://github.com/robbyrussell/oh-my-zsh/wiki/External-themes)查看和安装。
 
 ## 安装 oh-my-zsh 必备插件
+
 oh-my-zsh 有非常丰富的插件可供使用，下面列举一些必备插件，可以大幅提高生产力。
 
 示例：
@@ -70,6 +79,7 @@ plugins=(
 ```
 
 ### 插件说明
+
 - **git**
   - 自带插件，可以使用缩写命令，比如 `gaa` -> `git add --all`，通过 `alias | grep git` 查看所有支持缩写命令。
   - 激活：添加到 `~/.zshrc` 的 plugins 列表。

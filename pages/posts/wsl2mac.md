@@ -22,10 +22,10 @@ sudo sed -i "s@http://.*security.ubuntu.com@https://mirrors.tuna.tsinghua.edu.cn
 sudo apt update && sudo apt upgrade -y
 ```
 
-
 #### 安装 OpenSSH Server
 
 在 WSL2 中打开终端，执行以下命令：
+
 ```bash
 sudo apt update
 sudo apt install openssh-server
@@ -34,11 +34,13 @@ sudo apt install openssh-server
 #### 配置 SSH 服务
 
 编辑 SSH 配置文件：
+
 ```bash
 sudo vim /etc/ssh/sshd_config
 ```
 
 确保以下行存在且未被注释（即没有 # 号）：
+
 ```bash
 Port 2222
 AddressFamily any
@@ -51,14 +53,14 @@ PubkeyAuthentication yes
 #### 启动 SSH 服务
 
 执行以下命令启动 SSH 服务：
+
 ```bash
 sudo service ssh start
 ```
 
 #### 配置开机自启
+
 > 在每次启动 WSL 时自动启动 SSH 服务，需要在 WSL 的配置文件中添加启动命令。
-
-
 
 ### Windows 上设置 SSH 与端口转发
 
@@ -69,12 +71,15 @@ sudo service ssh start
 - 获取 WSL2 的 IP 地址：
 
 在 **PowerShell** 中执行以下命令：
+
 ```powershell
 wsl hostname -I
 ```
+
 > 记录输出的 IP 地址，假设为 120.120.120.120。
 
 - 设置内部端口转发：
+
 ```powershell
 netsh interface portproxy reset
 
@@ -121,17 +126,20 @@ New-NetFirewallRule -Name "OpenSSH-Server" -DisplayName "OpenSSH Server (TCP 222
 ### 测试 SSH 连接
 
 - 获取 Windows 主机的局域网 IP 地址：
+
 ```powershell
 ipconfig
 ```
+
 > 查找与当前连接的网络适配器对应的 IPv4 地址，假设为 192.168.1.100。
 
 - 在 Mac 上使用 SSH 连接：
+
 ```bash
 ssh <wsl_username>@192.168.1.100 -p 2222
 ```
-> 将 <wsl_username> 替换为 WSL2 中的用户名。如果配置正确，应该能够成功连接到 WSL2 的终端
 
+> 将 <wsl_username> 替换为 WSL2 中的用户名。如果配置正确，应该能够成功连接到 WSL2 的终端
 
 ## 2 **非同一局域网**
 
@@ -141,12 +149,12 @@ ssh <wsl_username>@192.168.1.100 -p 2222
 winget install tailscale
 ```
 
-
 ### macOS 安装
 
 ```bash
 brew install tailscale
 ```
+
 > Tailscale 上显示的 IP 地址即远程登录地址，其余配置方法与同一局域网内的方法相同。
 
 ## ⚠️ 免密登陆
@@ -160,6 +168,7 @@ ssh-copy-id -p 2222 zoukai@IP
 ```
 
 ## 📨 自动脚本
+
 ```bat
 @echo off
 :: 启动WSL SSH服务

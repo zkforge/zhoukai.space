@@ -25,13 +25,16 @@ export HF_ENDPOINT=https://hf-mirror.com
 ```bash
 export HF_HOME="模型，数据集保存路径"
 ```
+
 > 注意：这种配置方式只在当前 shell 会话中有效，如果你希望这个环境变量在每次启动终端时都生效，可以将其添加到你的用户配置文件中（修改 `~/.bashrc` 或 `~/.zshrc`）
 
 ```bash
 echo $HF_ENDPOINT
 echo $HF_HOME
 ```
+
 > 检查是否生效
+
 ### 下载模型示例
 
 ```bash
@@ -47,10 +50,13 @@ huggingface-cli download \
 ### 修改 constants.py 文件
 
 找到你的 Python 环境中的 `huggingface_hub` 包位置：
+
 > 通常在以下路径之一
+
 ```bash
 /miniconda3/envs/环境名称/lib/python3.12/site-packages/huggingface_hub/constants.py
 ```
+
 ```bash
 /usr/local/lib/python3.x/site-packages/huggingface_hub/constants.py
 ```
