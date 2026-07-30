@@ -9,8 +9,35 @@ function slug(name: string) {
 <template>
   <div class="max-w-300 mx-auto">
     <p text-center mt--6 mb5 op50 text-lg italic>
-      我创建或维护的项目。
+      一些产品、工具与研究项目。
     </p>
+    <div class="prose pb5 mx-auto mt10 text-center">
+      <div flex="~ wrap gap-2 justify-center">
+        <a
+          href="https://github.com/zkforge"
+          target="_blank"
+          class="group btn-blue inline-block"
+        >
+          <div
+            i-ph-github-logo-duotone
+            group-hover="i-ph-github-logo-fill text-blue"
+          />
+          GitHub
+        </a>
+        <a
+          href="https://releases.zhoukai.space"
+          target="_blank"
+          class="group btn-amber inline-block"
+        >
+          <div
+            i-ph-rocket-launch-duotone
+            group-hover="i-ph-rocket-launch-fill text-amber"
+          />
+          最近发布
+        </a>
+      </div>
+      <hr>
+    </div>
     <div
       v-for="key, cidx in Object.keys(projects)" :key="key" slide-enter
       :style="{ '--enter-stage': cidx + 1 }"
