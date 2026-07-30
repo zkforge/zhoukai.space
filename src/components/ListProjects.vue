@@ -30,10 +30,10 @@ function slug(name: string) {
           class="group btn-amber inline-block"
         >
           <div
-            i-ph-rocket-launch-duotone
-            group-hover="i-ph-rocket-launch-fill text-amber"
+            i-ph-git-merge-duotone
+            group-hover="i-ph-git-merge-fill text-amber"
           />
-          最近发布
+          开源贡献
         </a>
       </div>
       <hr>
