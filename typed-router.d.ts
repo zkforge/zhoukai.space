@@ -192,6 +192,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/maximizing-the-value-of-your-claude-code-sessions': RouteRecordInfo<
+      '/posts/maximizing-the-value-of-your-claude-code-sessions',
+      '/posts/maximizing-the-value-of-your-claude-code-sessions',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/oh-my-zsh': RouteRecordInfo<
       '/posts/oh-my-zsh',
       '/posts/oh-my-zsh',
@@ -454,6 +461,14 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/llm-a-survey.md': {
       routes:
         | '/posts/llm-a-survey'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'pages/posts/maximizing-the-value-of-your-claude-code-sessions.md': {
+      routes:
+        | '/posts/maximizing-the-value-of-your-claude-code-sessions'
       views:
         | never
       pathParamNames:
