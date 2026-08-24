@@ -2,7 +2,7 @@
 title: "Claude Code Dynamic Workflows：把编排逻辑搬进代码的新原语"
 date: 2026-06-10T10:00:00+08:00
 lang: zh
-draft: false
+draft: true
 description: "Dynamic Workflows 把 agent 编排从模型临场决策搬进可执行脚本——循环、分支、并行全固化成代码，数百个 subagent 同时开工，主上下文只收最终结果。拆解它的架构、边界和为什么这不是又一个自动化工具。"
 ---
 

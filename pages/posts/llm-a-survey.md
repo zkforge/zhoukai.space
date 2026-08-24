@@ -2,7 +2,7 @@
 title: "大语言模型综述：GPT、LLaMA 和 PaLM 模型的发展"
 date: 2025-05-28T16:00:00.00+08:00
 lang: zh
-draft: false
+draft: true
 description: "本文为论文《Large language models: a survey》的阅读笔记"
 ---
 

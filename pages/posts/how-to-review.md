@@ -2,7 +2,7 @@
 title: "如何 Review 一篇文章？"
 date: 2025-10-29T20:20:00.00+08:00
 lang: zh
-draft: false
+draft: true
 description: "网上搜集到的一些文章 Review 方法的总结以及一些句式的参考"
 ---
 

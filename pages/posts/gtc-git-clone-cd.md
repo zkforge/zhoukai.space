@@ -2,7 +2,7 @@
 title: "一行 zsh 函数，省掉 clone 前后的 cd"
 date: 2026-06-10T11:00:00+08:00
 lang: zh
-draft: false
+draft: true
 description: "一个叫 gtc 的 zsh 函数：切到统一目录、clone、自动 cd 进仓库，三步并一步。"
 ---
 

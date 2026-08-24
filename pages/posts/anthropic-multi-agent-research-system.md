@@ -2,7 +2,7 @@
 title: "Anthropic：我们如何构建多代理 Research 系统"
 date: 2026-04-03T12:10:00+08:00
 lang: zh
-draft: false
+draft: true
 description: "Anthropic 工程文章《How we built our multi-agent research system》的中文全文翻译，聚焦多代理 Research 系统的架构、提示工程、评测方法与生产可靠性。"
 ---
 

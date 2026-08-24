@@ -34,10 +34,6 @@ const { y: scroll } = useWindowScroll()
           <div i-ri-article-line />
           <span class="lt-md:hidden">文章</span>
         </RouterLink>
-        <RouterLink class="nav-item" to="/projects" title="项目">
-          <div i-ri-lightbulb-line />
-          <span class="lt-md:hidden">项目</span>
-        </RouterLink>
         <RouterLink class="nav-item" to="/photos" title="照片">
           <div i-ri-camera-3-line />
           <span class="lt-md:hidden">照片</span>
@@ -45,6 +41,14 @@ const { y: scroll } = useWindowScroll()
         <RouterLink class="nav-item" to="/demos" title="小实验">
           <div i-ri-screenshot-line />
           <span class="lt-md:hidden">小实验</span>
+        </RouterLink>
+        <RouterLink class="nav-item" to="/projects" title="项目">
+          <div i-ri-lightbulb-line />
+          <span class="lt-md:hidden">项目</span>
+        </RouterLink>
+        <RouterLink class="nav-item" to="/nav" title="导航">
+          <div i-ri-compass-3-line />
+          <span class="lt-md:hidden">导航</span>
         </RouterLink>
         <ToggleTheme />
       </div>

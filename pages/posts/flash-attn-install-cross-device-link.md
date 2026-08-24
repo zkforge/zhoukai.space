@@ -2,7 +2,7 @@
 title: "flash-attn 安装报错分析与解决"
 date: 2026-03-31T10:00:00+08:00
 lang: zh
-draft: false
+draft: true
 description: "记录 flash-attn 安装失败的根因分析，说明 Invalid cross-device link 与 pip、Linux 文件系统挂载点之间的关系，并给出可复用的解决方案。"
 ---
 

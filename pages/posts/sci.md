@@ -2,7 +2,7 @@
 title: "科研入门与论文研究方法"
 date: 2025-11-13T10:00:00.00+08:00
 lang: zh
-draft: false
+draft: true
 description: "从文献阅读到论文发表的完整科研指南，涵盖baseline选择、创新点构建、学术评价体系等核心内容"
 ---
 

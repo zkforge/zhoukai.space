@@ -2,7 +2,7 @@
 title: "同步 Codex auth.json：本地与多台服务器的登录状态管理"
 date: 2026-05-01T22:30:00+08:00
 lang: zh
-draft: false
+draft: true
 description: "介绍一个 Codex auth.json 同步方案，用于在本地和多台服务器之间复用最新登录状态。"
 ---
 

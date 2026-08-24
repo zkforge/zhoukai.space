@@ -2,7 +2,7 @@
 title: "智海拾贝：AI科研进阶之路——2025人工智能学院科研经验交流分享会（笔记）"
 date: 2025-10-15T10:00:00+08:00
 lang: zh
-draft: false
+draft: true
 description: "如何系统地阅读论文、找研究方向与撰写科研论文"
 ---
 
