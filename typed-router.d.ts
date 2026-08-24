@@ -80,6 +80,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/ai-native-sdlc-playbook': RouteRecordInfo<
+      '/posts/ai-native-sdlc-playbook',
+      '/posts/ai-native-sdlc-playbook',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/anthropic-multi-agent-research-system': RouteRecordInfo<
       '/posts/anthropic-multi-agent-research-system',
       '/posts/anthropic-multi-agent-research-system',
@@ -97,6 +104,13 @@ declare module 'vue-router/auto-routes' {
     '/posts/claude-code-dynamic-workflows': RouteRecordInfo<
       '/posts/claude-code-dynamic-workflows',
       '/posts/claude-code-dynamic-workflows',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/posts/claude-model-and-effort-level': RouteRecordInfo<
+      '/posts/claude-model-and-effort-level',
+      '/posts/claude-model-and-effort-level',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -338,6 +352,14 @@ declare module 'vue-router/auto-routes' {
       pathParamNames:
         | never
     }
+    'pages/posts/ai-native-sdlc-playbook.md': {
+      routes:
+        | '/posts/ai-native-sdlc-playbook'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
     'pages/posts/anthropic-multi-agent-research-system.md': {
       routes:
         | '/posts/anthropic-multi-agent-research-system'
@@ -357,6 +379,14 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/claude-code-dynamic-workflows.md': {
       routes:
         | '/posts/claude-code-dynamic-workflows'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'pages/posts/claude-model-and-effort-level.md': {
+      routes:
+        | '/posts/claude-model-and-effort-level'
       views:
         | never
       pathParamNames:
