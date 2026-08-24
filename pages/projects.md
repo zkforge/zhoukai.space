@@ -5,7 +5,7 @@ wrapperClass: 'text-center'
 lang: zh-CN
 art: dots
 projects:
-  产品与工具:
+  产品:
     - name: PaperDue
       desc: iOS 学术会议截稿日工具，整理截稿节点、日程、收藏与本地提醒。
       link: https://github.com/zkforge/PaperDue
@@ -18,7 +18,7 @@ projects:
       desc: 可直接编译的一页式中文 LaTeX 简历模板，提供 XeLaTeX 工作流与占位内容。
       link: https://github.com/zkforge/latex-resume-template
       icon: i-simple-icons-latex
-  AI 与研究:
+  研究:
     - name: MedAgentCare
       desc: 面向学习、研究与工程演示的多智能体医疗咨询系统，包含流式交互与安全护栏。
       link: https://github.com/zkforge/MedAgentCare
