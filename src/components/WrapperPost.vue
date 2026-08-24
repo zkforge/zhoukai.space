@@ -11,12 +11,27 @@ const { frontmatter } = defineProps({
 const router = useRouter()
 const route = useRoute()
 const content = ref<HTMLDivElement>()
+const { copy: copyText } = useClipboard()
 
 const base = 'https://zhoukai.space'
 const shareText = computed(() => `正在阅读周凯的文章：${base}${route.path}`)
 const tweetUrl = computed(() => `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText.value)}`)
 const elkUrl = computed(() => `https://elk.zone/intent/post?text=${encodeURIComponent(shareText.value)}`)
 const blueskyUrl = computed(() => `https://bsky.app/intent/compose?text=${encodeURIComponent(shareText.value)}`)
+
+async function copyCode(button: HTMLButtonElement) {
+  const code = button.parentElement!.querySelector('code')!.textContent!
+  await copyText(code)
+
+  button.classList.add('is-copied')
+  button.title = '已复制'
+  button.setAttribute('aria-label', '已复制')
+  window.setTimeout(() => {
+    button.classList.remove('is-copied')
+    button.title = '复制代码'
+    button.setAttribute('aria-label', '复制代码')
+  }, 1500)
+}
 
 onMounted(() => {
   const navigate = () => {
@@ -37,6 +52,13 @@ onMounted(() => {
   const handleAnchors = (
     event: MouseEvent & { target: HTMLElement },
   ) => {
+    const copyButton = event.target.closest<HTMLButtonElement>('.code-copy-button')
+    if (copyButton) {
+      event.preventDefault()
+      void copyCode(copyButton)
+      return
+    }
+
     const link = event.target.closest('a')
 
     if (

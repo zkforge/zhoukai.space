@@ -46,7 +46,70 @@ html:not(.dark) .shiki span {
   font-family: 'DM Mono', 'Input Mono', 'Fira Code', monospace;
   font-size: 0.92em;
   line-height: 1.4;
+  margin: 0;
+}
+
+.prose .code-block {
+  position: relative;
   margin: 0.5em 0;
+}
+
+.prose .code-block .shiki {
+  padding-right: 3.25rem;
+}
+
+.prose .code-copy-button {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  z-index: 2;
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  color: #929292;
+  background: transparent;
+  border: 0;
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+.dark .prose .code-copy-button {
+  color: #a6a6a6;
+}
+
+.prose .code-copy-button:hover {
+  color: var(--fg-deeper);
+}
+
+.prose .code-copy-button:focus-visible {
+  color: var(--fg-deeper);
+  outline: 2px solid currentcolor;
+  outline-offset: 2px;
+}
+
+.prose .code-copy-button .copy-icon,
+.prose .code-copy-button .check-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.prose .code-copy-button .check-icon {
+  display: none;
+}
+
+.prose .code-copy-button.is-copied {
+  color: var(--fg-deeper);
+}
+
+.prose .code-copy-button.is-copied .copy-icon {
+  display: none;
+}
+
+.prose .code-copy-button.is-copied .check-icon {
+  display: block;
 }
 
 .prose img {
