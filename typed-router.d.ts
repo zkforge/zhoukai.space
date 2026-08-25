@@ -262,6 +262,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/steering-claude-code': RouteRecordInfo<
+      '/posts/steering-claude-code',
+      '/posts/steering-claude-code',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/train-gpt': RouteRecordInfo<
       '/posts/train-gpt',
       '/posts/train-gpt',
@@ -562,6 +569,14 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/slurm-gvitop-nvitop.md': {
       routes:
         | '/posts/slurm-gvitop-nvitop'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'pages/posts/steering-claude-code.md': {
+      routes:
+        | '/posts/steering-claude-code'
       views:
         | never
       pathParamNames:
