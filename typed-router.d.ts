@@ -101,6 +101,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/building-skills-for-claude': RouteRecordInfo<
+      '/posts/building-skills-for-claude',
+      '/posts/building-skills-for-claude',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/claude-code-dynamic-workflows': RouteRecordInfo<
       '/posts/claude-code-dynamic-workflows',
       '/posts/claude-code-dynamic-workflows',
@@ -371,6 +378,14 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/arxiv-translation-tools.md': {
       routes:
         | '/posts/arxiv-translation-tools'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'pages/posts/building-skills-for-claude.md': {
+      routes:
+        | '/posts/building-skills-for-claude'
       views:
         | never
       pathParamNames:
