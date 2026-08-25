@@ -283,4 +283,4 @@ Skill 的本质不是“把提示词保存成文件”，而是把一套可重�
 
 如果你已经在某件事上形成了稳定流程，下一次不妨问自己：这套流程是不是还要在每个新对话里重新解释？如果答案是“是”，那它可能已经到了应该被写成 Skill 的时候。
 
-> 本文根据《The Complete Guide to Building Skills for Claude》整理和改写。原 PDF 为 2026 年 1 月版本；其中关于产品界面、API beta 能力和分发方式的描述，发布前应以当前官方文档为准。
+> 本文根据《The Complete Guide to Building Skills for Claude》整理和改写。原 PDF 为 2026 年 1 月版本。

@@ -1,5 +1,5 @@
 ---
-title: "如何驾驭 Claude Code：CLAUDE.md、Rules、Skills、Hooks 与 Subagents 的分工指南"
+title: "如何驾驭 Claude Code ？"
 date: 2026-08-25T14:00:00+08:00
 lang: zh
 draft: false
@@ -8,9 +8,9 @@ description: "基于 Anthropic 官方文章，梳理 Claude Code 七种指令与
 
 [[toc]]
 
-> 本文根据 Anthropic 的《[Steering Claude Code: when to use CLAUDE.md, skills, hooks, and subagents](https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more)》重述而成。重点不是逐句翻译，而是把原文的判断框架整理成一篇适合中文开发者阅读和落地的实践文章。
+> 本文根据 Anthropic 的《[Steering Claude Code: when to use CLAUDE.md, skills, hooks, and subagents](https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more)》重述而成。
 
-## 先问一句：这条指令应该放在哪里
+## 指令应该放在哪里
 
 Claude Code 可以被定制，但“把要求写进某个 Markdown 文件”并不是唯一答案。当前有七种主要方式可以影响它的行为：`CLAUDE.md`、Rules、Skills、Subagents、Hooks、Output styles，以及启动时追加的 system prompt。
 
@@ -159,7 +159,7 @@ claude --append-system-prompt "所有回答先给出结论，再给出最小必�
 
 它的缺点也很明确：每次启动都要传入，且指令越多，模型越容易在多个要求之间分散注意力。临时格式要求、特定领域背景和一次性的编码规范适合放在这里；需要跨会话稳定存在的内容，则应该回到项目文件或可复用机制中。
 
-## 常见的放错位置
+## 常见的错位
 
 ### “每次都要自动运行”写进 `CLAUDE.md`
 
@@ -181,7 +181,7 @@ claude --append-system-prompt "所有回答先给出结论，再给出最小必�
 
 “我喜欢语义化提交信息”是个人偏好；“团队所有提交都必须遵守某种格式”才是项目规范。前者应该放在用户级配置，后者才进入共享仓库。
 
-## 一套够用的选型口诀
+## 选型口诀
 
 当你不知道某条指令该放在哪里时，可以按下面的顺序判断：
 
@@ -194,7 +194,7 @@ claude --append-system-prompt "所有回答先给出结论，再给出最小必�
 
 这些机制不是彼此竞争的七个“高级提示词入口”，而是一套分层系统：上下文负责提供事实，规则负责表达约束，Skill 负责组织流程，Subagent 负责隔离工作，Hook 负责确定性执行，Output style 和 system prompt 负责调整全局行为。
 
-## 最后：少写常驻提示，多做正确分层
+## 少写常驻提示，多做正确分层
 
 Claude Code 的可定制性越强，越容易把所有经验都塞进同一个 `CLAUDE.md`。但真正成熟的配置，通常不是“写得更多”，而是“放得更对”。
 
