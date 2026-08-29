@@ -192,6 +192,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/lingcha-algorithm-learning-list': RouteRecordInfo<
+      '/posts/lingcha-algorithm-learning-list',
+      '/posts/lingcha-algorithm-learning-list',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/linux-order': RouteRecordInfo<
       '/posts/linux-order',
       '/posts/linux-order',
@@ -489,6 +496,14 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/huggingface.md': {
       routes:
         | '/posts/huggingface'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'pages/posts/lingcha-algorithm-learning-list.md': {
+      routes:
+        | '/posts/lingcha-algorithm-learning-list'
       views:
         | never
       pathParamNames:
