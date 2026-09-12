@@ -67,7 +67,7 @@ onMounted(() => {
       && event.button === 0
       && link.target !== '_blank'
       && link.rel !== 'external'
-      && !link.download
+      && !link.hasAttribute('download')
       && !event.metaKey
       && !event.ctrlKey
       && !event.shiftKey
