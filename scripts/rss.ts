@@ -43,7 +43,7 @@ async function buildBlogRSS() {
           const raw = await fs.readFile(i, 'utf-8')
           const { data, content } = matter(raw)
 
-          if (!data.lang?.startsWith('zh'))
+          if (data.draft)
             return
 
           const html = markdown.render(content)
