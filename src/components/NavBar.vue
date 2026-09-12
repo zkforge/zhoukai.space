@@ -50,6 +50,9 @@ const { y: scroll } = useWindowScroll()
           <div i-ri-compass-3-line />
           <span class="lt-md:hidden">Links</span>
         </RouterLink>
+        <a href="https://bsky.app/profile/zhoukai.space" target="_blank" title="Bluesky" aria-label="Bluesky" class="lt-md:hidden">
+          <div i-ri-bluesky-line />
+        </a>
         <a href="https://github.com/zkforge" target="_blank" title="GitHub" class="lt-md:hidden">
           <div i-uil-github-alt />
         </a>
