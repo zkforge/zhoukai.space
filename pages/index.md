@@ -36,6 +36,7 @@ Find me on
   <a href="https://github.com/zkforge" target="_blank"><span op75 i-simple-icons-github /> GitHub</a>
   <a href="https://x.com/xk_iuy" target="_blank"><span op75 i-ri-twitter-x-fill /> Twitter</a>
   <a href="https://www.linkedin.com/in/kaizhou0305/" target="_blank"><span op75 i-ri-linkedin-box-fill /> LinkedIn</a>
+  <WeChatLink wechat-id="zk471104594" />
 </p>
 
 Or email me at <a href="mailto:kaizhou0305@gmail.com"><span font-mono>kaizhou0305<span i-carbon-at />gmail.com</span></a>
