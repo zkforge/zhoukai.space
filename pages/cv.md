@@ -5,6 +5,8 @@ lang: en
 art: dots
 ---
 
+[[toc]]
+
 Master's student in Artificial Intelligence at Jilin University, focused on LLM and Agent algorithms. I build reliable multimodal agents, tool-using systems, and the infrastructure needed to train and evaluate them.
 
 <p flex="~ gap-3 wrap" class="print:hidden">
