@@ -49,7 +49,7 @@ function getGroupName(p: Post) {
   <ul>
     <template v-if="!posts.length">
       <div py2 op50>
-        文章正在整理中。
+        Posts are on the way.
       </div>
     </template>
 
@@ -87,15 +87,20 @@ function getGroupName(p: Post) {
           <li class="no-underline" flex="~ col md:row gap-2 md:items-center">
             <div class="title text-lg leading-1.2em" flex="~ gap-2 wrap">
               <span
-                v-if="route.lang === 'zh'"
+                v-if="route.lang === 'en'"
                 align-middle flex-none
                 class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 ml--12 mr2 my-auto hidden md:block"
+              >English</span>
+              <span
+                v-if="route.lang === 'zh'"
+                align-middle flex-none
+                class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 ml--8 mr2 my-auto hidden md:block"
               >中文</span>
               <span
                 v-if="route.lang === 'ja'"
                 align-middle flex-none
                 class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 ml--15 mr2 my-auto hidden md:block"
-              >日本語</span>
+              >Japanese</span>
               <span align-middle>{{ route.title }}</span>
               <span
                 v-if="route.redirect"
@@ -132,6 +137,11 @@ function getGroupName(p: Post) {
               <span v-if="route.platform" text-sm op40 ws-nowrap>· {{ route.platform }}</span>
               <span v-if="route.place" text-sm op40 ws-nowrap md:hidden>· {{ route.place }}</span>
               <span
+                v-if="route.lang === 'en'"
+                align-middle flex-none
+                class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 my-auto md:hidden"
+              >English</span>
+              <span
                 v-if="route.lang === 'zh'"
                 align-middle flex-none
                 class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 my-auto md:hidden"
@@ -140,7 +150,7 @@ function getGroupName(p: Post) {
                 v-if="route.lang === 'ja'"
                 align-middle flex-none
                 class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 my-auto md:hidden"
-              >日本語</span>
+              >Japanese</span>
             </div>
           </li>
           <div v-if="route.place" op50 text-sm hidden mt--2 md:block>

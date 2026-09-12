@@ -9,7 +9,7 @@ function slug(name: string) {
 <template>
   <div class="max-w-300 mx-auto">
     <p text-center mt--6 mb5 op50 text-lg italic>
-      一些产品、工具与研究项目。
+      Products, tools, and research projects.
     </p>
     <div class="prose pb5 mx-auto mt10 text-center">
       <div flex="~ wrap gap-2 justify-center">
@@ -33,7 +33,7 @@ function slug(name: string) {
             i-ph-git-merge-duotone
             group-hover="i-ph-git-merge-fill text-amber"
           />
-          开源贡献
+          Pull Requests
         </a>
       </div>
       <hr>

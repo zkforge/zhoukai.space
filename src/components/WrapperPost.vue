@@ -14,7 +14,7 @@ const content = ref<HTMLDivElement>()
 const { copy: copyText } = useClipboard()
 
 const base = 'https://zhoukai.space'
-const shareText = computed(() => `正在阅读周凯的文章：${base}${route.path}`)
+const shareText = computed(() => `Reading a post by Kai Zhou: ${base}${route.path}`)
 const tweetUrl = computed(() => `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText.value)}`)
 const elkUrl = computed(() => `https://elk.zone/intent/post?text=${encodeURIComponent(shareText.value)}`)
 const blueskyUrl = computed(() => `https://bsky.app/intent/compose?text=${encodeURIComponent(shareText.value)}`)
@@ -24,12 +24,12 @@ async function copyCode(button: HTMLButtonElement) {
   await copyText(code)
 
   button.classList.add('is-copied')
-  button.title = '已复制'
-  button.setAttribute('aria-label', '已复制')
+  button.title = 'Copied'
+  button.setAttribute('aria-label', 'Copied')
   window.setTimeout(() => {
     button.classList.remove('is-copied')
-    button.title = '复制代码'
-    button.setAttribute('aria-label', '复制代码')
+    button.title = 'Copy code'
+    button.setAttribute('aria-label', 'Copy code')
   }, 1500)
 }
 

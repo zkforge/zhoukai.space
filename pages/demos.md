@@ -1,10 +1,10 @@
 ---
-title: 小实验
-description: 周凯的小实验
-lang: zh-CN
-art: plum
+title: Demos
+description: Demos by Kai Zhou
+lang: en
+art: dots
 ---
 
-这里会放一些围绕 AI、交互和开发工具制作的小实验。
+<!-- @layout-full-width -->
 
-内容正在整理中。
+<ListDemos />

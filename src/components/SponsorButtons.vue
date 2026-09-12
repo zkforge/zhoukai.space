@@ -33,7 +33,7 @@ defineProps<{
         group-hover="i-ph-lightning-fill text-yellow"
         transition-all duration-200 ease-out
       />
-      爱发电
+      Afdian
     </a>
   </p>
 </template>

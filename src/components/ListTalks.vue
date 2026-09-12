@@ -32,12 +32,12 @@ function daysLeft(date: string) {
           v-if="talk.lang === 'ja'"
           align-top flex-none ml2
           class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 my-auto"
-        >日本語</span>
+        >Japanese</span>
         <span
           v-if="talk.lang === 'zh'"
           align-top flex-none
           class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 my-auto"
-        >中文</span>
+        >Chinese</span>
         <a class="header-anchor" :href="`#${getSlug(talk.title)}`" aria-hidden="true">#</a>
       </h2>
       <div v-if="talk.description" op75 pt2 :lang="talk.lang">
@@ -54,12 +54,12 @@ function daysLeft(date: string) {
                 v-if="p.lang === 'zh'"
                 align-top flex-none ml2
                 class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 my-auto"
-              >中文</span>
+              >Chinese</span>
               <span
                 v-if="p.lang === 'ja'"
                 align-top flex-none ml2
                 class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 my-auto"
-              >日本語</span>
+              >Japanese</span>
               <div text-sm op50>
                 {{ formatDate(p.date, false) }} · {{ p.location }}
               </div>

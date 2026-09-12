@@ -99,7 +99,7 @@ export default defineConfig({
 
         const renderFence = md.renderer.rules.fence!
         const copyButton = [
-          '<button type="button" class="code-copy-button" title="复制代码" aria-label="复制代码" aria-live="polite">',
+          '<button type="button" class="code-copy-button" title="Copy code" aria-label="Copy code" aria-live="polite">',
           '<span class="copy-icon i-carbon-copy" aria-hidden="true"></span>',
           '<span class="check-icon i-carbon-checkmark" aria-hidden="true"></span>',
           '</button>',

@@ -8,7 +8,7 @@ import MarkdownIt from 'markdown-it'
 
 const DOMAIN = 'https://zhoukai.space'
 const AUTHOR = {
-  name: '周凯',
+  name: 'Kai Zhou',
   link: DOMAIN,
 }
 const markdown = MarkdownIt({
@@ -25,11 +25,11 @@ async function buildBlogRSS() {
   const files = await fg('pages/posts/*.md')
 
   const options = {
-    title: '周凯',
-    description: '周凯的博客',
+    title: 'Kai Zhou\'s Blog',
+    description: 'Writing by Kai Zhou',
     id: `${DOMAIN}/`,
     link: `${DOMAIN}/`,
-    copyright: 'CC BY-NC-SA 4.0 2026-PRESENT © 周凯',
+    copyright: 'CC BY-NC-SA 4.0 2026-PRESENT © Kai Zhou',
     feedLinks: {
       json: `${DOMAIN}/feed.json`,
       atom: `${DOMAIN}/feed.atom`,

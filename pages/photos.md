@@ -1,10 +1,10 @@
 ---
-title: 照片
-description: 周凯的照片
-lang: zh-CN
+title: Photos
+description: Photos by Kai Zhou
+lang: en
 art: dots
 ---
 
-这里会收集旅途和日常生活中值得留下的画面。
+This page will collect moments worth keeping from everyday life and my travels.
 
-内容正在整理中。
+More photos are on the way.

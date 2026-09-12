@@ -1,17 +1,17 @@
 ---
-title: 项目
-description: 周凯的项目
+title: Projects
+description: Projects by Kai Zhou
 wrapperClass: 'text-center'
-lang: zh-CN
+lang: en
 art: dots
 projects:
-  产品:
+  Products:
     - name: ConfBar
-      desc: 原生 SwiftUI macOS 菜单栏应用，查看 CCFDDL 收录会议的近期截稿时间与倒计时。
+      desc: A native SwiftUI macOS menu bar app for viewing upcoming deadlines and countdowns for conferences listed by CCFDDL.
       link: https://github.com/zkforge/CCFDDLMenuBar
       icon: i-ri-macbook-line
     - name: LaTeX Resume Template
-      desc: 可直接编译的一页式中文 LaTeX 简历模板，提供 XeLaTeX 工作流与占位内容。
+      desc: A ready-to-compile, one-page Chinese LaTeX resume template with an XeLaTeX workflow and placeholder content.
       link: https://github.com/zkforge/latex-resume-template
       icon: i-simple-icons-latex
 ---

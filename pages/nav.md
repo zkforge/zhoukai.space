@@ -1,12 +1,12 @@
 ---
-title: 导航
-description: 周凯的网址导航
+title: Links
+description: Kai Zhou's collection of useful links
 wrapperClass: 'text-center'
-lang: zh-CN
+lang: en
 art: dots
 links:
   - name: GitHub
-    desc: 代码托管与开源社区
+    desc: Code hosting and open-source community
     link: https://github.com
     icon: i-ri-github-line
   - name: Claude
@@ -18,15 +18,15 @@ links:
     link: https://chatgpt.com
     icon: i-ri-chat-smile-3-line
   - name: Hugging Face
-    desc: 模型与数据集社区
+    desc: Model and dataset community
     link: https://huggingface.co
     icon: i-ri-robot-line
   - name: arXiv
-    desc: 学术论文预印本
+    desc: Academic paper preprints
     link: https://arxiv.org
     icon: i-ri-file-paper-2-line
   - name: GitHub Trending
-    desc: 热门开源项目
+    desc: Trending open-source projects
     link: https://github.com/trending
     icon: i-ri-fire-line
 ---

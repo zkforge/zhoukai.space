@@ -1,6 +1,6 @@
 **[zhoukai.space](https://zhoukai.space)**
 
-周凯的个人网站。
+Kai Zhou's personal website.
 
 <br>
 
