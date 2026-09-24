@@ -9,11 +9,11 @@ Hey, I'm Kai Zhou.
 
 I'm a developer curious about artificial intelligence, software engineering, and product design.
 
-I enjoy breaking down complex problems and turning ideas into tools people can actually use. This site is where I share the [projects](/projects) I'm working on, the [articles](/posts) I write, and ideas I pick up along the way. You can also find the [tools and setup](/use) I use every day.
+I enjoy breaking down complex problems and turning ideas into tools people can actually use. This site is where I share the [<span op75 i-ri-lightbulb-line /> projects](/projects) I'm working on, the [<span op75 i-ri-article-line /> articles](/posts) I write, and ideas I pick up along the way. You can also find the [<span op75 i-ri-tools-line /> tools and setup](/use) I use every day.
 
 Lately, I've been exploring AI applications, open-source tools, and more natural ways for people to work with computers. Rather than chasing every new buzzword, I care more about whether a tool is clear, reliable, and genuinely reduces repetitive work.
 
-When I'm not coding, I read, take photos, or wander somewhere I haven't been before. Some of those moments end up in my [photos](/photos).
+When I'm not coding, I read, take photos, or wander somewhere I haven't been before. Some of those moments end up in my [<span op75 i-ri-camera-3-line /> photos](/photos).
 
 <div flex-auto />
 
