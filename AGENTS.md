@@ -12,19 +12,11 @@ This repository is the source for Zhou Kai's personal website. Preserve its exis
 - Do not restore template-author identity, links, services, or placeholder metrics.
 - Before handoff, run `pnpm lint`, `pnpm build`, and `git diff --check`. Visually inspect affected public pages at desktop and narrow widths.
 
+## Photos
+
+`pages/photos.md` uses the full-width `PhotoGalleryAll.vue` gallery. Photos live under `photos/` with matching JSON sidecars for captions and blurhash values; `photos/data.ts` is generated from them. To add photos, copy the originals into `photos/`, run `pnpm photos`, add or review captions in the generated sidecars, and run `pnpm photos` again. Verify loading, layout, dark mode, and narrow screens.
+
 ## Deferred Restores
-
-### Photos
-
-`pages/photos.md` intentionally remains a normal-width placeholder. `PhotoGalleryAll.vue` is reusable, but it imports the currently absent `photos/data.ts`.
-
-Until authentic personal photos and valid generated photo data exist:
-
-- keep the placeholder route and existing navigation entry;
-- do not add `display: ''`, `<!-- @layout-full-width -->`, or `<PhotoGalleryAll />`;
-- do not delete the reusable photo components.
-
-When real photos are supplied, restore the feature as one change: add the assets, generate or validate `photos/data.ts` through the existing photo workflow, restore the page-level display/full-width configuration and gallery component, then verify loading, layout, dark mode, and narrow screens.
 
 ### Demos
 

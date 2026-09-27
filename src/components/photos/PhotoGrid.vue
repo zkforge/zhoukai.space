@@ -14,6 +14,7 @@ defineProps<{
       <img
         :src="photo.url"
         :alt="photo.text"
+        :lang="photo.lang"
         :data-photo-index="idx"
         :style="photo.blurhash && view !== 'contain' ? blurhashToGradientCssObject(photo.blurhash) as any : ''"
         loading="lazy"

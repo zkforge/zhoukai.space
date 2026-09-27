@@ -42,11 +42,11 @@ const { y: scroll } = useWindowScroll()
           <div i-ri-screenshot-line />
           <span class="lt-md:hidden">Demos</span>
         </RouterLink>
-        <!-- <RouterLink class="nav-item" to="/photos" title="Photos">
+        <RouterLink class="nav-item" to="/photos" title="Photos">
           <div i-ri-camera-3-line />
           <span class="lt-md:hidden">Photos</span>
         </RouterLink>
-        <RouterLink class="nav-item" to="/nav" title="Links">
+        <!-- <RouterLink class="nav-item" to="/nav" title="Links">
           <div i-ri-compass-3-line />
           <span class="lt-md:hidden">Links</span>
         </RouterLink> -->

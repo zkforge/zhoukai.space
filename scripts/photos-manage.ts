@@ -113,3 +113,43 @@ for (const json of await fg('**/*.json', {
   if (!existsSync(json.replace(/\.json$/, '.jpg')))
     await fs.unlink(json)
 }
+
+// Generate the gallery data from the processed images and their sidecars.
+const photos = await Promise.all(files
+  .filter(filepath => basename(filepath).startsWith('p-'))
+  .reverse()
+  .map(async (filepath) => {
+    const configFile = filepath.replace(/\.\w+$/, '.json')
+    const config = existsSync(configFile)
+      ? JSON.parse(await fs.readFile(configFile, 'utf-8')) as { text?: string, lang?: string, blurhash?: string }
+      : {}
+    return { filename: basename(filepath), ...config }
+  }))
+
+const imports = [...photos].reverse().map((photo, index) => `import photo${index} from './${photo.filename}?url'`)
+function quote(value: string) {
+  const escaped = value
+    .replaceAll('\\', '\\\\')
+    .replaceAll(/'/g, '\\\'')
+    .replaceAll('\n', '\\n')
+    .replaceAll('\r', '\\r')
+  return `'${escaped}'`
+}
+const entries = photos.map((photo, index) => `  { url: photo${photos.length - index - 1}, text: ${quote(photo.text || '')}, lang: ${quote(photo.lang || 'en')}, blurhash: ${quote(photo.blurhash || '')} },`)
+await fs.writeFile(join(folder, 'data.ts'), [
+  ...imports,
+  '',
+  'export interface Photo {',
+  '  url: string',
+  '  text: string',
+  '  lang?: string',
+  '  blurhash?: string',
+  '}',
+  '',
+  'const photos: Photo[] = [',
+  ...entries,
+  ']',
+  '',
+  'export default photos',
+  '',
+].join('\n'))
