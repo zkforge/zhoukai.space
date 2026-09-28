@@ -2,7 +2,7 @@
 title: Kai Zhou
 description: Kai Zhou's personal website
 lang: en
-art: random
+art: plum
 ---
 
 Hey, I'm Kai Zhou.
