@@ -6,6 +6,10 @@ lang: en
 art: dots
 projects:
   Products:
+    - name: DSH Claude Desktop Theme
+      desc: A Claude-inspired theme plugin for DeepSeek Harness Desktop, with light and dark modes on macOS and Windows
+      link: https://github.com/zkforge/dsh-claude-desktop-theme
+      icon: i-ri-palette-line
     - name: DDLBar
       desc: Native macOS menu bar app (SwiftUI) for conference deadlines and countdowns
       link: https://github.com/zkforge/DDLBar
