@@ -185,6 +185,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/posts/harness-engineering-for-self-improvement': RouteRecordInfo<
+      '/posts/harness-engineering-for-self-improvement',
+      '/posts/harness-engineering-for-self-improvement',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/posts/how-to-review': RouteRecordInfo<
       '/posts/how-to-review',
       '/posts/how-to-review',
@@ -495,6 +502,14 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/gtc-git-clone-cd.md': {
       routes:
         | '/posts/gtc-git-clone-cd'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'pages/posts/harness-engineering-for-self-improvement.md': {
+      routes:
+        | '/posts/harness-engineering-for-self-improvement'
       views:
         | never
       pathParamNames:
