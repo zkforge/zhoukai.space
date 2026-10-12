@@ -6,6 +6,9 @@ settings:
 
 catalogs:
   build:
+    '@mdit/plugin-katex-slim':
+      specifier: 1.0.0
+      version: 1.0.0
     '@shikijs/markdown-it':
       specifier: ^4.3.1
       version: 4.3.1
@@ -179,6 +182,9 @@ catalogs:
     floating-vue:
       specifier: ^5.2.2
       version: 5.2.2
+    katex:
+      specifier: ^0.16.45
+      version: 0.16.45
     matter-attractors:
       specifier: ^0.1.6
       version: 0.1.6
@@ -275,6 +281,9 @@ importers:
       floating-vue:
         specifier: catalog:frontend
         version: 5.2.2(vue@3.5.39(typescript@6.0.3))
+      katex:
+        specifier: catalog:frontend
+        version: 0.16.45
       matter-attractors:
         specifier: catalog:frontend
         version: 0.1.6
@@ -318,6 +327,9 @@ importers:
       '@iconify/json':
         specifier: catalog:dev
         version: 2.2.497
+      '@mdit/plugin-katex-slim':
+        specifier: catalog:build
+        version: 1.0.0(katex@0.16.45)(markdown-it@14.3.0)
       '@octokit/core':
         specifier: catalog:dev
         version: 7.0.6
@@ -1033,6 +1045,36 @@ packages:
   '@mdit-vue/types@3.0.2':
     resolution: {integrity: sha512-00aAZ0F0NLik6I6Yba2emGbHLxv+QYrPH00qQ5dFKXlAo1Ll2RHDXwY7nN2WAfrx2pP+WrvSRFTGFCNGdzBDHw==}
     engines: {node: '>=20.0.0'}
+
+  '@mdit/helper@1.0.0':
+    resolution: {integrity: sha512-41xcry30Rw4vQytu9BNuofzAdHyeiTmJzJrzE3t3gGkfs+e/0Jxd/yctNwWV3cItYcWOQ03vjMV9fmhXQE0FSQ==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-katex-slim@1.0.0':
+    resolution: {integrity: sha512-djiwQaMxGyU+NCCJ0J1lHTkdKpJyzfnFSlpnplgcLHcoxST/SxiUO6CiJb0Mjq3y8W5N9UpwA2WfmxQPesES1g==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      katex: ^0.16.25 || ^0.17.0
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      katex:
+        optional: true
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-tex@1.0.0':
+    resolution: {integrity: sha512-Umg1+lwigPUSk/5IUWh13XsVQtaMOsUhP3Q64v3x6FFSMkOHi8QE+fI/crJLxLho04L/G+HYx9yNVMZSs4+0wA==}
+    engines: {node: '>=22'}
+    peerDependencies:
+      markdown-it: ^14.2.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
 
   '@napi-rs/wasm-runtime@1.1.4':
     resolution: {integrity: sha512-3NQNNgA1YSlJb/kMH1ildASP9HW7/7kYnRI2szWJaofaS1hWmbGI4H+d3+22aGzXXN9IJ+n+GiFVcGipJP18ow==}
@@ -5300,6 +5342,27 @@ snapshots:
       markdown-it: 14.3.0
 
   '@mdit-vue/types@3.0.2': {}
+
+  '@mdit/helper@1.0.0(markdown-it@14.3.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 14.3.0
+
+  '@mdit/plugin-katex-slim@1.0.0(katex@0.16.45)(markdown-it@14.3.0)':
+    dependencies:
+      '@mdit/helper': 1.0.0(markdown-it@14.3.0)
+      '@mdit/plugin-tex': 1.0.0(markdown-it@14.3.0)
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      katex: 0.16.45
+      markdown-it: 14.3.0
+
+  '@mdit/plugin-tex@1.0.0(markdown-it@14.3.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 14.3.0
 
   '@napi-rs/wasm-runtime@1.1.4(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)':
     dependencies:

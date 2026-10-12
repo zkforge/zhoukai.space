@@ -105,7 +105,7 @@ git bisect skip $(git rev-list \--grep irrelevant \<good place\> HEAD)
 
 ### **允许的 scope**
 
-Scope 可以是任何指定提交更改位置的标识。例如 **$location**、**$browser**、**$compile**、**$rootScope**、**ngHref**、**ngClick**、**ngView** 等...
+Scope 可以是任何指定提交更改位置的标识。例如 **\$location**、**\$browser**、**\$compile**、**\$rootScope**、**ngHref**、**ngClick**、**ngView** 等...
 
 如果没有更合适的 scope，可以使用 `*`。
 

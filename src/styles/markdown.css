@@ -36,6 +36,21 @@ html:not(.dark) .shiki span {
 }
 
 /* Prose */
+.prose .katex {
+  font-size: 1.1em;
+}
+
+.prose .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5em 0;
+}
+
+.prose .katex-display > .katex {
+  width: max-content;
+  min-width: 100%;
+}
+
 .prose pre:not(.shiki) {
   padding: 0;
   margin: 0;

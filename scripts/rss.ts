@@ -1,5 +1,6 @@
 import type { FeedOptions, Item } from 'feed'
 import { dirname } from 'node:path'
+import { katex } from '@mdit/plugin-katex-slim'
 import fg from 'fast-glob'
 import { Feed } from 'feed'
 import fs from 'fs-extra'
@@ -15,7 +16,7 @@ const markdown = MarkdownIt({
   html: true,
   breaks: true,
   linkify: true,
-})
+}).use(katex, { output: 'mathml', throwOnError: true })
 
 async function run() {
   await buildBlogRSS()

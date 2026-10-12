@@ -1,4 +1,5 @@
 import { resolve } from 'node:path'
+import { katex } from '@mdit/plugin-katex-slim'
 import MarkdownItShiki from '@shikijs/markdown-it'
 import { transformerNotationDiff, transformerNotationHighlight, transformerNotationWordHighlight } from '@shikijs/transformers'
 import { rendererRich, transformerTwoslash } from '@shikijs/twoslash'
@@ -79,6 +80,8 @@ export default defineConfig({
         quotes: '""\'\'',
       },
       async markdownItSetup(md) {
+        md.use(katex, { throwOnError: true })
+
         md.use(await MarkdownItShiki({
           themes: {
             dark: 'vitesse-dark',

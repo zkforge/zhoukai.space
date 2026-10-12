@@ -10,6 +10,7 @@ import App from './App.vue'
 import '@unocss/reset/tailwind.css'
 
 import 'floating-vue/dist/style.css'
+import 'katex/dist/katex.min.css'
 
 import 'markdown-it-github-alerts/styles/github-colors-light.css'
 import 'markdown-it-github-alerts/styles/github-colors-dark-class.css'

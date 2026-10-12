@@ -9,6 +9,7 @@ packages: []
 
 catalogs:
   build:
+    '@mdit/plugin-katex-slim': 1.0.0
     '@shikijs/markdown-it': ^4.3.1
     '@shikijs/transformers': ^4.3.1
     '@shikijs/twoslash': ^4.3.1
@@ -68,6 +69,7 @@ catalogs:
     d3-shape: ^3.2.0
     dayjs: ^1.11.21
     floating-vue: ^5.2.2
+    katex: ^0.16.45
     matter-attractors: ^0.1.6
     matter-js: ^0.20.0
     nprogress: ^0.2.0
