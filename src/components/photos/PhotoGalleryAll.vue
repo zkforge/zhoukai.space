@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import raw from '../../../photos/data'
-import { galleryView } from '../../logics'
+import { galleryView, t } from '../../logics'
 
 const props = defineProps<{
   limit?: number
@@ -20,7 +20,7 @@ function toggleView() {
 <template>
   <div flex="~ gap-1 col items-center justify-center" absolute sm:fixed left-6 top-20>
     <button
-      title="Switch view"
+      :title="t('切换视图', 'Switch view')"
       rounded-full p2 op20 hover="op100 bg-#8881"
       @click="toggleView"
     >

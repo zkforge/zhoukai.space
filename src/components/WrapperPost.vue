@@ -1,5 +1,6 @@
 <script setup lang='ts'>
-import { formatDate } from '~/logics'
+import { useHead } from '@unhead/vue'
+import { formatDate, locale, t } from '~/logics'
 
 const { frontmatter } = defineProps({
   frontmatter: {
@@ -13,8 +14,18 @@ const route = useRoute()
 const content = ref<HTMLDivElement>()
 const { copy: copyText } = useClipboard()
 
+const pageTitle = computed(() => frontmatter.display ?? frontmatter.title)
+const pageTitleEn = computed(() => frontmatter.displayEn ?? frontmatter.titleEn)
+
+// Translated pages carry `titleEn`; posts keep their own title in both modes.
+if (frontmatter.titleEn) {
+  useHead({
+    title: computed(() => locale.value === 'en' ? frontmatter.titleEn : frontmatter.title),
+  })
+}
+
 const base = 'https://zhoukai.space'
-const shareText = computed(() => `Reading a post by Kai Zhou: ${base}${route.path}`)
+const shareText = computed(() => `${t('正在阅读周凯的文章：', 'Reading a post by Kai Zhou: ')}${base}${route.path}`)
 const tweetUrl = computed(() => `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText.value)}`)
 const elkUrl = computed(() => `https://elk.zone/intent/post?text=${encodeURIComponent(shareText.value)}`)
 const blueskyUrl = computed(() => `https://bsky.app/intent/compose?text=${encodeURIComponent(shareText.value)}`)
@@ -24,13 +35,16 @@ async function copyCode(button: HTMLButtonElement) {
   await copyText(code)
 
   button.classList.add('is-copied')
-  button.title = 'Copied'
-  button.setAttribute('aria-label', 'Copied')
+  setCopyLabel(button, t('已复制', 'Copied'))
   window.setTimeout(() => {
     button.classList.remove('is-copied')
-    button.title = 'Copy code'
-    button.setAttribute('aria-label', 'Copy code')
+    setCopyLabel(button, t('复制代码', 'Copy code'))
   }, 1500)
+}
+
+function setCopyLabel(button: HTMLButtonElement, label: string) {
+  button.title = label
+  button.setAttribute('aria-label', label)
 }
 
 onMounted(() => {
@@ -89,6 +103,11 @@ onMounted(() => {
     }
   }
 
+  watch(locale, () => {
+    content.value!.querySelectorAll<HTMLButtonElement>('.code-copy-button:not(.is-copied)')
+      .forEach(button => setCopyLabel(button, t('复制代码', 'Copy code')))
+  }, { immediate: true })
+
   useEventListener(window, 'hashchange', navigate)
   useEventListener(content.value!, 'click', handleAnchors, { passive: false })
 
@@ -117,22 +136,25 @@ const ArtComponent = computed(() => {
     <component :is="ArtComponent" />
   </ClientOnly>
   <div
-    v-if="frontmatter.display ?? frontmatter.title"
+    v-if="pageTitle"
     class="prose m-auto mb-8"
     :lang="frontmatter.lang"
     :class="[frontmatter.wrapperClass]"
   >
     <h1 class="mb-0 slide-enter-50">
-      {{ frontmatter.display ?? frontmatter.title }}
+      <I18n v-if="pageTitleEn" :zh="pageTitle" :en="pageTitleEn" />
+      <template v-else>
+        {{ pageTitle }}
+      </template>
     </h1>
     <p
       v-if="frontmatter.date"
       class="opacity-50 !-mt-6 slide-enter-50"
     >
-      {{ formatDate(frontmatter.date, false) }} <span v-if="frontmatter.duration">· {{ frontmatter.duration }}</span>
+      <I18n :zh="formatDate(frontmatter.date, false, 'zh')" :en="formatDate(frontmatter.date, false)" /> <span v-if="frontmatter.duration">· {{ frontmatter.duration }}</span>
     </p>
     <p v-if="frontmatter.place" class="mt--4!">
-      <span op50>at </span>
+      <span op50><I18n zh="于 " en="at " /></span>
       <a v-if="frontmatter.placeLink" :href="frontmatter.placeLink" target="_blank">
         {{ frontmatter.place }}
       </a>
@@ -150,7 +172,7 @@ const ArtComponent = computed(() => {
       v-if="frontmatter.draft"
       class="slide-enter" bg-orange-4:10 text-orange-4 border="l-3 orange-4" px4 py2
     >
-      This is a draft post, the content may be incomplete. Please check back later.
+      <I18n zh="这是一篇草稿，内容可能尚不完整，请稍后再来查看。" en="This is a draft post, the content may be incomplete. Please check back later." />
     </p>
   </div>
   <article
@@ -163,7 +185,7 @@ const ArtComponent = computed(() => {
   <div v-if="route.path !== '/'" class="prose m-auto mt-8 mb-8 slide-enter animate-delay-500 print:hidden">
     <template v-if="frontmatter.duration">
       <span font-mono op50>> </span>
-      <span op50>comment on </span>
+      <span op50><I18n zh="评论于 " en="comment on " /></span>
       <a :href="blueskyUrl" target="_blank" op50>bluesky</a>
       <span op25> / </span>
       <a :href="elkUrl" target="_blank" op50>mastodon</a>

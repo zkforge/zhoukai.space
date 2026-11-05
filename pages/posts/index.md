@@ -1,7 +1,7 @@
 ---
-title: Blog
-description: Writing by Kai Zhou
-lang: en
+title: 博客
+titleEn: Blog
+description: 周凯的文章
 art: plum
 ---
 

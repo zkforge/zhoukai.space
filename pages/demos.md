@@ -1,7 +1,7 @@
 ---
-title: Demos
-description: Demos by Kai Zhou
-lang: en
+title: 演示
+titleEn: Demos
+description: 周凯的演示
 art: dots
 ---
 

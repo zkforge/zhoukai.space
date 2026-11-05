@@ -1,5 +1,11 @@
 <script setup lang="ts">
+import { locale } from '~/logics'
+
 const route = useRoute()
+
+onMounted(() => {
+  locale.value = document.documentElement.classList.contains('lang-en') ? 'en' : 'zh'
+})
 
 const imageModel = ref<HTMLImageElement>()
 const imageAlt = ref<string>()

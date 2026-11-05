@@ -2,6 +2,7 @@
 interface Link {
   name: string
   desc: string
+  descEn?: string
   link: string
   icon?: string
 }
@@ -28,7 +29,10 @@ defineProps<{ links: Link[] }>()
         </div>
         <div class="flex-auto">
           <div class="text-normal">{{ item.name }}</div>
-          <div class="desc text-sm opacity-50 font-normal" v-html="item.desc" />
+          <div class="desc text-sm opacity-50 font-normal">
+            <span class="i18n-zh" lang="zh-CN" v-html="item.desc" />
+            <span class="i18n-en" lang="en" v-html="item.descEn ?? item.desc" />
+          </div>
         </div>
       </a>
     </div>

@@ -1,3 +1,15 @@
+/* Both languages are rendered; the inactive one is hidden. Default is Chinese. */
+html:not(.lang-en) .i18n-en,
+html.lang-en .i18n-zh {
+  display: none !important;
+}
+
+/* Synthetic italics read poorly in CJK text. */
+.i18n-zh em,
+.italic > .i18n-zh {
+  font-style: normal;
+}
+
 :root {
   --c-bg: #fff;
   --c-scrollbar: #eee;
@@ -104,7 +116,8 @@ html:not(.dark) [img-dark] {
 @media (prefers-reduced-motion: no-preference) {
   html:not(.no-sliding) [slide-enter],
   html:not(.no-sliding) .slide-enter,
-  html:not(.no-sliding) .slide-enter-content > *:not(:has(.table-of-contents)) {
+  html:not(.no-sliding) .slide-enter-content > *:not(:has(.table-of-contents)):not(.i18n-block),
+  html:not(.no-sliding) .slide-enter-content > .i18n-block > *:not(:has(.table-of-contents)) {
     --enter-stage: 0;
     --enter-step: 90ms;
     --enter-initial: 0ms;
@@ -112,64 +125,64 @@ html:not(.dark) [img-dark] {
     animation-delay: calc(var(--enter-initial) + var(--enter-stage) * var(--enter-step));
   }
 
-  .slide-enter-content > *:nth-child(1) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(1) {
     --enter-stage: 1 !important;
   }
-  .slide-enter-content > *:nth-child(2) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(2) {
     --enter-stage: 2 !important;
   }
-  .slide-enter-content > *:nth-child(3) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(3) {
     --enter-stage: 3 !important;
   }
-  .slide-enter-content > *:nth-child(4) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(4) {
     --enter-stage: 4 !important;
   }
-  .slide-enter-content > *:nth-child(5) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(5) {
     --enter-stage: 5 !important;
   }
-  .slide-enter-content > *:nth-child(6) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(6) {
     --enter-stage: 6 !important;
   }
-  .slide-enter-content > *:nth-child(7) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(7) {
     --enter-stage: 7 !important;
   }
-  .slide-enter-content > *:nth-child(8) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(8) {
     --enter-stage: 8 !important;
   }
-  .slide-enter-content > *:nth-child(9) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(9) {
     --enter-stage: 9 !important;
   }
-  .slide-enter-content > *:nth-child(10) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(10) {
     --enter-stage: 10 !important;
   }
-  .slide-enter-content > *:nth-child(11) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(11) {
     --enter-stage: 11 !important;
   }
-  .slide-enter-content > *:nth-child(12) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(12) {
     --enter-stage: 12 !important;
   }
-  .slide-enter-content > *:nth-child(13) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(13) {
     --enter-stage: 13 !important;
   }
-  .slide-enter-content > *:nth-child(14) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(14) {
     --enter-stage: 14 !important;
   }
-  .slide-enter-content > *:nth-child(15) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(15) {
     --enter-stage: 15 !important;
   }
-  .slide-enter-content > *:nth-child(16) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(16) {
     --enter-stage: 16 !important;
   }
-  .slide-enter-content > *:nth-child(17) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(17) {
     --enter-stage: 17 !important;
   }
-  .slide-enter-content > *:nth-child(18) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(18) {
     --enter-stage: 18 !important;
   }
-  .slide-enter-content > *:nth-child(19) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(19) {
     --enter-stage: 19 !important;
   }
-  .slide-enter-content > *:nth-child(20) {
+  :is(.slide-enter-content, .slide-enter-content > .i18n-block) > *:nth-child(20) {
     --enter-stage: 20 !important;
   }
 }

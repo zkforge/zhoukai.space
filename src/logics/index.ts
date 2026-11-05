@@ -4,6 +4,22 @@ export const isDark = useDark()
 export const englishOnly = useLocalStorage('zhoukai-english-only', false)
 export const galleryView = useLocalStorage<'cover' | 'contain'>('zhoukai-gallery-view', 'cover')
 
+// Visible copy renders both languages and CSS hides the inactive one (see main.css),
+// so SSG output and hydration stay stable. The inline script in index.html applies the
+// saved choice before paint; App.vue syncs this ref on mount for attributes and titles.
+export const locale = ref<'zh' | 'en'>('zh')
+
+export function toggleLocale() {
+  locale.value = locale.value === 'zh' ? 'en' : 'zh'
+  document.documentElement.classList.toggle('lang-en', locale.value === 'en')
+  document.documentElement.lang = locale.value === 'en' ? 'en' : 'zh-CN'
+  localStorage.setItem('zhoukai-locale', locale.value)
+}
+
+export function t(zh: string, en: string) {
+  return locale.value === 'en' ? en : zh
+}
+
 /**
  * Credit to [@hooray](https://github.com/hooray)
  * @see https://github.com/vuejs/vitepress/pull/2347
@@ -52,9 +68,9 @@ export function toggleDark(event: MouseEvent) {
     })
 }
 
-export function formatDate(d: string | Date, onlyDate = true) {
+export function formatDate(d: string | Date, onlyDate = true, lang: 'zh' | 'en' = 'en') {
   const date = dayjs(d)
   if (onlyDate || date.year() === dayjs().year())
-    return date.format('MMM D')
-  return date.format('MMM D, YYYY')
+    return date.format(lang === 'zh' ? 'M月D日' : 'MMM D')
+  return date.format(lang === 'zh' ? 'YYYY年M月D日' : 'MMM D, YYYY')
 }

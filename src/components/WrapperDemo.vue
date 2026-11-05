@@ -33,7 +33,9 @@ const { frontmatter, video, date } = defineProps({
 
       <div class="prose prose-sm p4 m0 pb3">
         <slot />
-        <div op50 text-sm pt2>{{ formatDate(date, false) }}</div>
+        <div op50 text-sm pt2>
+          <I18n :zh="formatDate(date, false, 'zh')" :en="formatDate(date, false)" />
+        </div>
       </div>
     </a>
   </div>

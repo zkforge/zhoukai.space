@@ -66,10 +66,11 @@ export default defineConfig({
     }),
 
     Markdown({
+      // `src/content/` holds per-language page bodies that pages import and wrap themselves.
       wrapperComponent: id => id.includes('/demo/')
         ? 'WrapperDemo'
-        : 'WrapperPost',
-      wrapperClasses: (id, code) => code.includes('@layout-full-width')
+        : id.includes('/src/content/') ? null : 'WrapperPost',
+      wrapperClasses: (id, code) => code.includes('@layout-full-width') || id.includes('/src/content/')
         ? ''
         : 'prose m-auto slide-enter-content',
       headEnabled: true,

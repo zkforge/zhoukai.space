@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import confetti from 'canvas-confetti'
+import { t } from '~/logics'
 
 const props = defineProps<{
   wechatId: string
@@ -91,18 +92,22 @@ onBeforeUnmount(() => {
     ref="button"
     type="button"
     class="wechat-copy"
-    :aria-label="`Copy WeChat ID ${wechatId}`"
+    :aria-label="`${t('复制微信号', 'Copy WeChat ID')} ${wechatId}`"
     @click="copyWechatId"
   >
     <span class="wechat-label">
       <span aria-hidden="true" class="wechat-icon i-simple-icons-wechat op75" />
-      <span class="wechat-text">WeChat</span>
+      <span class="wechat-text"><I18n zh="微信" en="WeChat" /></span>
     </span>
     <span class="wechat-tooltip" :class="{ 'is-visible': !!status }" aria-hidden="true">
-      {{ status === 'copied' ? 'Copied!' : status === 'failed' ? 'Copy failed' : wechatId }}
+      <I18n v-if="status === 'copied'" zh="已复制！" en="Copied!" />
+      <I18n v-else-if="status === 'failed'" zh="复制失败" en="Copy failed" />
+      <template v-else>
+        {{ wechatId }}
+      </template>
     </span>
     <span class="sr-only" aria-live="polite">
-      {{ status === 'copied' ? 'WeChat ID copied' : status === 'failed' ? 'Could not copy WeChat ID' : '' }}
+      {{ status === 'copied' ? t('微信号已复制', 'WeChat ID copied') : status === 'failed' ? t('无法复制微信号', 'Could not copy WeChat ID') : '' }}
     </span>
   </button>
 </template>

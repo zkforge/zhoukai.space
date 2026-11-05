@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Post } from '~/types'
 import { useRouter } from 'vue-router/auto'
-import { englishOnly, formatDate } from '~/logics'
+import { englishOnly, formatDate, t } from '~/logics'
 
 const props = defineProps<{
   type?: string
@@ -40,7 +40,7 @@ function isSameGroup(a: Post, b?: Post) {
 
 function getGroupName(p: Post) {
   if (isFuture(p.date))
-    return 'Upcoming'
+    return { zh: '即将发布', en: 'Upcoming' }
   return getYear(p.date)
 }
 </script>
@@ -49,7 +49,7 @@ function getGroupName(p: Post) {
   <ul>
     <template v-if="!posts.length">
       <div py2 op50>
-        Posts are on the way.
+        <I18n zh="文章正在路上。" en="Posts are on the way." />
       </div>
     </template>
 
@@ -62,7 +62,10 @@ function getGroupName(p: Post) {
           '--enter-step': '60ms',
         }"
       >
-        <span text-8em color-transparent absolute left--3rem top--2rem font-bold text-stroke-2 text-stroke-hex-aaa op10>{{ getGroupName(route) }}</span>
+        <span text-8em color-transparent absolute left--3rem top--2rem font-bold text-stroke-2 text-stroke-hex-aaa op10>
+          <template v-if="typeof getGroupName(route) === 'number'">{{ getGroupName(route) }}</template>
+          <I18n v-else v-bind="getGroupName(route) as { zh: string, en: string }" />
+        </span>
       </div>
       <div
         class="slide-enter"
@@ -85,28 +88,28 @@ function getGroupName(p: Post) {
           class="item block font-normal mb-6 mt-2 no-underline"
         >
           <li class="no-underline" flex="~ col md:row gap-2 md:items-center">
-            <div class="title text-lg leading-1.2em" flex="~ gap-2 wrap">
+            <div class="title relative text-lg leading-1.2em" flex="~ gap-2 wrap">
               <span
                 v-if="route.lang === 'en'"
                 align-middle flex-none
-                class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 ml--12 mr2 my-auto hidden md:block"
-              >English</span>
+                class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 absolute right-full top-0.25 mr2 ws-nowrap hidden md:block"
+              ><I18n zh="英文" en="English" /></span>
               <span
                 v-if="route.lang === 'zh'"
                 align-middle flex-none
-                class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 ml--8 mr2 my-auto hidden md:block"
-              >中文</span>
+                class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 absolute right-full top-0.25 mr2 ws-nowrap hidden md:block"
+              ><I18n zh="中文" en="Chinese" /></span>
               <span
                 v-if="route.lang === 'ja'"
                 align-middle flex-none
-                class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 ml--15 mr2 my-auto hidden md:block"
-              >Japanese</span>
+                class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 absolute right-full top-0.25 mr2 ws-nowrap hidden md:block"
+              ><I18n zh="日文" en="Japanese" /></span>
               <span align-middle>{{ route.title }}</span>
               <span
                 v-if="route.redirect"
                 align-middle op50 flex-none text-xs ml--1.5
                 i-carbon-arrow-up-right
-                title="External"
+                :title="t('外部链接', 'External')"
               />
             </div>
 
@@ -115,23 +118,23 @@ function getGroupName(p: Post) {
                 v-if="route.inperson"
                 align-middle op50 flex-none
                 i-ri:group-2-line
-                title="In person"
+                :title="t('线下', 'In person')"
               />
               <span
                 v-if="route.recording || route.video"
                 align-middle op50 flex-none
                 i-ri:film-line
-                title="Provided in video"
+                :title="t('有视频', 'Provided in video')"
               />
               <span
                 v-if="route.radio"
                 align-middle op50 flex-none
                 i-ri:radio-line
-                title="Provided in radio"
+                :title="t('有音频', 'Provided in radio')"
               />
 
               <span text-sm op50 ws-nowrap>
-                {{ formatDate(route.date, true) }}
+                <I18n :zh="formatDate(route.date, true, 'zh')" :en="formatDate(route.date, true)" />
               </span>
               <span v-if="route.duration" text-sm op40 ws-nowrap>· {{ route.duration }}</span>
               <span v-if="route.platform" text-sm op40 ws-nowrap>· {{ route.platform }}</span>
@@ -140,17 +143,17 @@ function getGroupName(p: Post) {
                 v-if="route.lang === 'en'"
                 align-middle flex-none
                 class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 my-auto md:hidden"
-              >English</span>
+              ><I18n zh="英文" en="English" /></span>
               <span
                 v-if="route.lang === 'zh'"
                 align-middle flex-none
                 class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 my-auto md:hidden"
-              >中文</span>
+              ><I18n zh="中文" en="Chinese" /></span>
               <span
                 v-if="route.lang === 'ja'"
                 align-middle flex-none
                 class="text-xs bg-zinc:15 text-zinc5 rounded px-1 py-0.5 my-auto md:hidden"
-              >Japanese</span>
+              ><I18n zh="日文" en="Japanese" /></span>
             </div>
           </li>
           <div v-if="route.place" op50 text-sm hidden mt--2 md:block>

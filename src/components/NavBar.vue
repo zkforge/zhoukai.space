@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { t } from '~/logics'
+
 function toTop() {
   window.scrollTo({
     top: 0,
@@ -19,7 +21,7 @@ const { y: scroll } = useWindowScroll()
       <Logo />
     </RouterLink>
     <button
-      title="Scroll to top"
+      :title="t('回到顶部', 'Scroll to top')"
       fixed right-3 bottom-3 w-10 h-10 hover:op100 rounded-full
       hover-bg-hex-8883 transition duration-300 z-100 print:hidden
       :class="scroll > 300 ? 'op30' : 'op0! pointer-events-none'"
@@ -30,21 +32,21 @@ const { y: scroll } = useWindowScroll()
     <nav class="nav">
       <div class="spacer" />
       <div class="right" print:op0>
-        <RouterLink class="nav-item" to="/posts" title="Blog">
+        <RouterLink class="nav-item" to="/posts" :title="t('博客', 'Blog')">
           <div i-ri-article-line />
-          <span class="lt-md:hidden">Blog</span>
+          <span class="lt-md:hidden"><I18n zh="博客" en="Blog" /></span>
         </RouterLink>
-        <RouterLink class="nav-item" to="/projects" title="Projects">
+        <RouterLink class="nav-item" to="/projects" :title="t('项目', 'Projects')">
           <div i-ri-lightbulb-line />
-          <span class="lt-md:hidden">Projects</span>
+          <span class="lt-md:hidden"><I18n zh="项目" en="Projects" /></span>
         </RouterLink>
-        <RouterLink class="nav-item" to="/demos" title="Demos">
+        <RouterLink class="nav-item" to="/demos" :title="t('演示', 'Demos')">
           <div i-ri-screenshot-line />
-          <span class="lt-md:hidden">Demos</span>
+          <span class="lt-md:hidden"><I18n zh="演示" en="Demos" /></span>
         </RouterLink>
-        <RouterLink class="nav-item" to="/photos" title="Photos">
+        <RouterLink class="nav-item" to="/photos" :title="t('照片', 'Photos')">
           <div i-ri-camera-3-line />
-          <span class="lt-md:hidden">Photos</span>
+          <span class="lt-md:hidden"><I18n zh="照片" en="Photos" /></span>
         </RouterLink>
         <!-- <RouterLink class="nav-item" to="/nav" title="Links">
           <div i-ri-compass-3-line />
@@ -59,6 +61,7 @@ const { y: scroll } = useWindowScroll()
         <a href="/feed.xml" target="_blank" title="RSS" class="lt-md:hidden">
           <div i-ri-rss-line />
         </a>
+        <ToggleLocale />
         <ToggleTheme />
       </div>
     </nav>

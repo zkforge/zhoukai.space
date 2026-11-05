@@ -1,5 +1,9 @@
 <script setup lang="ts">
-defineProps<{ projects: Record<string, any[]> }>()
+defineProps<{
+  projects: Record<string, any[]>
+  /** Chinese labels for the English category keys. */
+  categoryLabels?: Record<string, string>
+}>()
 
 function slug(name: string) {
   return name.toLowerCase().replace(/[\s\\/]+/g, '-')
@@ -9,7 +13,7 @@ function slug(name: string) {
 <template>
   <div class="max-w-300 mx-auto">
     <p text-center mt--6 mb5 op50 text-lg italic>
-      Products, tools, and research projects.
+      <I18n zh="产品、工具与研究项目。" en="Products, tools, and research projects." />
     </p>
     <div class="prose pb5 mx-auto mt10 text-center">
       <div flex="~ wrap gap-2 justify-center">
@@ -32,8 +36,7 @@ function slug(name: string) {
           <div
             i-ph-git-merge-duotone
             group-hover="i-ph-git-merge-fill text-amber"
-          />
-          Pull Requests
+          /> <I18n zh="开源贡献" en="Pull Requests" />
         </a>
       </div>
       <hr>
@@ -50,7 +53,9 @@ function slug(name: string) {
           '--enter-step': '60ms',
         }"
       >
-        <span text-5em color-transparent absolute left--1rem top-0rem font-bold leading-1em text-stroke-1.5 text-stroke-hex-aaa op35 dark:op20>{{ key }}</span>
+        <span text-5em color-transparent absolute left--1rem top-0rem font-bold leading-1em text-stroke-1.5 text-stroke-hex-aaa op35 dark:op20>
+          <I18n :zh="categoryLabels?.[key] ?? key" :en="key" />
+        </span>
       </div>
       <div
         class="project-grid py-2 max-w-500 w-max mx-auto"
@@ -76,7 +81,10 @@ function slug(name: string) {
           </div>
           <div class="flex-auto">
             <div class="text-normal">{{ item.name }}</div>
-            <div class="desc text-sm opacity-50 font-normal" v-html="item.desc" />
+            <div class="desc text-sm opacity-50 font-normal">
+              <span class="i18n-zh" lang="zh-CN" v-html="item.desc" />
+              <span class="i18n-en" lang="en" v-html="item.descEn ?? item.desc" />
+            </div>
           </div>
         </a>
       </div>
@@ -89,7 +97,7 @@ function slug(name: string) {
       </div>
       <ul>
         <li v-for="key of Object.keys(projects)" :key="key">
-          <a :href="`#${slug(key)}`">{{ key }}</a>
+          <a :href="`#${slug(key)}`"><I18n :zh="categoryLabels?.[key] ?? key" :en="key" /></a>
         </li>
       </ul>
     </div>
