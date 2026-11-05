@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import confetti from 'canvas-confetti'
+
 const props = defineProps<{
   wechatId: string
 }>()
@@ -10,13 +12,12 @@ let resetTimer: ReturnType<typeof setTimeout> | undefined
 
 const { copy, copied, isSupported } = useClipboard()
 
-async function launchConfetti() {
+function launchConfetti() {
   const rect = button.value?.getBoundingClientRect()
   if (!rect)
     return
 
   try {
-    const { default: confetti } = await import('canvas-confetti')
     const y = (rect.top + rect.height / 2) / window.innerHeight
     const leftOrigin = { x: Math.max(0, (rect.left - 4) / window.innerWidth), y }
     const rightOrigin = { x: Math.min(1, (rect.right + 4) / window.innerWidth), y }
@@ -54,7 +55,7 @@ async function launchConfetti() {
     })
   }
   catch (error) {
-    console.error('Could not load the copy confirmation animation.', error)
+    console.error('Could not play the copy confirmation animation.', error)
   }
 }
 
@@ -68,7 +69,7 @@ async function copyWechatId() {
       throw new Error('Clipboard write did not complete')
 
     status.value = 'copied'
-    void launchConfetti()
+    launchConfetti()
   }
   catch {
     status.value = 'failed'
