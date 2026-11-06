@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { breakpointsTailwind } from '@vueuse/core'
-import { demoItems } from '../../demo/data'
+import { portfolioItems } from '../../portfolio/data'
 
 const breakpoints = useBreakpoints(breakpointsTailwind)
 
@@ -13,8 +13,8 @@ const cols = computed(() => {
 })
 
 const parts = computed(() => {
-  const result = Array.from({ length: cols.value }, () => [] as typeof demoItems)
-  demoItems.forEach((item, i) => {
+  const result = Array.from({ length: cols.value }, () => [] as typeof portfolioItems)
+  portfolioItems.forEach((item, i) => {
     result[i % cols.value].push(item)
   })
   return result

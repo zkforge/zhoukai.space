@@ -52,13 +52,6 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/demos': RouteRecordInfo<
-      '/demos',
-      '/demos',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/nav': RouteRecordInfo<
       '/nav',
       '/nav',
@@ -69,6 +62,13 @@ declare module 'vue-router/auto-routes' {
     '/photos': RouteRecordInfo<
       '/photos',
       '/photos',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/portfolio': RouteRecordInfo<
+      '/portfolio',
+      '/portfolio',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -304,13 +304,6 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/projects': RouteRecordInfo<
-      '/projects',
-      '/projects',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/use': RouteRecordInfo<
       '/use',
       '/use',
@@ -355,14 +348,6 @@ declare module 'vue-router/auto-routes' {
       pathParamNames:
         | never
     }
-    'pages/demos.md': {
-      routes:
-        | '/demos'
-      views:
-        | never
-      pathParamNames:
-        | never
-    }
     'pages/nav.md': {
       routes:
         | '/nav'
@@ -374,6 +359,14 @@ declare module 'vue-router/auto-routes' {
     'pages/photos.md': {
       routes:
         | '/photos'
+      views:
+        | never
+      pathParamNames:
+        | never
+    }
+    'pages/portfolio.md': {
+      routes:
+        | '/portfolio'
       views:
         | never
       pathParamNames:
@@ -638,14 +631,6 @@ declare module 'vue-router/auto-routes' {
     'pages/posts/wsl2mac.md': {
       routes:
         | '/posts/wsl2mac'
-      views:
-        | never
-      pathParamNames:
-        | never
-    }
-    'pages/projects.md': {
-      routes:
-        | '/projects'
       views:
         | never
       pathParamNames:

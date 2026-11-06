@@ -32,21 +32,15 @@ const { y: scroll } = useWindowScroll()
     <nav class="nav">
       <div class="spacer" />
       <div class="right" print:op0>
-        <RouterLink class="nav-item" to="/posts" :title="t('博客', 'Blog')">
-          <div i-ri-article-line />
-          <span class="lt-md:hidden"><I18n zh="博客" en="Blog" /></span>
-        </RouterLink>
-        <RouterLink class="nav-item" to="/projects" :title="t('项目', 'Projects')">
+        <RouterLink class="nav-item" to="/portfolio" :title="t('作品集', 'Portfolio')">
           <div i-ri-lightbulb-line />
-          <span class="lt-md:hidden"><I18n zh="项目" en="Projects" /></span>
+          <I18n zh="作品集" en="Portfolio" />
         </RouterLink>
-        <RouterLink class="nav-item" to="/demos" :title="t('演示', 'Demos')">
-          <div i-ri-screenshot-line />
-          <span class="lt-md:hidden"><I18n zh="演示" en="Demos" /></span>
+        <RouterLink class="nav-item" to="/posts" :title="t('博客', 'Blog')" :aria-label="t('博客', 'Blog')">
+          <div i-ri-article-line />
         </RouterLink>
-        <RouterLink class="nav-item" to="/photos" :title="t('照片', 'Photos')">
+        <RouterLink class="nav-item" to="/photos" :title="t('照片', 'Photos')" :aria-label="t('照片', 'Photos')">
           <div i-ri-camera-3-line />
-          <span class="lt-md:hidden"><I18n zh="照片" en="Photos" /></span>
         </RouterLink>
         <!-- <RouterLink class="nav-item" to="/nav" title="Links">
           <div i-ri-compass-3-line />

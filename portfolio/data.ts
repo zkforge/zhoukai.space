@@ -2,7 +2,7 @@ import type { Component } from 'vue'
 
 const video = import.meta.glob('./*.mp4', { eager: true, query: '?url' }) as any
 
-export const demoItems = Array.from(Object.entries(import.meta.glob('./*.md', { eager: true })))
+export const portfolioItems = Array.from(Object.entries(import.meta.glob('./*.md', { eager: true })))
   .map(([path, page]: any) => ({
     date: path.slice(2, -3) as string,
     comp: page.default as Component,
