@@ -12,23 +12,20 @@ This repository is the source for Zhou Kai's personal website. Preserve its exis
 - Do not restore template-author identity, links, services, or placeholder metrics.
 - Before handoff, run `pnpm lint`, `pnpm build`, and `git diff --check`. Visually inspect affected public pages at desktop and narrow widths.
 
+## Chinese and English Content
+
+- When adding, editing, renaming, or removing bilingual page content, navigation labels, portfolio descriptions, or translated metadata, update both Chinese and English versions in the same change. Follow the existing `I18n`, `.i18n-zh` / `.i18n-en`, paired content files, and frontmatter fields such as `title` / `titleEn`.
+- Verify both language modes: matching content and links, correct language visibility, and responsive layout. Existing single-language blog posts only need a translation when requested.
+
 ## Photos
 
 `pages/photos.md` uses the full-width `PhotoGalleryAll.vue` gallery. Photos live under `photos/` with matching JSON sidecars for captions and blurhash values; `photos/data.ts` is generated from them. To add photos, copy the originals into `photos/`, run `pnpm photos`, add or review captions in the generated sidecars, and run `pnpm photos` again. Verify loading, layout, dark mode, and narrow screens.
 
+## Portfolio
+
+Add or remove each portfolio entry as a same-basename `YYYY-MM-DD.md` / `.mp4` pair under `portfolio/`. For GitHub projects, set frontmatter `link` to the repository URL and `stars` to its current count so a real value remains visible when GitHub cannot be reached. Verify video playback, project links, star display, dark mode, and narrow screens.
+
 ## Deferred Restores
-
-### Demos
-
-`pages/demos.md` intentionally remains a normal-width placeholder. `ListDemos.vue`, `WrapperDemo.vue`, and `demo/data.ts` are reusable, but there are currently no real demo Markdown/MP4 pairs.
-
-Until real paired demo assets exist:
-
-- keep the placeholder route and existing navigation entry;
-- do not add `<!-- @layout-full-width -->` or `<ListDemos />`;
-- do not delete the reusable demo components or loader.
-
-When real demos are supplied, restore the feature as one change: add each same-basename `.md` and `.mp4` pair under `demo/`, restore the full-width marker and list component, then verify the responsive columns, video playback, links, and browser console.
 
 ### Post Sub-navigation
 
